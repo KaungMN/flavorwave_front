@@ -1,36 +1,32 @@
 import Table from "react-bootstrap/Table";
 import Container from "react-bootstrap/Container";
 import "./sidebar.css";
+import Button from "react-bootstrap/Button";
+
+const heading = ["a", "b", "c", "d", "e"];
+const content = ["some", "thing", "bigger", "d", "e"];
 
 function TableComponent() {
   return (
-    <Container >
+    <Container>
       <Table striped bordered hover>
         <thead>
           <tr>
             <th>#</th>
-            <th>First Name</th>
-            <th>Last Name</th>
-            <th>Username</th>
+            {heading.map((item) => (
+              <th key={item}>{item}</th>
+            ))}
           </tr>
         </thead>
         <tbody>
           <tr>
             <td>1</td>
-            <td>Mark</td>
-            <td>Otto</td>
-            <td>@mdo</td>
-          </tr>
-          <tr>
-            <td>2</td>
-            <td>Jacob</td>
-            <td>Thornton</td>
-            <td>@fat</td>
-          </tr>
-          <tr>
-            <td>3</td>
-            <td colSpan={2}>Larry the Bird</td>
-            <td>@twitter</td>
+            {content.map((item) => (
+              <td key={item}>{item}</td>
+            ))}
+            <td>
+              <Button variant="outline-secondary">Secondary</Button>
+            </td>
           </tr>
         </tbody>
       </Table>

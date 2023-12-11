@@ -8,10 +8,10 @@ const Sidebar = () => {
     <div className="sidebar">
       <Nav defaultActiveKey="/home" className="flex-column">
         {menu.map((item) => (
-          <Accordion  key={item}>
+          <Accordion key={item}>
             <Accordion.Item eventKey="0">
               <Accordion.Header>
-                <Nav.Link href="/home">{item}</Nav.Link>
+                <Nav.Link href={"/" + item}>{item}</Nav.Link>
               </Accordion.Header>
               <Accordion.Body style={{ color: "#555555", fontSize: 14 }}>
                 <ul>
@@ -31,7 +31,7 @@ const Sidebar = () => {
         ))}
       </Nav>
     </div>
-  )
-}
+  );
+};
 
 export default Sidebar;

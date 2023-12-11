@@ -7,6 +7,7 @@ import Col from "react-bootstrap/Col";
 
 function App() {
   return (
+
     <div>
       <Row>
         <Col xs={3}>
@@ -14,6 +15,7 @@ function App() {
         </Col>
         <Col xs={9}>
           <TableComponent />
+          <h1>Hello</h1>
         </Col>
       </Row>
     </div>

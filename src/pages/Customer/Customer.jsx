@@ -1,13 +1,25 @@
-import CustomerForm from "../../components/customers/CustomerForm";
-import CustomerLogin from "../../components/customers/CustomerLogin";
-import CustomerProducts from "../../components/customers/CustomerProducts";
-import CustomerSignup from "../../components/customers/CustomerSignup";
+import { Link } from "react-router-dom";
+
 function customer() {
   return (
     <>
-      <CustomerSignup />
-      <CustomerLogin />
-      <CustomerProducts />
+      <div>
+        <h1>Welcome to Our Store!</h1>
+        <p>Explore our featured products and find great deals.</p>
+
+        <h2>Quick Links</h2>
+        <ul>
+          <li>
+            <Link to="/customer/products">All Products</Link>
+          </li>
+          <li>
+            <Link to="/customer/orders">Your Orders</Link>
+          </li>
+          <li>
+            <Link to="/customer/account">Account Settings</Link>
+          </li>
+        </ul>
+      </div>
     </>
   );
 }

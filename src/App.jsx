@@ -4,12 +4,16 @@ import Sidebar from "./shared/SideBar.jsx";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import { Routes, Route } from "react-router-dom";
-import Customer from "./pages/customer";
+import Customer from "./pages/Customer/Customer.jsx";
 import Factory from "./pages/factory";
 import Sales from "./pages/sales";
 import Logstic from "./pages/logstic";
 import Warehouse from "./pages/warehouse";
 import Admin from "./pages/admin";
+import CustomerLogin from "./components/customers/CustomerLogin.jsx";
+import CustomerSignup from "./components/customers/CustomerSignup.jsx";
+import CustomerProductPage from "./components/customers/CustomerProductPage.jsx";
+import NoMatch from "./pages/nomatch.jsx";
 
 function App() {
   return (
@@ -25,8 +29,12 @@ function App() {
             <Route path="/admin" element={<Admin />} />
             <Route path="/logstic" element={<Logstic />} />
             <Route path="/customer" element={<Customer />} />
+            <Route path="/customer/login" element={<CustomerLogin />} />
+            <Route path="/customer/signup" element={<CustomerSignup />} />
+            <Route path="/customer/order" element={<CustomerProductPage />} />
             <Route path="/warehouse" element={<Warehouse />} />
             <Route path="/sales" element={<Sales />} />
+            <Route path="*" element={<NoMatch />} />
           </Routes>
         </Col>
       </Row>

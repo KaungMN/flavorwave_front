@@ -10,7 +10,7 @@ import Factory from "./pages/factory";
 import Sales from "./pages/sales";
 import Logstic from "./pages/logstic";
 import Warehouse from "./pages/warehouse";
-import Admin from "./pages/admin";
+import Admin from "./pages/Admin.jsx";
 
 function App() {
   return (

@@ -16,13 +16,13 @@ const Sidebar = () => {
               <Accordion.Body style={{ color: "#555555", fontSize: 14 }}>
                 <ul>
                   <li>
-                    <a href="/services/service1">Service 1</a>
+                    <a >Service 1</a>
                   </li>
                   <li>
-                    <a href="/services/service2">Service 2</a>
+                    <a>Service 2</a>
                   </li>
                   <li>
-                    <a href="/services/all">All Services</a>
+                    <a >All Services</a>
                   </li>
                 </ul>
               </Accordion.Body>

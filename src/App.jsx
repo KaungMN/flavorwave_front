@@ -1,7 +1,6 @@
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./App.css";
 import Sidebar from "./shared/SideBar.jsx";
-import TableComponent from "./shared/Table.jsx";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import { Routes, Route } from "react-router-dom";
@@ -10,7 +9,7 @@ import Factory from "./pages/factory";
 import Sales from "./pages/sales";
 import Logstic from "./pages/logstic";
 import Warehouse from "./pages/warehouse";
-import Admin from "./pages/Admin.jsx";
+import Admin from "./pages/admin";
 import CustomerLogin from "./components/customers/CustomerLogin.jsx";
 import CustomerSignup from "./components/customers/CustomerSignup.jsx";
 import CustomerProductPage from "./components/customers/CustomerProductPage.jsx";
@@ -24,7 +23,6 @@ function App() {
           <Sidebar />
         </Col>
         <Col xs={9}>
-          <TableComponent />
           <Routes>
             <Route path="/" element={<Sidebar />} />
             <Route path="/factory" element={<Factory />} />

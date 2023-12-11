@@ -1,5 +1,8 @@
+import ChartTest from "../components/admin/Chart";
 function Admin() {
-  return <div>admin</div>;
+  return <div>
+    <ChartTest />
+  </div>;
 }
 
 export default Admin;

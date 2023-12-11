@@ -1,5 +1,12 @@
+import CustomerForm from "../components/customers/CustomerForm";
+import CustomerSignup from "../components/customers/CustomerSignup";
 function customer() {
-  return <div>customer</div>;
+  return (
+    <>
+      <CustomerSignup />
+      <CustomerForm />
+    </>
+  );
 }
 
 export default customer;

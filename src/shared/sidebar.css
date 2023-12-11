@@ -1,0 +1,60 @@
+/* Sidebar.css */
+
+.sidebar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 200px;
+  background-color: #333; /* Change this to your preferred background color */
+  padding-top: 20px;
+  padding-left: 10px;
+  text-align: left;
+}
+
+/* Style links inside the sidebar */
+.sidebar a {
+  padding: 10px 15px;
+  text-decoration: none;
+  color: #fff; /* Change this to your preferred text color */
+}
+
+/* Style links on hover */
+
+
+.accordion-button {
+  color: black !important;
+  background-color: white !important;
+  box-shadow: none !important;
+  border-radius: 0% !important;
+  border-bottom: 2px solid #efefef !important;
+}
+
+.accordion {
+  --bs-accordion-btn-icon-width: 0.8em !important;
+  --bs-accordion-border-width: 0 !important;
+  --bs-accordion-bg: #333;
+}
+
+.accordion-button {
+  background-color: transparent !important;
+  border: 0 !important;
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 0;
+}
+
+/* .accordion-button::after {
+  background-image
+} */
+.accordion-body {
+  padding: 0;
+}
+.accordion-body ul {
+ list-style: none;
+ margin: 0;
+ padding: 0;
+}
+.accordion-body li {
+ padding: 5px;
+}

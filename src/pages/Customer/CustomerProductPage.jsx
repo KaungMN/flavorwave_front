@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Row, Col, Card, Button, Modal } from "react-bootstrap";
 import { items } from "../../components/customers/Products.jsx";
+import AddOrder from "./OrderForm.jsx";
 
 function CustomerProductPage() {
   const [cart, setCart] = useState([]);
@@ -8,11 +9,26 @@ function CustomerProductPage() {
   const [totalPrice, setTotalPrice] = useState(0);
 
   const addToCart = (product) => {
-    const updatedCart = [...cart, { ...product, quantity: 1 }];
-    setCart(updatedCart);
-    calculateTotalPrice(updatedCart);
+    // Check if the item is already in the cart
+    const existingItem = cart.find((item) => item.id === product.id);
+
+    if (existingItem) {
+      // If the item is already in the cart, update the quantity
+      const updatedCart = cart.map((item) =>
+        item.id === product.id ? { ...item, quantity: item.quantity + 1 } : item
+      );
+
+      setCart(updatedCart);
+    } else {
+      // If the item is not in the cart, add it with quantity 1
+      const updatedCart = [...cart, { ...product, quantity: 1 }];
+      setCart(updatedCart);
+    }
+
+    calculateTotalPrice(cart);
     setShowCart(true);
   };
+  const listToForm = cart.map(({ name, quantity }) => ({ name, quantity }));
 
   const calculateTotalPrice = (cartItems) => {
     const total = cartItems.reduce(
@@ -21,8 +37,11 @@ function CustomerProductPage() {
     );
     setTotalPrice(total);
   };
-
   const handleClose = () => setShowCart(false);
+  const handleCancel = () => {
+    setCart([]);
+    setShowCart(false);
+  };
 
   useEffect(() => {
     calculateTotalPrice(cart);
@@ -33,8 +52,8 @@ function CustomerProductPage() {
       item.id === productId ? { ...item, quantity: item.quantity + 1 } : item
     );
     setCart(updatedCart);
-    calculateTotalPrice(updatedCart);
   };
+
   const decrement = (productId) => {
     const updatedCart = cart.map((item) =>
       item.id === productId && item.quantity > 1
@@ -51,8 +70,12 @@ function CustomerProductPage() {
       <Row>
         {items.map((item) => (
           <Col key={item.id} xs={12} md={6} lg={4}>
-            <Card class="product-card">
-              <Card.Img class="product-image" variant="top" src={item.image} />
+            <Card className="product-card">
+              <Card.Img
+                className="product-image"
+                variant="top"
+                src={item.image}
+              />
               <Card.Body>
                 <Card.Title>{item.name}</Card.Title>
                 <Card.Text>
@@ -61,27 +84,7 @@ function CustomerProductPage() {
                     <strong>Price:</strong> ${item.price.toFixed(2)}
                   </p>
                 </Card.Text>
-                <div>
-                  <Button
-                    className="round-button"
-                    variant="primary"
-                    onClick={() => increment(item.id)}
-                  >
-                    +
-                  </Button>
-                  <Button
-                    className="round-button"
-                    variant="primary"
-                    onClick={() => decrement(item.id)}
-                  >
-                    -
-                  </Button>
-                  <p className="product-counter">
-                    {cart.find((cartItem) => cartItem.id === item.id)
-                      ?.quantity || 0}{" "}
-                    Boxes
-                  </p>
-                </div>
+
                 <Button variant="primary" onClick={() => addToCart(item)}>
                   Add to Cart
                 </Button>
@@ -90,16 +93,12 @@ function CustomerProductPage() {
           </Col>
         ))}
       </Row>
-      <div className="text-center">
-        <Button
-          variant="primary"
-          onClick={() => console.log("Place Order clicked")}
-        >
-          Place Order
-        </Button>
-      </div>
+
       <Modal show={showCart} onHide={handleClose}>
         <Modal.Header closeButton>
+          <Button variant="secondary" onClick={handleClose}>
+            Back
+          </Button>
           <Modal.Title>Your Cart</Modal.Title>
         </Modal.Header>
         <Modal.Body>
@@ -107,23 +106,48 @@ function CustomerProductPage() {
             <div key={item.id}>
               <p>{item.name}</p>
               <p>${(item.price * item.quantity).toFixed(2)}</p>
+              <div>
+                <Button
+                  className="round-button"
+                  variant="primary"
+                  onClick={() => increment(item.id)}
+                >
+                  +
+                </Button>
+                <Button
+                  className="round-button"
+                  variant="primary"
+                  onClick={() => decrement(item.id)}
+                >
+                  -
+                </Button>
+                <p className="product-counter">
+                  {cart.find((cartItem) => cartItem.id === item.id)?.quantity ||
+                    0}{" "}
+                  Boxes
+                </p>
+              </div>
               <hr />
             </div>
           ))}
           <p>Total Price: ${totalPrice.toFixed(2)}</p>
         </Modal.Body>
         <Modal.Footer>
-          <Button variant="secondary" onClick={handleClose}>
-            Close
+          <Button variant="secondary" onClick={handleCancel}>
+            Cancel
           </Button>
           <Button
             variant="primary"
-            onClick={() => console.log("Place Order clicked")}
+            onClick={() => {
+              // console.log(cart.map((id) => [id.name, id.quantity]));
+              console.log(listToForm);
+            }}
           >
             Place Order
           </Button>
         </Modal.Footer>
       </Modal>
+      <AddOrder />
     </div>
   );
 }

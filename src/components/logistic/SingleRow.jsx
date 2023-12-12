@@ -1,15 +1,13 @@
 import AddTruckModal from "./TruckModal";
 import Table from "react-bootstrap/Table";
 
-const heading = ["orderItem", "orderQuantity", "salesPermit"];
-
-export default function TableSingleRow({ order }) {
+export default function TableSingleRow({ header, order }) {
   return (
     <Table striped bordered hover>
       <thead>
         <tr>
           <th>#</th>
-          {heading.map((item) => (
+          {header.map((item) => (
             <th key={item}>{item}</th>
           ))}
         </tr>

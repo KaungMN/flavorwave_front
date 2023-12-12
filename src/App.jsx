@@ -1,54 +1,26 @@
-import "bootstrap/dist/css/bootstrap.min.css";
-import "./App.css";
-import Sidebar from "./shared/SideBar.jsx";
-import Row from "react-bootstrap/Row";
-import Col from "react-bootstrap/Col";
-import { Routes, Route } from "react-router-dom";
-import Customer from "./pages/Customer/Customer.jsx";
-import Factory from "./pages/factory";
-import Sales from "./pages/sales";
-import Logstic from "./pages/Logistic/Logstic.jsx";
-import Delivery from "./pages/Logistic/Delivery.jsx";
-import Warehouse from "./pages/Warehouse";
-import Admin from "./pages/admin";
-import CustomerLogin from "./pages/Customer/CustomerLogin.jsx";
-import CustomerSignup from "./pages/Customer/CustomerSignup.jsx";
-import CustomerOrderHistory from "./pages/Customer/CustomerOrderHistory.jsx";
-import CustomerProductPage from "./pages/Customer/CustomerProductPage.jsx";
-import NoMatch from "./pages/nomatch.jsx";
-import Home from "./pages/Home.jsx";
+import 'bootstrap/dist/css/bootstrap.min.css';
+import './App.css';
+import Sidebar from './shared/SideBar.jsx';
+import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col';
+import RootNavigator from './router/RootNavigator.jsx';
+import { Container } from 'react-bootstrap';
 
 function App() {
-  return (
-    <div>
-      <Row>
-        <Col xl={3} lg={3} xs={2}>
-          <Sidebar />
-        </Col>
-        <Col xl={9} lg={9} xs={10}>
-          <Routes>
-            {/* <Route path="/" element={<Sidebar />} /> */}
-            <Route path="/" element={<Home />} />
-            <Route path="/factory" element={<Factory />} />
-            <Route path="/admin" element={<Admin />} />
-            <Route path="/logstic" element={<Logstic />} />
-            <Route path="/delivery" element={<Delivery />} />
-            <Route path="/customer" element={<Customer />} />
-            <Route path="/customer/login" element={<CustomerLogin />} />
-            <Route path="/customer/signup" element={<CustomerSignup />} />
-            <Route path="/customer/order" element={<CustomerProductPage />} />
-            <Route
-              path="/customer/history"
-              element={<CustomerOrderHistory />}
-            />
-            <Route path="/warehouse" element={<Warehouse />} />
-            <Route path="/sales" element={<Sales />} />
-            <Route path="*" element={<NoMatch />} />
-          </Routes>
-        </Col>
-      </Row>
-    </div>
-  );
+    return (
+        <>
+            <Row>
+                <Col lg={4} md={2} xs={3}>
+                    <Sidebar />
+                </Col>
+                <Col lg={8} md={10} xs={9}>
+                    <div className="d-flex flex-column justify-content-center align-items-center">
+                        <RootNavigator />
+                    </div>
+                </Col>
+            </Row>
+        </>
+    );
 }
 
 export default App;

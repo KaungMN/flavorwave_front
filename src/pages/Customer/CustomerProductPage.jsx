@@ -139,7 +139,6 @@ function CustomerProductPage() {
           <Button
             variant="primary"
             onClick={() => {
-              // console.log(cart.map((id) => [id.name, id.quantity]));
               console.log(listToForm);
             }}
           >
@@ -147,7 +146,7 @@ function CustomerProductPage() {
           </Button>
         </Modal.Footer>
       </Modal>
-      <AddOrder />
+      <AddOrder orderData={listToForm} />
     </div>
   );
 }

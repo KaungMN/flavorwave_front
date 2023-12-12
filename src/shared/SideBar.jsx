@@ -30,7 +30,7 @@ const Sidebar = () => {
           <Nav defaultActiveKey="/home" className="flex-column">
             <Navbar.Brand className="my-3">
               <Link to="/" style={{ fontSize: 22, color: "white" }}>
-                <img alt="" src="/src/images/logo.svg" width="50" height="50" />{" "}
+                <img alt="" className="me-2" src="/src/images/Logo (1).png" width="70" height="70" />{" "}
                 <span className="mt-2">FlavorWave</span>
               </Link>
             </Navbar.Brand>

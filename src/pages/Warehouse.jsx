@@ -1,4 +1,4 @@
-import TableComponent from "../components/warehouse/Table";  
+import TableComponent from "../components/warehouse/table/Table";  
 function warehouse() {
   return <div>
     <h1>Ware House</h1>

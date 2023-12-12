@@ -12,3 +12,8 @@
   margin-right: 0;
   margin-left: auto;
 }
+
+.product-image {
+  width: 300px;
+  height: 200px;
+}

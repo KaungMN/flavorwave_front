@@ -1,7 +1,7 @@
 import React from 'react';
 import { Modal, Button, Table } from 'react-bootstrap';
 
-function CartModal({ isOpen, cartList, handleClose, increment, decrement, totalPrice }) {
+function CartModal({ isOpen, cartList, handleClose, increment, decrement, totalPrice, listToForm }) {
     return (
         <Modal show={isOpen} onHide={handleClose}>
             <Modal.Header closeButton>

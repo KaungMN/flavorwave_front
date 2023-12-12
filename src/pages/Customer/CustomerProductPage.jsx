@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Row, Col, Card, Button } from 'react-bootstrap';
 import { items } from '../../components/customers/Products.jsx';
-import AddOrder from './OrderForm.jsx';
+import AddOrder from './components/OrderForm.jsx';
 import CartModal from './components/CartModal.jsx';
 
 function CustomerProductPage() {
@@ -29,7 +29,6 @@ function CustomerProductPage() {
         }
         calculateTotalPrice(cartList);
     };
-    const listToForm = cartList.map(({ name, quantity }) => ({ name, quantity }));
 
     const calculateTotalPrice = (cartListItems) => {
         const total = cartListItems.reduce((acc, item) => acc + item.price * item.quantity, 0);
@@ -50,7 +49,9 @@ function CustomerProductPage() {
 
     const increment = (productId) => {
         const updatedCart = cartList.map((item) =>
-            item.id === productId ? { ...item, quantity: item.quantity + 1 } : item
+            item.id === productId
+                ? { ...item, quantity: item.quantity + 1, subTotalPrice: (item.quantity + 1) * item.price }
+                : { ...item, subTotalPrice: item.quantity * item.price }
         );
         setCartList(updatedCart);
     };
@@ -58,12 +59,15 @@ function CustomerProductPage() {
     const decrement = (productId) => {
         const updatedCart = cartList
             .map((item) =>
-                item.id === productId && item.quantity > 0 ? { ...item, quantity: item.quantity - 1 } : item
+                item.id === productId && item.quantity > 0
+                    ? { ...item, quantity: item.quantity - 1, subTotalPrice: (item.quantity - 1) * item.price }
+                    : { ...item, subTotalPrice: item.quantity * item.price }
             )
             .filter((item) => item.quantity > 0);
         setCartList(updatedCart);
         calculateTotalPrice(updatedCart);
     };
+    const listToForm = cartList.map(({ name, quantity, subTotalPrice }) => ({ name, quantity, subTotalPrice }));
 
     return (
         <div>
@@ -106,8 +110,9 @@ function CustomerProductPage() {
                 increment={increment}
                 decrement={decrement}
                 totalPrice={totalPrice}
+                listToForm={listToForm}
             />
-            <AddOrder orderData={listToForm} />
+            <AddOrder orderData={listToForm} totalPrice={totalPrice} />
         </div>
     );
 }

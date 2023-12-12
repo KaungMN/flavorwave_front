@@ -1,9 +1,9 @@
 import { Button, Col, Form, Row } from 'react-bootstrap';
 import { useForm } from 'react-hook-form';
-import { Cities, Townships } from '../../datas/CitiesAndTownship';
-import OrderItemsDropDown from '../../components/customers/OrderItems';
+import { Cities, Townships } from '../../../datas/CitiesAndTownship';
+import OrderItemsDropDown from '../../../components/customers/OrderItems';
 
-function AddOrder({ orderData }) {
+function AddOrder({ orderData, totalPrice }) {
     const {
         register,
         handleSubmit,
@@ -15,10 +15,9 @@ function AddOrder({ orderData }) {
     // let newTest = { ...test, d: "4" };
     // console.log(newTest)
     console.log(orderData);
-    let newData;
 
     const onSubmit = (data) => {
-        newData = { ...data, order: orderData };
+        const newData = { ...data, order: orderData, totalPrice: totalPrice };
         console.log(newData);
     };
 
@@ -28,10 +27,19 @@ function AddOrder({ orderData }) {
             <Form onSubmit={handleSubmit(onSubmit)}>
                 <div className="mb-4">
                     <Row>
+                        <h4 className="text-center">Your Order History</h4>
+                        {orderData.map((order, index) => (
+                            <div key={index}>
+                                <p>{order.name}</p>
+                                <p>{order.quantity}</p>
+                                <p>{order.subTotalPrice}</p>
+                                <span>$</span>
+                            </div>
+                        ))}
+                    </Row>
+                    <Row>
                         <Col>
                             <Form.Control
-                                //   disabled
-                                //   readOnly
                                 size="sm"
                                 id="name"
                                 name="name"

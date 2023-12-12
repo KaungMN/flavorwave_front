@@ -1,11 +1,9 @@
 import { useState } from "react";
 import Modal from "react-bootstrap/Modal";
-import EditForm from "./Form";
 import Button from "react-bootstrap/Button";
 
-export default function AddTruckModal({ initialData }) {
+export default function OrderConfirmModal() {
   const [show, setShow] = useState(false);
-  const [data, setData] = useState(initialData);
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
@@ -13,7 +11,7 @@ export default function AddTruckModal({ initialData }) {
   return (
     <>
       <Button className="me-2" variant="outline-secondary" onClick={handleShow}>
-        Add Truck
+        Confrim Order
       </Button>
 
       <Modal
@@ -25,9 +23,20 @@ export default function AddTruckModal({ initialData }) {
         <Modal.Header closeButton className="border-0"></Modal.Header>
         <Modal.Body className="pt-0 px-5">
           <h5 style={{ fontWeight: 600 }} className="mb-3 text-center">
-            Add Truck
+            Are you sure you want to confirm this order?
           </h5>
-          <EditForm data={data} />
+          <div className="mx-auto my-3 d-flex justify-content-center">
+            <Button className="me-2 mx-3" variant="outline-success">
+              Yes
+            </Button>
+            <Button
+              className="me-2"
+              variant="outline-secondary"
+              onClick={() => setShow(false)}
+            >
+              Cancel
+            </Button>
+          </div>
         </Modal.Body>
       </Modal>
     </>

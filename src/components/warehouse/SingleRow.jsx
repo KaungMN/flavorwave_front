@@ -1,7 +1,14 @@
 import Edit from "./EditProduct";
 import Table from "react-bootstrap/Table";
 
-const heading = ["Product Name", "Box", "Pcs","Price", "expire-date", "Location"];
+const heading = [
+  "Product Name",
+  "Box",
+  "Pcs",
+  "Price",
+  "expire-date",
+  "Location",
+];
 
 export default function TableSingleRow({ order }) {
   return (
@@ -12,7 +19,6 @@ export default function TableSingleRow({ order }) {
           {heading.map((item) => (
             <th key={item}>{item}</th>
           ))}
-          <th>#</th>
         </tr>
       </thead>
       <tbody>
@@ -22,10 +28,8 @@ export default function TableSingleRow({ order }) {
             <td key={item.orderItem}>{item.orderItem}</td>
             <td key={item.orderQuantity}>{item.orderQuantity}</td>
             <td key={item.salesPermit}>{item.salesPermit}</td>
-            <td key={item.salesPermit}>{item.salesPermit}</td>
-            <td key={item.salesPermit}>{item.salesPermit}</td>
-            <td key={item.salesPermit}>{item.salesPermit}</td>
-
+            <td key={item.sales}>{item.sales}</td>
+            <td key={item.Permit}>{item.Permit}</td>
             <td>
               <Edit initialData={item} />
             </td>

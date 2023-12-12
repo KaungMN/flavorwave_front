@@ -47,6 +47,8 @@ export default function Paginator({ data }) {
     }));
   };
 
+  console.log(state.data);
+
   return (
     <div className="shop-paginator-section">
       <TableSingleRow order={state.data} />

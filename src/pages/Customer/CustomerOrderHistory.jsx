@@ -1,4 +1,4 @@
-import TableComponent from "../../components/logistic/Table.jsx";
+import TableComponent from "../../components/customers/table/Table";
 
 function CustomerOrderHistory() {
   return (

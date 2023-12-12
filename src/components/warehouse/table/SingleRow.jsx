@@ -1,5 +1,7 @@
 import Edit from "../EditProduct";
+import Delete from "../Delete";
 import Table from "react-bootstrap/Table";
+import { Button } from "react-bootstrap";
 
 const heading = [
   "Product Name",
@@ -10,7 +12,7 @@ const heading = [
   "Location",
 ];
 
-export default function TableSingleRow({ order }) {
+export default function TableSingleRow({ order, handleDelete }) {
   return (
     <Table striped bordered hover>
       <thead>
@@ -32,6 +34,7 @@ export default function TableSingleRow({ order }) {
             <td key={item.Permit}>{item.Permit}</td>
             <td>
               <Edit initialData={item} />
+              <Delete handleDelete={handleDelete} id={item.orderItem}/>
             </td>
           </tr>
         ))}

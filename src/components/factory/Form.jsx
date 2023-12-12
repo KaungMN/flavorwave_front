@@ -38,8 +38,9 @@ export default function EditForm({ heading, data }) {
                 />
                 <InputGroup.Text size="sm">g</InputGroup.Text>
               </InputGroup>
-              <Form.Select size="sm" required                 {...register("supplier", { required: true })}>
-                <option disabled selected>Supplier Name</option>
+              <Form.Select size="sm" required                
+               {...register("supplier", { required: true })}>
+                <option disabled selected value={""}>Supplier Name</option>
                 <option>Keyholder</option>
                 <option>Distributor</option>
                 <option>Wholesale</option>

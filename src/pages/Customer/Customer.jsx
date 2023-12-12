@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import "../../components/customers/customer.css";
+import "./customer.css";
 
 function customer() {
   return (

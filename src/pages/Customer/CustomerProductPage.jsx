@@ -51,7 +51,7 @@ function CustomerProductPage() {
       <Row>
         {items.map((item) => (
           <Col key={item.id} xs={12} md={6} lg={4}>
-            <Card>
+            <Card class="product-card">
               <Card.Img class="product-image" variant="top" src={item.image} />
               <Card.Body>
                 <Card.Title>{item.name}</Card.Title>

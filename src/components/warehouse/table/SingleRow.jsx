@@ -1,13 +1,22 @@
-import AddTruckModal from "./TruckModal";
+import Edit from "../EditProduct";
 import Table from "react-bootstrap/Table";
 
-export default function TableSingleRow({ header, order }) {
+const heading = [
+  "Product Name",
+  "Box",
+  "Pcs",
+  "Price",
+  "expire-date",
+  "Location",
+];
+
+export default function TableSingleRow({ order }) {
   return (
     <Table striped bordered hover>
       <thead>
         <tr>
           <th>#</th>
-          {header.map((item) => (
+          {heading.map((item) => (
             <th key={item}>{item}</th>
           ))}
         </tr>
@@ -19,8 +28,10 @@ export default function TableSingleRow({ header, order }) {
             <td key={item.orderItem}>{item.orderItem}</td>
             <td key={item.orderQuantity}>{item.orderQuantity}</td>
             <td key={item.salesPermit}>{item.salesPermit}</td>
+            <td key={item.sales}>{item.sales}</td>
+            <td key={item.Permit}>{item.Permit}</td>
             <td>
-              <AddTruckModal initialData={item} />
+              <Edit initialData={item} />
             </td>
           </tr>
         ))}

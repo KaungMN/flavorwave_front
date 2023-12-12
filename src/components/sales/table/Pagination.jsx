@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import Pagination from "react-bootstrap/Pagination";
 import { useMemo } from "react";
 import TableSingleRow from "./SingleRow";
-import "./logistic.css";
+import "./table.css";
 
 export default function Paginator({ data, header }) {
   const [state, setState] = useState({

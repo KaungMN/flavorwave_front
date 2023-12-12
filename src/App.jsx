@@ -1,54 +1,65 @@
-import "bootstrap/dist/css/bootstrap.min.css";
-import "./App.css";
-import Sidebar from "./shared/SideBar.jsx";
-import Row from "react-bootstrap/Row";
-import Col from "react-bootstrap/Col";
-import { Routes, Route } from "react-router-dom";
-import Customer from "./pages/Customer/Customer.jsx";
-import Factory from "./pages/factory";
-import Sales from "./pages/sales";
-import Logstic from "./pages/Logistic/Logstic.jsx";
-import Delivery from "./pages/Logistic/Delivery.jsx";
-import Warehouse from "./pages/Warehouse";
-import Admin from "./pages/admin";
-import CustomerLogin from "./pages/Customer/CustomerLogin.jsx";
-import CustomerSignup from "./pages/Customer/CustomerSignup.jsx";
-import CustomerOrderHistory from "./pages/Customer/CustomerOrderHistory.jsx";
-import CustomerProductPage from "./pages/Customer/CustomerProductPage.jsx";
-import NoMatch from "./pages/nomatch.jsx";
-import Home from "./pages/Home.jsx";
+import 'bootstrap/dist/css/bootstrap.min.css';
+import './App.css';
+import Sidebar from './shared/SideBar.jsx';
+import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col';
+import { Routes, Route } from 'react-router-dom';
+import Customer from './pages/Customer/Customer.jsx';
+import Factory from './pages/factory';
+import Sales from './pages/sales';
+import Logstic from './pages/Logistic/Logstic.jsx';
+import Delivery from './pages/Logistic/Delivery.jsx';
+import Warehouse from './pages/Warehouse';
+import Admin from './pages/admin';
+import CustomerLogin from './pages/Customer/CustomerLogin.jsx';
+import CustomerSignUp from './pages/Customer/CustomerSignup.jsx';
+import CustomerOrderHistory from './pages/Customer/CustomerOrderHistory.jsx';
+import CustomerProductPage from './pages/Customer/CustomerProductPage.jsx';
+import NoMatch from './pages/nomatch.jsx';
+import Home from './pages/Home.jsx';
+import {
+    DEFAULT_ROUTE,
+    FACTORY_ROUTE,
+    ADMIN_ROUTE,
+    LOGISTIC_ROUTE,
+    DELIVERY_ROUTE,
+    CUSTOMER_ROUTE,
+    CUSTOMER_LOGIN_ROUTE,
+    CUSTOMER_SIGN_UP_ROUTE,
+    CUSTOMER_ORDER_ROUTE,
+    CUSTOMER_HISTORY_ROUTE,
+    WAREHOUSE_ROUTE,
+    SALES_ROUTE
+} from '../src/constants/routes.js';
 
 function App() {
-  return (
-    <div>
-      <Row>
-        <Col xl={3} lg={3} xs={2}>
-          <Sidebar />
-        </Col>
-        <Col xl={9} lg={9} xs={10}>
-          <Routes>
-            {/* <Route path="/" element={<Sidebar />} /> */}
-            <Route path="/" element={<Home />} />
-            <Route path="/factory" element={<Factory />} />
-            <Route path="/admin" element={<Admin />} />
-            <Route path="/logstic" element={<Logstic />} />
-            <Route path="/delivery" element={<Delivery />} />
-            <Route path="/customer" element={<Customer />} />
-            <Route path="/customer/login" element={<CustomerLogin />} />
-            <Route path="/customer/signup" element={<CustomerSignup />} />
-            <Route path="/customer/order" element={<CustomerProductPage />} />
-            <Route
-              path="/customer/history"
-              element={<CustomerOrderHistory />}
-            />
-            <Route path="/warehouse" element={<Warehouse />} />
-            <Route path="/sales" element={<Sales />} />
-            <Route path="*" element={<NoMatch />} />
-          </Routes>
-        </Col>
-      </Row>
-    </div>
-  );
+    return (
+        <div>
+            <Row>
+                <Col xl={3} lg={3} xs={2}>
+                    <Sidebar />
+                </Col>
+                <Col xl={9} lg={9} xs={10}>
+                    <Routes>
+                        {/* <Route path="/" element={<Sidebar />} /> */}
+                        <Route path={DEFAULT_ROUTE} element={<Home />} />
+                        <Route path={FACTORY_ROUTE} element={<Factory />} />
+                        <Route path={ADMIN_ROUTE} element={<Admin />} />
+                        <Route path={LOGISTIC_ROUTE} element={<Logstic />} />
+                        <Route path={DELIVERY_ROUTE} element={<Delivery />} />
+                        <Route path={CUSTOMER_ROUTE} element={<Customer />} />
+                        <Route path={CUSTOMER_LOGIN_ROUTE} element={<CustomerLogin />} />
+                        <Route path={CUSTOMER_SIGN_UP_ROUTE} element={<CustomerSignUp />} />
+                        <Route path={CUSTOMER_ORDER_ROUTE} element={<CustomerProductPage />} />
+                        <Route path={CUSTOMER_HISTORY_ROUTE} element={<CustomerOrderHistory />} />
+                        <Route path={WAREHOUSE_ROUTE} element={<Warehouse />} />
+                        <Route path={SALES_ROUTE} element={<Sales />} />
+                        <Route path="*" element={<NoMatch />} />
+                    </Routes>
+                </Col>
+            </Row>
+        </div>
+    );
 }
 
 export default App;

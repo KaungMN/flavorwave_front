@@ -14,7 +14,6 @@ export default function EditForm({ data }) {
       orderItem: data.orderItem,
       orderQuantity: data.orderQuantity,
       salesPermit: data.salesPermit,
-      truck: "Choose Truck",
     },
   });
 
@@ -35,6 +34,8 @@ export default function EditForm({ data }) {
             <Col>
               <Form.Label>OrderItem: </Form.Label>
               <Form.Control
+                id="orderItem"
+                name="orderItem"
                 disabled
                 readOnly
                 // defaultValue={data.orderItem}
@@ -46,6 +47,8 @@ export default function EditForm({ data }) {
             <Col>
               <Form.Label>OrderQuantity: </Form.Label>
               <Form.Control
+                id="orderQuantity"
+                name="orderQuantity"
                 disabled
                 readOnly
                 // defaultValue={data.orderQuantity}
@@ -61,6 +64,8 @@ export default function EditForm({ data }) {
             <Col>
               <Form.Label>SalesPermit: </Form.Label>
               <Form.Control
+                id="salesPermit"
+                name="salesPermit"
                 disabled
                 readOnly
                 // defaultValue={data.salesPermit}
@@ -72,12 +77,14 @@ export default function EditForm({ data }) {
             <Col>
               <Form.Label>Choose Truck: </Form.Label>
               <Form.Select
+                id="truck"
+                name="truck"
                 size="sm"
                 required
                 // defaultValue="Choose Truck"
                 {...register("truck", { required: true })}
               >
-                <option disabled>Choose Truck</option>
+                <option disabled >Choose Truck</option>
                 {truck.map((t) => (
                   <option key={t} value={t}>
                     {t}

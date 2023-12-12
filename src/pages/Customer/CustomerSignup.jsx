@@ -1,6 +1,6 @@
 // import { useState } from "react";
 import { Button, Col, Form, Row } from "react-bootstrap";
-import { Cities, Townships } from "../../shared/CitiesAndTownship";
+import { Cities, Townships } from "../../datas/CitiesAndTownship";
 
 function CustomerSignup() {
   // const [input, setInput] = useState({});

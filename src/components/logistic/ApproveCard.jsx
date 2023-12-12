@@ -1,5 +1,5 @@
 import InfoCard from "./SingleCard";
-d;
+
 export default function ApproveDeliveryCard() {
   const order = [
     { orderItem: "Product A", orderQuantity: 5, salesPermit: "approved" },
@@ -23,5 +23,8 @@ export default function ApproveDeliveryCard() {
     { orderItem: "Product S", orderQuantity: 17, salesPermit: "approved" },
     { orderItem: "Product T", orderQuantity: 19, salesPermit: "approved" },
   ];
-  return order.map((i, id) => <InfoCard key={id} data={i}/>);
+
+  return order.map((i) => 
+    <InfoCard key={i.orderItem} data={i} />
+  );
 }

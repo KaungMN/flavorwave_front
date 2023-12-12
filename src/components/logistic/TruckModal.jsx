@@ -12,7 +12,7 @@ export default function AddTruckModal({ initialData }) {
 
   return (
     <>
-      <Button className="me-2" variant="outline-secondary" onClick={handleShow}>
+      <Button className="me-2" variant="outline-success" onClick={handleShow}>
         Add Truck
       </Button>
 

@@ -1,4 +1,4 @@
-import ApproveDeliveryCard from "../../components/logistic/SingleCard";
+import ApproveDeliveryCard from "../../components/logistic/ApproveCard";
 
 function Delivery() {
   return (

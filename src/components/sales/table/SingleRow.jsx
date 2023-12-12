@@ -1,4 +1,4 @@
-import AddTruckModal from "../TruckModal";
+import OrderConfirmModal from "../ConfirmModal";
 import Table from "react-bootstrap/Table";
 
 export default function TableSingleRow({ header, order }) {
@@ -20,7 +20,7 @@ export default function TableSingleRow({ header, order }) {
             <td key={item.orderQuantity}>{item.orderQuantity}</td>
             <td key={item.salesPermit}>{item.salesPermit}</td>
             <td>
-              <AddTruckModal initialData={item} />
+              <OrderConfirmModal />
             </td>
           </tr>
         ))}

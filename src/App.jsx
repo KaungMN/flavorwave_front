@@ -1,7 +1,6 @@
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./App.css";
 import Sidebar from "./shared/SideBar.jsx";
-import Form from "./shared/Form.jsx";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import { Routes, Route } from "react-router-dom";
@@ -17,6 +16,7 @@ import CustomerSignup from "./pages/Customer/CustomerSignup.jsx";
 import CustomerOrderHistory from "./pages/Customer/CustomerOrderHistory.jsx";
 import CustomerProductPage from "./pages/Customer/CustomerProductPage.jsx";
 import NoMatch from "./pages/nomatch.jsx";
+import Home from "./pages/Home.jsx";
 
 function App() {
   return (
@@ -26,9 +26,9 @@ function App() {
           <Sidebar />
         </Col>
         <Col xl={9} lg={9} xs={10}>
-          <Form />
           <Routes>
             {/* <Route path="/" element={<Sidebar />} /> */}
+            <Route path="/" element={<Home />} />
             <Route path="/factory" element={<Factory />} />
             <Route path="/admin" element={<Admin />} />
             <Route path="/logstic" element={<Logstic />} />

@@ -44,7 +44,7 @@ function TableComponent() {
             <Form.Label>OrderQuantity: </Form.Label>
             <Form.Control
               size="sm"
-              type="email"
+              type="text"
               onChange={(e) => {
                 filterQuantity(e.target.value);
               }}

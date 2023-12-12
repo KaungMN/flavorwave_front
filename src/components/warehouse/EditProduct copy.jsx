@@ -3,7 +3,7 @@ import Modal from "react-bootstrap/Modal";
 import EditForm from "./Form";
 import Button from "react-bootstrap/Button";
 
-export default function AddTruckModal({ initialData }) {
+export default function EditProduct({ initialData }) {
   const [show, setShow] = useState(false);
   const [data, setData] = useState(initialData);
 
@@ -13,7 +13,7 @@ export default function AddTruckModal({ initialData }) {
   return (
     <>
       <Button className="me-2" variant="outline-secondary" onClick={handleShow}>
-        Add Truck
+        Edit
       </Button>
 
       <Modal

@@ -1,4 +1,4 @@
-import AddTruckModal from "./TruckModal";
+import AddTruckModal from "../TruckModal";
 import Table from "react-bootstrap/Table";
 
 export default function TableSingleRow({ header, order }) {

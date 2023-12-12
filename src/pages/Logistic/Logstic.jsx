@@ -1,8 +1,8 @@
-import useSWR from "swr";
-import TableComponent from "../components/logistic/Table.jsx";
-import { fetcher } from "../actions/fetcher.js";
+// import useSWR from "swr";
+import TableComponent from "../../components/logistic/table/Table.jsx";
+// import { fetcher } from "../actions/fetcher.js";
 import { useEffect } from "react";
-import axios from "axios";
+// import axios from "axios";
 
 function logstic() {
   useEffect(() => {

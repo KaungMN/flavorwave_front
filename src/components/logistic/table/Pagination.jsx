@@ -2,9 +2,9 @@ import { useEffect, useState } from "react";
 import Pagination from "react-bootstrap/Pagination";
 import { useMemo } from "react";
 import TableSingleRow from "./SingleRow";
-import "./logistic.css";
+import "./table.css";
 
-export default function Paginator({ data }) {
+export default function Paginator({ data, header }) {
   const [state, setState] = useState({
     data: [],
     limit: 10,
@@ -47,11 +47,9 @@ export default function Paginator({ data }) {
     }));
   };
 
-  console.log(state.data);
-
   return (
     <div className="shop-paginator-section">
-      <TableSingleRow order={state.data} />
+      <TableSingleRow header={header} order={state.data} />
       <div className="pagination-links-container">
         <Pagination className="px-4 pagination-links">
           <Pagination.Prev

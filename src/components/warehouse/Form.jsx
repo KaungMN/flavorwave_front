@@ -1,6 +1,6 @@
 import { Form, Row, Col, Button } from "react-bootstrap";
 
-export default function EditForm({ data }) {
+export default function EditForm({ heading, data }) {
   return (
     <div
       className="contact-form-section"
@@ -12,31 +12,55 @@ export default function EditForm({ data }) {
             <Col>
               <Form.Group className="mb-3">
                 <Form.Label>Product Name</Form.Label>
-                <Form.Control type="text" />
+                <Form.Control
+                  defaultValue={data.orderItem}
+                  size="sm"
+                  type="text"
+                />
               </Form.Group>
-              <Form.Group className="mb-3" >
+              <Form.Group className="mb-3">
                 <Form.Label>Box</Form.Label>
-                <Form.Control type="text" />
+                <Form.Control
+                  defaultValue={data.orderQuantity}
+                  size="sm"
+                  type="text"
+                />
+              </Form.Group>
+              <Form.Group className="mb-3">
+                <Form.Label>Box</Form.Label>
+                <Form.Control
+                  defaultValue={data.salesPermit}
+                  size="sm"
+                  type="text"
+                />
               </Form.Group>
             </Col>
             <Col>
-              <Form.Group className="mb-3" >
+              <Form.Group className="mb-3">
                 <Form.Label>Box</Form.Label>
-                <Form.Control type="text" />
+                <Form.Control defaultValue={data.sales} size="sm" type="text" />
               </Form.Group>
-              <Form.Group className="mb-3" >
+              <Form.Group className="mb-3">
                 <Form.Label>Box</Form.Label>
-                <Form.Control type="text" />
+                <Form.Control
+                  defaultValue={data.Permit}
+                  size="sm"
+                  type="text"
+                />
               </Form.Group>
-            </Col>
-            <Col>
-              <Form.Group className="mb-3" >
+              <Form.Group className="mb-3">
                 <Form.Label>Box</Form.Label>
-                <Form.Control type="text" />
+                <Form.Control
+                  defaultValue={data.Permit}
+                  size="sm"
+                  type="text"
+                />
               </Form.Group>
             </Col>
           </Row>
-          <Button className="mt-4 d-block mx-auto" variant="success">Submit</Button>
+          <Button className="mt-4 d-block mx-auto" variant="success">
+            Submit
+          </Button>
         </div>
       </Form>
     </div>

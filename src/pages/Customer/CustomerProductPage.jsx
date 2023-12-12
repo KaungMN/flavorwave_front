@@ -56,9 +56,11 @@ function CustomerProductPage() {
     };
 
     const decrement = (productId) => {
-        const updatedCart = cartList.map((item) =>
-            item.id === productId && item.quantity > 1 ? { ...item, quantity: item.quantity - 1 } : item
-        );
+        const updatedCart = cartList
+            .map((item) =>
+                item.id === productId && item.quantity > 0 ? { ...item, quantity: item.quantity - 1 } : item
+            )
+            .filter((item) => item.quantity > 0);
         setCartList(updatedCart);
         calculateTotalPrice(updatedCart);
     };
@@ -97,7 +99,14 @@ function CustomerProductPage() {
                 ))}
             </Row>
 
-            <CartModal isOpen={isOpenCartModal} cartList={cartList} handleClose={handleClose} />
+            <CartModal
+                isOpen={isOpenCartModal}
+                cartList={cartList}
+                handleClose={handleClose}
+                increment={increment}
+                decrement={decrement}
+                totalPrice={totalPrice}
+            />
             <AddOrder orderData={listToForm} />
         </div>
     );

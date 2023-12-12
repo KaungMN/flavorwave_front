@@ -1,9 +1,30 @@
 import React, { useEffect, useState } from "react";
 import { products } from "../../components/customers/Products.jsx";
-import { Button, Card, Col, Row } from "react-bootstrap";
+import { Button, Card, Col, Modal, Row } from "react-bootstrap";
 import ProductImg from "../../../public/product_img/burmese_bliss_2.png";
 
 function CustomerProductPage() {
+  const [cart, setCart] = useState([]);
+  const [showCart, setShowCart] = useState(false);
+  const [totalPrice, setTotalPrice] = useState(0);
+
+  const addToCart = (product) => {
+    const updatedCart = [...cart, product];
+    setCart(updatedCart);
+    calculateTotalPrice(updatedCart);
+    setShowCart(true);
+  };
+
+  const calculateTotalPrice = (cartItems) => {
+    const total = cartItems.reduce((acc, item) => acc + item.price, 0);
+    setTotalPrice(total);
+  };
+
+  const handleClose = () => setShowCart(false);
+
+  useEffect(() => {
+    calculateTotalPrice(cart);
+  }, [cart]);
   const items = products;
   const [count, setCount] = useState(0);
 
@@ -65,6 +86,29 @@ function CustomerProductPage() {
       <div className="text-center">
         <Button variant="primary">Place Order</Button>
       </div>
+      <Modal show={showCart} onHide={handleClose}>
+        <Modal.Header closeButton>
+          <Modal.Title>Your Cart</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+          {cart.map((item) => (
+            <div key={item.id}>
+              <p>{item.name}</p>
+              <p>${item.price.toFixed(2)}</p>
+              <hr />
+            </div>
+          ))}
+          <p>Total Price: ${totalPrice.toFixed(2)}</p>
+        </Modal.Body>
+        <Modal.Footer>
+          <Button variant="secondary" onClick={handleClose}>
+            Close
+          </Button>
+          <Button variant="primary" onClick={handleClose}>
+            Place Order
+          </Button>
+        </Modal.Footer>
+      </Modal>
     </div>
   );
 }

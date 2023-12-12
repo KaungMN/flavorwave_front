@@ -1,5 +1,5 @@
 import { Button, Col, Form, Row } from "react-bootstrap";
-import { Townships, Cities } from "../../datas/CitiesAndTownship";
+import { Link } from "react-router-dom";
 
 function CustomerLogin() {
   return (
@@ -27,6 +27,9 @@ function CustomerLogin() {
         </div>
         <Button type="submit"> Submit </Button>
       </Form>
+      <p className="mt-3 text-center">
+        Don't have an account? <Link to="/customer/signup">Signup</Link>
+      </p>
     </div>
   );
 }

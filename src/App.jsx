@@ -10,9 +10,9 @@ import Sales from "./pages/sales";
 import Logstic from "./pages/logstic";
 import Warehouse from "./pages/warehouse";
 import Admin from "./pages/admin";
-import CustomerLogin from "./components/customers/CustomerLogin.jsx";
-import CustomerSignup from "./components/customers/CustomerSignup.jsx";
-import CustomerProductPage from "./components/customers/CustomerProductPage.jsx";
+import CustomerLogin from "./pages/Customer/CustomerLogin.jsx";
+import CustomerSignup from "./pages/Customer/CustomerSignup.jsx";
+import CustomerProductPage from "./pages/Customer/CustomerProductPage.jsx";
 import NoMatch from "./pages/nomatch.jsx";
 
 function App() {

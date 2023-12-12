@@ -7,3 +7,8 @@
 .product-counter {
   display: inline-block;
 }
+
+.login-link {
+  margin-right: 0;
+  margin-left: auto;
+}

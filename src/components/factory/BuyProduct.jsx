@@ -1,17 +1,19 @@
 import { useState } from "react";
 import Modal from "react-bootstrap/Modal";
+import EditForm from "./Form";
 import Button from "react-bootstrap/Button";
 
-export default function OrderConfirmModal() {
+export default function BuyProductModal({ initialData }) {
   const [show, setShow] = useState(false);
+  const [data, setData] = useState(initialData);
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
   return (
     <>
-      <Button className="me-2" variant="outline-success" onClick={handleShow}>
-        Confrim Order
+      <Button className="me-2" variant="outline-secondary" onClick={handleShow}>
+        Buy
       </Button>
 
       <Modal
@@ -23,20 +25,9 @@ export default function OrderConfirmModal() {
         <Modal.Header closeButton className="border-0"></Modal.Header>
         <Modal.Body className="pt-0 px-5">
           <h5 style={{ fontWeight: 600 }} className="mb-3 text-center">
-            Are you sure you want to confirm this order?
+            Choose Supplier and Amount
           </h5>
-          <div className="mx-auto my-3 d-flex justify-content-center">
-            <Button className="me-2 mx-3" variant="outline-success">
-              Yes
-            </Button>
-            <Button
-              className="me-2"
-              variant="outline-secondary"
-              onClick={() => setShow(false)}
-            >
-              Cancel
-            </Button>
-          </div>
+          <EditForm data={data} />
         </Modal.Body>
       </Modal>
     </>

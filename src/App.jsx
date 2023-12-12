@@ -9,7 +9,7 @@ import Factory from "./pages/factory";
 import Sales from "./pages/sales";
 import Logstic from "./pages/Logistic/Logstic.jsx";
 import Delivery from "./pages/Logistic/Delivery.jsx";
-import Warehouse from "./pages/warehouse";
+import Warehouse from "./pages/Warehouse";
 import Admin from "./pages/admin";
 import CustomerLogin from "./pages/Customer/CustomerLogin.jsx";
 import CustomerSignup from "./pages/Customer/CustomerSignup.jsx";

@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-axios.create({ baseURL: process.env.BASE_URL });
+axios.defaults.baseURL = 'http://localhost:5000';
 
 // Add a request interceptor
 axios.interceptors.request.use(

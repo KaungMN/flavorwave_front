@@ -84,7 +84,7 @@ export default function EditForm({ data }) {
                 // defaultValue="Choose Truck"
                 {...register("truck", { required: true })}
               >
-                <option disabled >Choose Truck</option>
+                <option disabled selected value={""}>Choose Truck</option>
                 {truck.map((t) => (
                   <option key={t} value={t}>
                     {t}

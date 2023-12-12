@@ -1,8 +1,9 @@
 import { Button, Col, Form, Row } from "react-bootstrap";
 import { useForm } from "react-hook-form";
 import { Cities, Townships } from "../../datas/CitiesAndTownship";
+import OrderItemsDropDown from "../../components/customers/OrderItems";
 
-function CustomerLogin(listToForm) {
+function AddOrder({ orderData }) {
   const {
     register,
     handleSubmit,
@@ -10,8 +11,16 @@ function CustomerLogin(listToForm) {
     formState: { errors },
   } = useForm();
 
-  const onSubmit = (data) => console.log(data);
+  // let test = { a: "1", b: "2", c: "3" };
+  // let newTest = { ...test, d: "4" };
+  // console.log(newTest)
+  console.log(orderData);
+  let newData;
 
+  const onSubmit = (data) => {
+    newData = { ...data, order: orderData };
+    console.log(newData);
+  };
   console.log(watch("example"));
   return (
     <div
@@ -34,7 +43,9 @@ function CustomerLogin(listToForm) {
                 {...register("name", { required: true })}
               />
             </Col>
-            <Col></Col>
+            <Col>
+              <OrderItemsDropDown data={orderData} />
+            </Col>
           </Row>
         </div>
         <div className="mb-4">
@@ -127,4 +138,4 @@ function CustomerLogin(listToForm) {
   );
 }
 
-export default CustomerLogin;
+export default AddOrder;

@@ -29,6 +29,7 @@ function CustomerLogin() {
                 size="sm"
                 type="text"
                 placeholder="Name*"
+                required
                 {...register("name", { required: true })}
               />
             </Col>
@@ -37,6 +38,7 @@ function CustomerLogin() {
                 size="sm"
                 type="password"
                 placeholder="Password*"
+                required
                 {...register("password", { required: true })}
               />
             </Col>

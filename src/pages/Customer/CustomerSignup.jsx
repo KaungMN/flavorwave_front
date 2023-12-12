@@ -25,13 +25,12 @@ function CustomerSignup() {
             <Row>
               <Col>
                 <Form.Control
-                  //   disabled
-                  //   readOnly
                   size="sm"
                   id="name"
                   name="name"
                   type="text"
                   placeholder="Name*"
+                  required
                   {...register("name", { required: true })}
                 />
               </Col>
@@ -42,6 +41,7 @@ function CustomerSignup() {
                   name="password"
                   type="password"
                   placeholder="Password*"
+                  required
                   {...register("password", { required: true })}
                 />
               </Col>
@@ -50,7 +50,7 @@ function CustomerSignup() {
           <div className="mb-4">
             <Row>
               <Col>
-                <Form.Control size="sm" type="email" placeholder="Email*" />
+                <Form.Control size="sm" type="email" required placeholder="Email*" />
               </Col>
               <Col>
                 <Form.Select
@@ -58,10 +58,10 @@ function CustomerSignup() {
                   name="customerType"
                   size="sm"
                   required
-                  defaultValue="Customer Type"
+                  defaultValue={""}
                   {...register("customerType", { required: true })}
                 >
-                  <option disabled>Customer Type</option>
+                  <option disabled selected value={""}>Customer Type</option>
                   <option>Keyholder</option>
                   <option>Distributor</option>
                   <option>Wholesale</option>
@@ -77,10 +77,9 @@ function CustomerSignup() {
                   name="city"
                   size="sm"
                   required
-                  defaultValue="Cities"
                   {...register("city", { required: true })}
                 >
-                  <option disabled>Cities</option>
+                  <option disabled selected value={""}>City</option>
                   {Cities.map((city) => (
                     <option key={city} value={city}>
                       {city}
@@ -92,12 +91,9 @@ function CustomerSignup() {
                 <Form.Select
                   id="township"
                   name="township"
-                  size="sm"
-                  required
-                  defaultValue="Townships"
-                  {...register("township", { required: true })}
-                >
-                  <option disabled>Townships</option>
+                  size="sm" required
+                  {...register("township", { required: true })}>
+                  <option disabled selected value={""}>Townships</option>
                   {Townships.map((township) => (
                     <option key={township} value={township}>
                       {township}
@@ -116,6 +112,7 @@ function CustomerSignup() {
                   size="sm"
                   type="text"
                   placeholder="Address"
+                  required
                   {...register("address", { required: true })}
                 />
               </Col>
@@ -124,8 +121,9 @@ function CustomerSignup() {
                   id="phone"
                   name="phone"
                   size="sm"
-                  type="text"
+                  type="number"
                   placeholder="Phone Number"
+                  required
                   {...register("phone", { required: true })}
                 />
               </Col>

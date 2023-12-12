@@ -1,5 +1,7 @@
-import Container from "react-bootstrap/Container";
+import { func } from "prop-types";
 import Paginator from "./Pagination";
+import { useState } from "react";
+import { Form, Row, Col, Container } from "react-bootstrap";
 
 const heading = ["orderItem", "orderQuantity", "salesPermit"];
 const order = [
@@ -146,9 +148,45 @@ const order = [
 ];
 
 function TableComponent() {
+  let [filterData, setFilterData] = useState(order);
+
+  const handleDelete = async (id) => {
+    try {
+      console.log(id);
+      // api.delete(`posts/${id}`);
+      // const updatedPostList = postList.filter(post => post.id !== id);
+      // setPostList(updatedPostList);
+      // navigate('/');
+    } catch (err) {
+      console.log(err.message)
+    }
+  }
+
+
+  function filterQuantity(name) {
+    console.log(name)
+    let result = order.filter((item) => {
+      return item.orderItem.toLowerCase().includes(name.toLowerCase());
+    });
+    setFilterData(result.length > 0 ? result : order);
+  }
   return (
     <Container>
-      <Paginator data={order} />
+      <div className="mb-4">
+        <Row>
+          <Col sm={5}>
+            <Form.Label >Search Product Name: </Form.Label>
+            <Form.Control
+              size="sm"
+              type="text"
+              onChange={(e) => {
+                filterQuantity(e.target.value);
+              }}
+            />
+          </Col>
+        </Row>
+      </div>
+      <Paginator data={filterData} handleDelete={handleDelete}/>
     </Container>
   );
 }

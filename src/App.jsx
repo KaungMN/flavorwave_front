@@ -8,7 +8,7 @@ import Customer from "./pages/Customer/Customer.jsx";
 import Factory from "./pages/factory";
 import Sales from "./pages/sales";
 import Logstic from "./pages/logstic";
-import Warehouse from "./pages/warehouse";
+import Warehouse from "./pages/Warehouse";
 import Admin from "./pages/admin";
 import CustomerLogin from "./pages/Customer/CustomerLogin.jsx";
 import CustomerSignup from "./pages/Customer/CustomerSignup.jsx";

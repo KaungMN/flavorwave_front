@@ -4,7 +4,7 @@ import { useMemo } from "react";
 import TableSingleRow from "./SingleRow";
 import "./table.css";
 
-export default function Paginator({ data }) {
+export default function Paginator({ data, handleDelete }) {
   const [state, setState] = useState({
     data: [],
     limit: 10,
@@ -51,7 +51,7 @@ export default function Paginator({ data }) {
 
   return (
     <div className="shop-paginator-section">
-      <TableSingleRow order={state.data} />
+      <TableSingleRow order={state.data} handleDelete={handleDelete} />
       <div className="pagination-links-container">
         <Pagination className="px-4 pagination-links">
           <Pagination.Prev

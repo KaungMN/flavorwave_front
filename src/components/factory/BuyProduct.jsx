@@ -3,7 +3,7 @@ import Modal from "react-bootstrap/Modal";
 import EditForm from "./Form";
 import Button from "react-bootstrap/Button";
 
-export default function EditProduct({ initialData }) {
+export default function BuyProductModal({ initialData }) {
   const [show, setShow] = useState(false);
   const [data, setData] = useState(initialData);
 

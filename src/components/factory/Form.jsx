@@ -1,4 +1,4 @@
-import { Form, Row, Col, Button } from "react-bootstrap";
+import { Form, Row, Col, Button, InputGroup } from "react-bootstrap";
 
 export default function EditForm({ heading, data }) {
   return (
@@ -10,11 +10,18 @@ export default function EditForm({ heading, data }) {
         <div className="mb-4">
           <Row>
             <Col>
-              <Form.Group className="mb-3" controlId="formBasicEmail">
-                <Form.Control type="email" placeholder="Amount in grams" />
-              </Form.Group>
+              <InputGroup size="sm" className="mb-3">
+                  <Form.Control
+                    type="email"
+                    size="sm"
+                    placeholder="Amount in grams"
+                  />
+                <InputGroup.Text size="sm">g</InputGroup.Text>
+              </InputGroup>
               <Form.Select size="sm" required defaultValue="Supplier Name">
-                <option disabled selected>Supplier Name</option>
+                <option disabled selected>
+                  Supplier Name
+                </option>
                 <option>Keyholder</option>
                 <option>Distributor</option>
                 <option>Wholesale</option>

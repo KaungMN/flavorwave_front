@@ -1,5 +1,5 @@
 import { Button, Col, Form, Row } from "react-bootstrap";
-import { Townships, Cities } from "../../shared/CitiesAndTownship";
+import { Townships, Cities } from "../../datas/CitiesAndTownship";
 
 function CustomerLogin() {
   return (

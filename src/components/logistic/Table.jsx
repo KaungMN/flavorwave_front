@@ -1,6 +1,6 @@
-
-import Container from "react-bootstrap/Container";
 import Paginator from "./Pagination";
+import { useState } from "react";
+import { Form, Row, Col, Button, Container } from "react-bootstrap";
 
 const heading = ["orderItem", "orderQuantity", "salesPermit"];
 const order = [
@@ -27,9 +27,32 @@ const order = [
 ];
 
 function TableComponent() {
+  let [filterOrders, setFilterOrders] = useState(order);
+
+  function filterQuantity(quantity) {
+    let result = order.filter((item) => {
+      return item.orderQuantity === parseInt(quantity);
+    });
+    setFilterOrders(result.length > 0 ? result : order);
+  }
+
   return (
     <Container>
-      <Paginator data={order} />
+      <div className="mb-4">
+        <Row>
+          <Col xs={3}>
+            <Form.Label>OrderQuantity: </Form.Label>
+            <Form.Control
+              size="sm"
+              type="email"
+              onChange={(e) => {
+                filterQuantity(e.target.value);
+              }}
+            />
+          </Col>
+        </Row>
+      </div>
+      <Paginator header={heading} data={filterOrders} />
     </Container>
   );
 }

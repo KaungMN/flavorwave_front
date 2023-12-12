@@ -19,15 +19,16 @@ function App() {
   return (
     <div>
       <Row>
-        <Col xs={3}>
+        <Col xl={3} lg={3} xs={2}>
           <Sidebar />
         </Col>
-        <Col xs={9}>
+        <Col xl={9} lg={9} xs={10}>
           <Routes>
-            <Route path="/" element={<Sidebar />} />
+            {/* <Route path="/" element={<Sidebar />} /> */}
             <Route path="/factory" element={<Factory />} />
             <Route path="/admin" element={<Admin />} />
             <Route path="/logstic" element={<Logstic />} />
+            <Route path="/delivery" element={<Logstic />} />
             <Route path="/customer" element={<Customer />} />
             <Route path="/customer/login" element={<CustomerLogin />} />
             <Route path="/customer/signup" element={<CustomerSignup />} />

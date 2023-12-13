@@ -1,6 +1,8 @@
 export const DEFAULT_ROUTE = '/';
 export const FACTORY_ROUTE = '/factory';
+export const RAW_ROUTE = '/raw';
 export const ADMIN_ROUTE = '/admin';
+export const STAFF_ROUTE = '/staff';
 export const LOGISTIC_ROUTE = '/logistic';
 export const DELIVERY_ROUTE = '/delivery';
 export const CUSTOMER_ROUTE = '/customer';

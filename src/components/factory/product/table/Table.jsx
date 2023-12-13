@@ -169,26 +169,28 @@ function TableComponent() {
     setFilterData(result.length > 0 ? result : order);
   }
   return (
-    <Container>
-      <div className="mb-4">
-        <Row>
-          <Col sm={9}>
-            <Form.Label>Search Product Name: </Form.Label>
-            <Form.Control
-              size="md"
-              type="text"
-              onChange={(e) => {
-                filterQuantity(e.target.value);
-              }}
-            />
-          </Col>
-          <Col>
-            <AddStaff initialData={filterData} />
-          </Col>
-        </Row>
-      </div>
-      <Paginator data={filterData} handleDelete={handleDelete} />
-    </Container>
+      <Container>
+          <div className="mb-4">
+              <Row>
+                  <Col sm={9}>
+                      <Form style={{ maxWidth: '300px' }}>
+                          <Form.Label>Search Product Name: </Form.Label>
+                          <Form.Control
+                              size="md"
+                              type="text"
+                              onChange={(e) => {
+                                  filterQuantity(e.target.value);
+                              }}
+                          />
+                      </Form>
+                  </Col>
+                  <Col>
+                      <AddStaff initialData={filterData} />
+                  </Col>
+              </Row>
+          </div>
+          <Paginator data={filterData} handleDelete={handleDelete} />
+      </Container>
   );
 }
 

@@ -40,7 +40,7 @@ function AddOrder({ orderData, totalPrice }) {
                     <Row>
                         <Col>
                             <Form.Control
-                                size="sm"
+                                size="md"
                                 id="name"
                                 name="name"
                                 type="text"
@@ -49,7 +49,7 @@ function AddOrder({ orderData, totalPrice }) {
                             />
                         </Col>
                         <Col>
-                            <Form.Control size="sm" type="email" placeholder="Email*" />
+                            <Form.Control size="md" type="email" placeholder="Email*" />
                         </Col>
                     </Row>
                 </div>
@@ -59,7 +59,7 @@ function AddOrder({ orderData, totalPrice }) {
                             <Form.Select
                                 id="customerType"
                                 name="customerType"
-                                size="sm"
+                                size="md"
                                 required
                                 defaultValue="Customer Type"
                                 {...register('customerType', { required: true })}
@@ -74,7 +74,7 @@ function AddOrder({ orderData, totalPrice }) {
                             <Form.Select
                                 id="city"
                                 name="city"
-                                size="sm"
+                                size="md"
                                 required
                                 defaultValue="Cities"
                                 {...register('city', { required: true })}
@@ -95,7 +95,7 @@ function AddOrder({ orderData, totalPrice }) {
                             <Form.Select
                                 id="township"
                                 name="township"
-                                size="sm"
+                                size="md"
                                 required
                                 defaultValue="Townships"
                                 {...register('township', { required: true })}
@@ -112,7 +112,7 @@ function AddOrder({ orderData, totalPrice }) {
                             <Form.Control
                                 id="address"
                                 name="address"
-                                size="sm"
+                                size="md"
                                 type="text"
                                 placeholder="Address"
                                 {...register('address', { required: true })}
@@ -126,7 +126,7 @@ function AddOrder({ orderData, totalPrice }) {
                             <Form.Control
                                 id="phone"
                                 name="phone"
-                                size="sm"
+                                size="md"
                                 type="text"
                                 placeholder="Phone Number"
                                 {...register('phone', { required: true })}
@@ -136,7 +136,7 @@ function AddOrder({ orderData, totalPrice }) {
                             <Form.Control
                                 id="remark"
                                 name="remark"
-                                size="sm"
+                                size="md"
                                 type="text"
                                 placeholder="Remark"
                                 {...register('remark', { required: true })}

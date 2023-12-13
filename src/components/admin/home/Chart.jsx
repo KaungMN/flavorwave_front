@@ -27,17 +27,17 @@ function App() {
   // IF YOU SEE THIS COMMENT: I HAVE GOOD EYESIGHT
 
   return (
-    <div className="App">
-      <div style={{ width: 700 }}>
-        <BarChart chartData={userData} />
+      <div className="App" style={{ maxWidth: '720px', margin: '0 auto' }}>
+          <div style={{ width: 700 }}>
+              <BarChart chartData={userData} />
+          </div>
+          <div style={{ width: 700 }}>
+              <LineChart chartData={userData} />
+          </div>
+          <div style={{ width: 700 }}>
+              <PieChart chartData={userData} />
+          </div>
       </div>
-      <div style={{ width: 700 }}>
-        <LineChart chartData={userData} />
-      </div>
-      <div style={{ width: 700 }}>
-        <PieChart chartData={userData} />
-      </div>
-    </div>
   );
 }
 

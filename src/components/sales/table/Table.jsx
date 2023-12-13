@@ -40,7 +40,7 @@ function TableComponent() {
     <Container>
       <div className="mb-4">
         <Row>
-          <Col xs={3}>
+          <Col xs={4}>
             <Form.Label>OrderQuantity: </Form.Label>
             <Form.Control
               size="md"

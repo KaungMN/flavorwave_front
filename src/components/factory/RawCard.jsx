@@ -1,5 +1,5 @@
 import SingleRawCard from "./SingleRaw";
-import { Row } from "react-bootstrap";
+import { Form, Row, Col, Container } from 'react-bootstrap';
 
 export default function RawCard() {
   const order = [
@@ -26,11 +26,37 @@ export default function RawCard() {
   ];
 
   return (
-    <Row>
-      {order.map((i) => (
-        <SingleRawCard key={i.orderItem} data={i} />
-      ))}
-    </Row>
+      <Row>
+          <Row>
+              <Col>
+                  <Form style={{ maxWidth: '300px', margin: '0 auto' }}>
+                      <Form.Label>Search Product Name: </Form.Label>
+                      <Form.Control
+                          size="md"
+                          type="text"
+                          onChange={(e) => {
+                              filterQuantity(e.target.value);
+                          }}
+                      />
+                  </Form>
+              </Col>
+              <Col>
+                  <Form style={{ maxWidth: '300px', margin: '0 auto' }}>
+                      <Form.Label>Search Supplier Name: </Form.Label>
+                      <Form.Control
+                          size="md"
+                          type="text"
+                          onChange={(e) => {
+                              filterQuantity(e.target.value);
+                          }}
+                      />
+                  </Form>
+              </Col>
+          </Row>
+          {order.map((i) => (
+              <SingleRawCard key={i.orderItem} data={i} />
+          ))}
+      </Row>
   );
   
 }

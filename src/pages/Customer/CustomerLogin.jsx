@@ -27,7 +27,7 @@ function CustomerLogin() {
                             <Form.Control
                                 //   disabled
                                 //   readOnly
-                                size="sm"
+                                size="md"
                                 type="text"
                                 placeholder="Name*"
                                 required
@@ -36,7 +36,7 @@ function CustomerLogin() {
                         </Col>
                         <Col>
                             <Form.Control
-                                size="sm"
+                                size="md"
                                 type="password"
                                 placeholder="Password*"
                                 required

@@ -26,17 +26,17 @@ function AddOrder({ orderData, totalPrice }) {
             <h2>Order Form</h2>
             <Form onSubmit={handleSubmit(onSubmit)}>
                 <div className="mb-4">
-                    <Row>
-                        <h4 className="text-center">Your Order History</h4>
-                        {orderData.map((order, index) => (
-                            <div key={index}>
-                                <p>{order.name}</p>
-                                <p>{order.quantity}</p>
-                                <p>{order.subTotalPrice}</p>
-                                <span>$</span>
-                            </div>
-                        ))}
-                    </Row>
+                    <h4 className="text-center">Your Order History</h4>
+                    {orderData.map((order, index) => (
+                        <Row key={index}>
+                            <Col>{order.name}</Col>
+                            <Col>{order.quantity}</Col>
+                            <Col>
+                                {order.subTotalPrice && order.subTotalPrice.toFixed(2)} <span>$</span>
+                            </Col>
+                        </Row>
+                    ))}
+                    <h3>Confirm Your Address</h3>
                     <Row>
                         <Col>
                             <Form.Control
@@ -49,15 +49,12 @@ function AddOrder({ orderData, totalPrice }) {
                             />
                         </Col>
                         <Col>
-                            <OrderItemsDropDown data={orderData} />
+                            <Form.Control size="sm" type="email" placeholder="Email*" />
                         </Col>
                     </Row>
                 </div>
                 <div className="mb-4">
                     <Row>
-                        <Col>
-                            <Form.Control size="sm" type="email" placeholder="Email*" />
-                        </Col>
                         <Col>
                             <Form.Select
                                 id="customerType"
@@ -73,10 +70,6 @@ function AddOrder({ orderData, totalPrice }) {
                                 <option>Wholesale</option>
                             </Form.Select>
                         </Col>
-                    </Row>
-                </div>
-                <div className="mb-4">
-                    <Row>
                         <Col>
                             <Form.Select
                                 id="city"
@@ -94,6 +87,10 @@ function AddOrder({ orderData, totalPrice }) {
                                 ))}
                             </Form.Select>
                         </Col>
+                    </Row>
+                </div>
+                <div className="mb-4">
+                    <Row>
                         <Col>
                             <Form.Select
                                 id="township"
@@ -111,10 +108,6 @@ function AddOrder({ orderData, totalPrice }) {
                                 ))}
                             </Form.Select>
                         </Col>
-                    </Row>
-                </div>
-                <div className="mb-4">
-                    <Row>
                         <Col>
                             <Form.Control
                                 id="address"
@@ -125,6 +118,10 @@ function AddOrder({ orderData, totalPrice }) {
                                 {...register('address', { required: true })}
                             />
                         </Col>
+                    </Row>
+                </div>
+                <div className="mb-4">
+                    <Row>
                         <Col>
                             <Form.Control
                                 id="phone"
@@ -133,6 +130,16 @@ function AddOrder({ orderData, totalPrice }) {
                                 type="text"
                                 placeholder="Phone Number"
                                 {...register('phone', { required: true })}
+                            />
+                        </Col>
+                        <Col>
+                            <Form.Control
+                                id="remark"
+                                name="remark"
+                                size="sm"
+                                type="text"
+                                placeholder="Remark"
+                                {...register('remark', { required: true })}
                             />
                         </Col>
                     </Row>

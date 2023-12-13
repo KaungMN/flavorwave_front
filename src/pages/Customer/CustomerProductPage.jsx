@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import { Row, Col, Card, Button } from 'react-bootstrap';
 import { items } from '../../components/customers/Products.jsx';
-import OrderForm from './components/OrderForm.jsx';
+// import OrderForm from './components/OrderForm.jsx';
 import CartModal from './components/CartModal.jsx';
-import { getProducts } from '../../services/loadProduct.js';
+import AddressForm from './components/AddressForm.jsx';
+import { Link } from 'react-router-dom';
+// import { getProducts } from '../../services/loadProduct.js';
 
 function CustomerProductPage() {
     // const [items, setItems] = useState();
@@ -24,6 +26,9 @@ function CustomerProductPage() {
     const [cartList, setCartList] = useState([]);
     const [totalPrice, setTotalPrice] = useState(0);
     const [isOpenCartModal, setIsOpenCartModal] = useState(false);
+    const [isAddressSubmitted, setIsAddressSubmitted] = useState(false);
+    const [isOrderConfirmed, setIsOrderConfirmed] = useState(false);
+    const [isCancelConfirmed, setIsCancelConfirmed] = useState(false);
 
     const toggleModal = () => setIsOpenCartModal((prev) => !prev);
 
@@ -50,13 +55,43 @@ function CustomerProductPage() {
         setTotalPrice(total);
     };
 
-    const handleClose = () => {
+    const handleCloseCartModal = () => {
         toggleModal();
     };
 
-    // const handleCancel = () => {
-    //     setCartList([]);
-    // };
+    const handleConfirmCart = () => {
+        setIsAddressSubmitted(true);
+        setIsOpenCartModal(false);
+    };
+
+    const handleCancelCart = () => {
+        setIsCancelConfirmed(false);
+        setCartList([]);
+        setIsOpenCartModal(false);
+    };
+
+    const handleConfirmAddress = () => {
+        setIsOrderConfirmed(true);
+        setIsAddressSubmitted(false);
+    };
+
+    const handleCancelAddress = () => {
+        setIsCancelConfirmed(false);
+        setIsAddressSubmitted(false);
+    };
+
+    const handleConfirmOrder = () => {
+        setIsOrderConfirmed(false);
+    };
+
+    const handleCancelOrder = () => {
+        setIsCancelConfirmed(false);
+        setIsOrderConfirmed(false);
+    };
+
+    const handleCancelConfirmation = () => {
+        setIsCancelConfirmed(true);
+    };
 
     useEffect(() => {
         calculateTotalPrice(cartList);
@@ -127,16 +162,52 @@ function CustomerProductPage() {
                     ))}
             </Row>
 
-            <CartModal
-                isOpen={isOpenCartModal}
-                cartList={cartList}
-                handleClose={handleClose}
-                increment={increment}
-                decrement={decrement}
-                totalPrice={totalPrice}
-                listToForm={listToForm}
-            />
-            <OrderForm orderData={listToForm} totalPrice={totalPrice} />
+            {isCancelConfirmed && (
+                <ConfirmationModal
+                    message="Are you sure you want to cancel?"
+                    onConfirm={() => {
+                        setCartList([]);
+                        setIsOpenCartModal(false);
+                        setIsAddressSubmitted(false);
+                        setIsOrderConfirmed(false);
+                        setIsCancelConfirmed(false);
+                    }}
+                    onCancel={() => setIsCancelConfirmed(false)}
+                />
+            )}
+
+            {isOpenCartModal && (
+                <CartModal
+                    isOpen={isOpenCartModal}
+                    cartList={cartList}
+                    handleCloseCartModal={handleCloseCartModal}
+                    increment={increment}
+                    decrement={decrement}
+                    totalPrice={totalPrice}
+                    onConfirm={handleConfirmCart}
+                    onCancel={handleCancelCart}
+                    listToForm={listToForm}
+                />
+            )}
+
+            {isAddressSubmitted && <AddressForm onConfirm={handleConfirmAddress} onCancel={handleCancelAddress} />}
+
+            {isOrderConfirmed && (
+                <ConfirmationModal
+                    message="Are you sure you want to confirm the order?"
+                    onConfirm={handleConfirmOrder}
+                    onCancel={handleCancelOrder}
+                />
+            )}
+
+            {!isCancelConfirmed && !isOpenCartModal && !isAddressSubmitted && !isOrderConfirmed && (
+                <>
+                    <h1>Products</h1>
+                    <Row>{/* ... your product display code */}</Row>
+
+                    <AddressForm isOpen={isAddressSubmitted} orderData={listToForm} totalPrice={totalPrice} />
+                </>
+            )}
         </div>
     );
 }

@@ -14,6 +14,7 @@ import CustomerLogin from '../pages/Customer/CustomerLogin.jsx';
 import CustomerSignUp from '../pages/Customer/CustomerSignup.jsx';
 import CustomerOrderHistory from '../pages/Customer/CustomerOrderHistory.jsx';
 import CustomerProductPage from '../pages/Customer/CustomerProductPage.jsx';
+import OrderForm from '../pages/Customer/components/OrderForm.jsx';
 import NoMatch from '../pages/nomatch.jsx';
 import Home from '../pages/Home.jsx';
 import {
@@ -29,7 +30,8 @@ import {
     CUSTOMER_ROUTE,
     CUSTOMER_LOGIN_ROUTE,
     CUSTOMER_SIGN_UP_ROUTE,
-    CUSTOMER_ORDER_ROUTE,
+    PRODUCT_PAGE_ROUTE,
+    ORDER_ADDRESS_PAGE_ROUTE,
     CUSTOMER_HISTORY_ROUTE,
     WAREHOUSE_ROUTE,
     SALES_ROUTE
@@ -51,7 +53,8 @@ function RootNavigator() {
             <Route path={CUSTOMER_ROUTE} element={<Customer />} />
             <Route path={CUSTOMER_LOGIN_ROUTE} element={<CustomerLogin />} />
             <Route path={CUSTOMER_SIGN_UP_ROUTE} element={<CustomerSignUp />} />
-            <Route path={CUSTOMER_ORDER_ROUTE} element={<CustomerProductPage />} />
+            <Route path={PRODUCT_PAGE_ROUTE} element={<CustomerProductPage />} />
+            <Route path={ORDER_ADDRESS_PAGE_ROUTE} element={<OrderForm />} />
             <Route path={CUSTOMER_HISTORY_ROUTE} element={<CustomerOrderHistory />} />
             <Route path={WAREHOUSE_ROUTE} element={<Warehouse />} />
             <Route path={SALES_ROUTE} element={<Sales />} />

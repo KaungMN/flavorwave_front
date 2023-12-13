@@ -11,7 +11,7 @@ import {
     CUSTOMER_ROUTE,
     CUSTOMER_LOGIN_ROUTE,
     CUSTOMER_SIGN_UP_ROUTE,
-    CUSTOMER_ORDER_ROUTE,
+    PRODUCT_PAGE_ROUTE,
     CUSTOMER_HISTORY_ROUTE,
     WAREHOUSE_ROUTE,
     SALES_ROUTE
@@ -34,7 +34,7 @@ export const menuList = [
         subMenu: [
             { route: CUSTOMER_LOGIN_ROUTE, label: 'Login' },
             { route: CUSTOMER_SIGN_UP_ROUTE, label: 'SignUp' },
-            { route: CUSTOMER_ORDER_ROUTE, label: 'Order' }
+            { route: PRODUCT_PAGE_ROUTE, label: 'Order' }
         ]
     },
     { route: FACTORY_ROUTE, label: 'Factory', subMenu: [{ route: RAW_ROUTE, label: 'Raw' }] },

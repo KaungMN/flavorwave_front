@@ -6,7 +6,7 @@ import { useParams } from 'react-router-dom';
 import axios from 'axios';
 import { useState } from 'react';
 
-function OrderForm({ isOpen, orderData, totalPrice }) {
+function AddressForm({ isOpen, orderData, totalPrice }) {
     const [isOpenOrderConfirm, setIsOpenOrderConfirm] = useState(false);
     const {
         register,
@@ -49,18 +49,22 @@ function OrderForm({ isOpen, orderData, totalPrice }) {
                 >
                     <Form onSubmit={handleSubmit(onSubmit)}>
                         <div className="mb-4">
-                            {orderData.map((order, index) => (
-                                <Row key={index}>
-                                    <Col>{order.name}</Col>
-                                    <Col>{order.quantity}</Col>
-                                    <Col>
-                                        {order.price
-                                            ? order.price
-                                            : order.subTotalPrice && order.subTotalPrice.toFixed(2)}{' '}
-                                        <span>$</span>
-                                    </Col>
-                                </Row>
-                            ))}
+                            <>
+                                {orderData &&
+                                    orderData.map((order, index) => (
+                                        <Row key={index}>
+                                            <Col>{order.name}</Col>
+                                            <Col>{order.quantity}</Col>
+                                            <Col>
+                                                {order.price
+                                                    ? order.price
+                                                    : order.subTotalPrice && order.subTotalPrice.toFixed(2)}{' '}
+                                                <span>$</span>
+                                            </Col>
+                                        </Row>
+                                    ))}
+                                {/* Rest of your form code remains unchanged */}
+                            </>
 
                             <Row>
                                 <Col>
@@ -184,4 +188,4 @@ function OrderForm({ isOpen, orderData, totalPrice }) {
     );
 }
 
-export default OrderForm;
+export default AddressForm;

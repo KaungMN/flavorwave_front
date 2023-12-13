@@ -1,9 +1,19 @@
 import React, { useContext, useState } from 'react';
 import { Modal, Button, Table } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
 
-function CartModal({ isOpen, cartList, toggleConfirm, handleClose, increment, decrement, totalPrice, listToForm }) {
+function CartModal({
+    isOpen,
+    onConfirm,
+    handleCloseCartModal,
+    cartList,
+    increment,
+    decrement,
+    totalPrice,
+    listToForm
+}) {
     return (
-        <Modal show={isOpen} onHide={handleClose}>
+        <Modal show={isOpen} onHide={handleCloseCartModal}>
             <Modal.Header closeButton>
                 <Modal.Title>Your Cart</Modal.Title>
             </Modal.Header>
@@ -47,15 +57,16 @@ function CartModal({ isOpen, cartList, toggleConfirm, handleClose, increment, de
                 </Table>
             </Modal.Body>
             <Modal.Footer>
-                <Button variant="secondary" onClick={handleClose}>
+                <Button variant="secondary" onClick={handleCloseCartModal}>
                     Cancel
                 </Button>
+
                 <Button
                     variant="primary"
                     onClick={() => {
                         console.log(listToForm);
-                        toggleConfirm();
-                        handleClose();
+                        onConfirm();
+                        handleCloseCartModal();
                     }}
                 >
                     Place Order

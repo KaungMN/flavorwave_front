@@ -1,4 +1,4 @@
-import ChartTest from '../components/admin/Chart';
+import ChartTest from '../components/admin/home/Chart';
 import Container from 'react-bootstrap/Container';
 
 function Admin() {

@@ -1,6 +1,6 @@
 import { Routes, Route } from 'react-router-dom';
 import Customer from '../pages/Customer/Customer.jsx';
-import Factory from '../pages/factory';
+import Factory from '../pages/Factory/factory';
 import Sales from '../pages/sales';
 import Logistic from '../pages/Logistic/Logistic.jsx';
 import Delivery from '../pages/Logistic/Delivery.jsx';

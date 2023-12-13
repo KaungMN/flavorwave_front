@@ -10,11 +10,11 @@ function App() {
     return (
         <>
             <Row>
-                <Col lg={4} md={2} xs={3}>
+                <Col lg={3} xs={2}>
                     <Sidebar />
                 </Col>
-                <Col lg={8} md={10} xs={9}>
-                    <div className="d-flex flex-column justify-content-center align-items-center">
+                <Col lg={9} xs={10}>
+                    <div>
                         <RootNavigator />
                     </div>
                 </Col>

@@ -3,7 +3,7 @@ import { useForm } from "react-hook-form";
 
 const truck = ["Suzuki", "Mercedes", "Toyota", "Honda"];
 
-export default function EditForm({ data }) {
+export default function EditForm({ data, setShow }) {
   const {
     register,
     handleSubmit,

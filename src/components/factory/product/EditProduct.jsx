@@ -27,7 +27,7 @@ export default function EditProduct({ initialData }) {
           <h5 style={{ fontWeight: 600 }} className="mb-3 text-center">
             Edit Product
           </h5>
-          <EditForm data={data} />
+          <EditForm data={data} setShow={setShow}/>
         </Modal.Body>
       </Modal>
     </>

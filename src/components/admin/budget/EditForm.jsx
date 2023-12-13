@@ -18,16 +18,37 @@ export default function EditForm({ heading, data }) {
                     <Row>
                         <Col>
                             <Form.Group className="mb-3">
-                                <Form.Label>Department Id</Form.Label>
-                                <Form.Control
+                                <Form.Label>Department</Form.Label>
+                                <Form.Select
                                     id="departmentId"
                                     name="departmentId"
                                     size="md"
-                                    type="text"
                                     required
-                                    {...register('productName', { required: true })}
+                                    {...register('department_id', { required: true })}
+                                >
+                                    <option disabled selected value={''}>
+                                        choose
+                                    </option>
+                                    <option>sale</option>
+                                    <option>factory</option>
+                                    <option>warehouse</option>
+                                    <option>logistic</option>
+                                </Form.Select>
+                            </Form.Group>
+                            <Form.Group>
+
+                                <Form.Label>Planned Budget</Form.Label>
+                                <Form.Control
+                                    id="plannedBudget"
+                                    name="targetYear"
+                                    size="md"
+                                    type="number"
+                                    required
+                                    {...register('planned_budget', { required: true })}
                                 />
                             </Form.Group>
+                        </Col>
+                        <Col>
                             <Form.Group className="mb-3">
                                 <Form.Label>Target Year</Form.Label>
                                 <Form.Control
@@ -36,32 +57,19 @@ export default function EditForm({ heading, data }) {
                                     size="md"
                                     type="number"
                                     required
-                                    {...register('box', { required: true })}
+                                    {...register('target_year', { required: true })}
                                 />
                             </Form.Group>
-                        </Col>
-                        <Col>
+
                             <Form.Group className="mb-3">
-                                <Form.Label>Price</Form.Label>
+                                <Form.Label>Spent Budget</Form.Label>
                                 <Form.Control
-                                    id="price"
-                                    name="price"
-                                    defaultValue={data.sales}
+                                    id="spentBudget"
+                                    name="spentBudget"
                                     size="md"
                                     type="number"
                                     required
-                                    {...register('price', { required: true })}
-                                />
-                            </Form.Group>
-                            <Form.Group className="mb-3">
-                                <Form.Label>Report Budget</Form.Label>
-                                <Form.Control
-                                    id="reportBudget"
-                                    name="reportBudget"
-                                    size="md"
-                                    type="number"
-                                    required
-                                    {...register('piece', { required: true })}
+                                    {...register('spent_budget', { required: true })}
                                 />
                             </Form.Group>
                         </Col>
@@ -74,7 +82,7 @@ export default function EditForm({ heading, data }) {
                                     size="md"
                                     type="number"
                                     required
-                                    {...register('piece', { required: true })}
+                                    {...register('total_budget', { required: true })}
                                 />
                             </Form.Group>
                         </Col>

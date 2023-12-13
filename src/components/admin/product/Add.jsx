@@ -1,6 +1,6 @@
 import { useState } from "react";
 import Modal from "react-bootstrap/Modal";
-import AddForm from "./AddForm";
+import AddForm from "./addForm";
 import Button from "react-bootstrap/Button";
 
 export default function AddStaff({ initialData }) {

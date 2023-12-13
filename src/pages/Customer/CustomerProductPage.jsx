@@ -1,12 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import { Row, Col, Card, Button } from 'react-bootstrap';
 import { items } from '../../components/customers/Products.jsx';
-import AddOrder from './components/OrderForm.jsx';
+import OrderForm from './components/OrderForm.jsx';
 import CartModal from './components/CartModal.jsx';
 
 function CustomerProductPage() {
     const [cartList, setCartList] = useState([]);
-    const [showCart, setShowCart] = useState(false);
     const [totalPrice, setTotalPrice] = useState(0);
     const [isOpenCartModal, setIsOpenCartModal] = useState(false);
 
@@ -38,6 +37,9 @@ function CustomerProductPage() {
     const handleClose = () => {
         toggleModal();
     };
+    const handleOrderClose = () => {
+        toggleConfirm();
+    };
 
     // const handleCancel = () => {
     //     setCartList([]);
@@ -66,7 +68,13 @@ function CustomerProductPage() {
             .filter((item) => item.quantity > 0);
         setCartList(updatedCart);
     };
-    const listToForm = cartList.map(({ id, name, quantity, subTotalPrice }) => ({ id, name, quantity, subTotalPrice }));
+    const listToForm = cartList.map(({ id, name, quantity, subTotalPrice, price }) => ({
+        id,
+        name,
+        quantity,
+        subTotalPrice,
+        price
+    }));
 
     return (
         <div>
@@ -110,8 +118,9 @@ function CustomerProductPage() {
                 decrement={decrement}
                 totalPrice={totalPrice}
                 listToForm={listToForm}
+                toggleConfirm={toggleConfirm}
             />
-            <AddOrder orderData={listToForm} totalPrice={totalPrice} />
+            <OrderForm isOpen={isOpenOrderConfirm} orderData={listToForm} totalPrice={totalPrice} />
         </div>
     );
 }

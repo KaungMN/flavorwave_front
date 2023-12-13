@@ -1,7 +1,7 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import { Modal, Button, Table } from 'react-bootstrap';
 
-function CartModal({ isOpen, cartList, handleClose, increment, decrement, totalPrice, listToForm }) {
+function CartModal({ isOpen, cartList, toggleConfirm, handleClose, increment, decrement, totalPrice, listToForm }) {
     return (
         <Modal show={isOpen} onHide={handleClose}>
             <Modal.Header closeButton>
@@ -54,6 +54,8 @@ function CartModal({ isOpen, cartList, handleClose, increment, decrement, totalP
                     variant="primary"
                     onClick={() => {
                         console.log(listToForm);
+                        toggleConfirm();
+                        handleClose();
                     }}
                 >
                     Place Order

@@ -2,6 +2,7 @@
 import Paginator from "./Pagination";
 import { useState } from "react";
 import { Form, Row, Col, Container } from "react-bootstrap";
+import AddStaff from "../Add";
 const order = [
   {
     orderItem: "Product A",
@@ -182,6 +183,9 @@ function TableComponent() {
                               }}
                           />
                       </Form>
+                  </Col>
+                  <Col>
+                      <AddStaff initialData={filterData} />
                   </Col>
               </Row>
           </div>

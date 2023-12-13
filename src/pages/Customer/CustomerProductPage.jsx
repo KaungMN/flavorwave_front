@@ -65,9 +65,8 @@ function CustomerProductPage() {
             )
             .filter((item) => item.quantity > 0);
         setCartList(updatedCart);
-        calculateTotalPrice(updatedCart);
     };
-    const listToForm = cartList.map(({ name, quantity, subTotalPrice }) => ({ name, quantity, subTotalPrice }));
+    const listToForm = cartList.map(({ id, name, quantity, subTotalPrice }) => ({ id, name, quantity, subTotalPrice }));
 
     return (
         <div>

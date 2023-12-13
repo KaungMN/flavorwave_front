@@ -1,7 +1,7 @@
 import { Button, Col, Form, Row } from 'react-bootstrap';
 import { useForm } from 'react-hook-form';
 import { Cities, Townships } from '../../../datas/CitiesAndTownship';
-import OrderItemsDropDown from '../../../components/customers/OrderItems';
+import { useOrder } from '../../../services/order';
 
 function AddOrder({ orderData, totalPrice }) {
     const {
@@ -16,7 +16,11 @@ function AddOrder({ orderData, totalPrice }) {
     // console.log(newTest)
     console.log(orderData);
 
-    const onSubmit = (data) => console.log(data);
+    const onSubmit = (data) => {
+        const newData = { ...data, products: orderData, totalPrice: totalPrice };
+        console.log(newData);
+        useOrder(newData);
+    };
 
     return (
         <div className="contact-form-section" style={{ textAlign: 'left', margin: '50px auto', maxWidth: '500px' }}>
@@ -61,7 +65,9 @@ function AddOrder({ orderData, totalPrice }) {
                                 required
                                 {...register('customerType', { required: true })}
                             >
-                                <option disabled selected value={""}>Customer Type</option>
+                                <option disabled selected value={''}>
+                                    Customer Type
+                                </option>
                                 <option>Keyholder</option>
                                 <option>Distributor</option>
                                 <option>Wholesale</option>
@@ -75,7 +81,9 @@ function AddOrder({ orderData, totalPrice }) {
                                 required
                                 {...register('city', { required: true })}
                             >
-                                <option disabled selected value={""}>Cities</option>
+                                <option disabled selected value={''}>
+                                    Cities
+                                </option>
                                 {Cities.map((city) => (
                                     <option key={city} value={city}>
                                         {city}
@@ -95,7 +103,9 @@ function AddOrder({ orderData, totalPrice }) {
                                 required
                                 {...register('township', { required: true })}
                             >
-                                <option disabled selected value={""}>Townships</option>
+                                <option disabled selected value={''}>
+                                    Townships
+                                </option>
                                 {Townships.map((township) => (
                                     <option key={township} value={township}>
                                         {township}

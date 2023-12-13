@@ -1,11 +1,13 @@
 import { Routes, Route } from 'react-router-dom';
 import Customer from '../pages/Customer/Customer.jsx';
 import Factory from '../pages/Factory/factory';
+import Raw from '../pages/Factory/Raw';
 import Sales from '../pages/sales';
 import Logistic from '../pages/Logistic/Logistic.jsx';
 import Delivery from '../pages/Logistic/Delivery.jsx';
 import Warehouse from '../pages/Warehouse';
-import Admin from '../pages/admin';
+import Admin from '../pages/admin/admin';
+import Staff from '../pages/admin/staff';
 import CustomerLogin from '../pages/Customer/CustomerLogin.jsx';
 import CustomerSignUp from '../pages/Customer/CustomerSignup.jsx';
 import CustomerOrderHistory from '../pages/Customer/CustomerOrderHistory.jsx';
@@ -15,7 +17,9 @@ import Home from '../pages/Home.jsx';
 import {
     DEFAULT_ROUTE,
     FACTORY_ROUTE,
+    RAW_ROUTE,
     ADMIN_ROUTE,
+    STAFF_ROUTE,
     LOGISTIC_ROUTE,
     DELIVERY_ROUTE,
     CUSTOMER_ROUTE,
@@ -33,7 +37,9 @@ function RootNavigator() {
             {/* <Route path="/" element={<Sidebar />} /> */}
             <Route path={DEFAULT_ROUTE} element={<Home />} />
             <Route path={FACTORY_ROUTE} element={<Factory />} />
+            <Route path={RAW_ROUTE} element={<Raw />} />
             <Route path={ADMIN_ROUTE} element={<Admin />} />
+            <Route path={STAFF_ROUTE} element={<Staff />} />
             <Route path={LOGISTIC_ROUTE} element={<Logistic />} />
             <Route path={DELIVERY_ROUTE} element={<Delivery />} />
             <Route path={CUSTOMER_ROUTE} element={<Customer />} />

@@ -1,6 +1,6 @@
 import TableComponent from "../../components/factory/product/table/Table";
 import { Container } from "react-bootstrap";
-import MultiSelectTable from "./SelectTable";
+// import MultiSelectTable from "./SelectTable";
 
 function factory() {
   return (

@@ -1,7 +1,7 @@
 import { Button, Col, Form, Row } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
-import login from '../../services/login';
+import {login} from '../../services/login';
 
 function CustomerLogin() {
     const {
@@ -14,6 +14,7 @@ function CustomerLogin() {
     const onSubmit = async (data) => {
         // const res = await login(data);
         console.log(data);
+        login(data)
     };
 
     console.log(watch('example'));

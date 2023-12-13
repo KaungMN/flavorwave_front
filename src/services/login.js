@@ -1,14 +1,11 @@
 import { axios } from './api';
 
-const login = async (data) => {
+export const login = async (data) => {
     const request = {
         username: data.username,
         password: data.password
     };
-    const res = await axios.post('/api/login', request);
+    const res = await axios.post('/api/client-login', request);
     return res;
 };
 
-export default {
-    login
-};

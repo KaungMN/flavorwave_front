@@ -1,9 +1,61 @@
-import TableComponent from "../components/warehouse/table/Table";  
+import TableComponent from "../components/warehouse/table/Table";
+import { useState } from "react";
+import { Button, Row, Col, Container, Form,InputGroup } from "react-bootstrap";
+
 function warehouse() {
-  return <div>
-    <h1>Ware House</h1>
-    <TableComponent />
-  </div>
+
+  const [data, setData] = useState(null);
+  const [date, setDate] = useState('');
+
+  const fetchDataByDate = async (e) => {
+    e.preventDefault();
+    console.log(date)
+
+    // try {
+    //   const response = await axios.get(API_ENDPOINT ? date = ${ date });
+    //   setFetchedData(response.data);
+    // } catch (error) {
+    //   console.error('Error fetching data:', error);
+    // }
+  };
+
+  const fetchAllData = async () => {
+    console.log("fetching all data")
+  };
+
+  const handleDateChange = (event) => {
+    setDate(event.target.value);
+  };
+
+  return (
+    <Container>
+      <h1 className="mb-4">Ware House</h1>
+      <Row className="mb-4">
+        <Col sm={4}>
+          <Button onClick={fetchAllData} >All Data</Button>
+        </Col>
+        <Col>
+          <Form onSubmit={(e) => fetchDataByDate(e)} >
+            <InputGroup>
+              <Form.Control
+                type="date"
+                value={date}
+                onChange={handleDateChange}
+                required
+                className="p-1"
+              />
+                <Button type="submit" >Data By Date</Button>
+            </InputGroup>
+          </Form>
+        </Col>
+      </Row>
+      <Row>
+        {/* {data && } */}
+        <TableComponent />
+      </Row>
+    </Container>
+  )
+
 }
 
 export default warehouse;

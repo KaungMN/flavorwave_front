@@ -1,7 +1,7 @@
 import { Button, Col, Form, Row } from 'react-bootstrap';
 import { Cities, Townships } from '../../datas/CitiesAndTownship';
 import { useForm } from 'react-hook-form';
-// import { signup } from '../../services/order';
+import { signup } from '../../services/signup';
 
 function CustomerSignup() {
     const {

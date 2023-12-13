@@ -1,7 +1,9 @@
 import {
     DEFAULT_ROUTE,
     FACTORY_ROUTE,
+    RAW_ROUTE,
     ADMIN_ROUTE,
+    STAFF_ROUTE,
     LOGISTIC_ROUTE,
     DELIVERY_ROUTE,
     CUSTOMER_ROUTE,
@@ -11,10 +13,10 @@ import {
     CUSTOMER_HISTORY_ROUTE,
     WAREHOUSE_ROUTE,
     SALES_ROUTE
-} from '../constants/routes';
+} from './routes';
 
 export const menuList = [
-    { route: ADMIN_ROUTE, label: 'Admin' },
+    { route: ADMIN_ROUTE, label: 'Admin', subMenu: [{ route: STAFF_ROUTE, label: 'Staff' }] },
     { route: LOGISTIC_ROUTE, label: 'Logistic', subMenu: [{ route: DELIVERY_ROUTE, label: 'Delivery' }] },
     {
         route: CUSTOMER_ROUTE,
@@ -25,7 +27,7 @@ export const menuList = [
             { route: CUSTOMER_ORDER_ROUTE, label: 'Order' }
         ]
     },
-    { route: FACTORY_ROUTE, label: 'Factory' },
+    { route: FACTORY_ROUTE, label: 'Factory', subMenu: [{ route: RAW_ROUTE, label: 'Raw' }] },
     { route: WAREHOUSE_ROUTE, label: 'Warehouse' },
     { route: SALES_ROUTE, label: 'Sales' }
 ];

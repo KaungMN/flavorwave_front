@@ -2,6 +2,8 @@ import { Button, Col, Form, Modal, ModalBody, ModalHeader, ModalTitle, Row } fro
 import { useForm } from 'react-hook-form';
 import { Cities, Townships } from '../../../datas/CitiesAndTownship';
 import { useOrder } from '../../../services/order';
+import axios from 'axios';
+import { useState } from 'react';
 
 function OrderForm({ isOpen, orderData, totalPrice }) {
     const [isOpenOrderConfirm, setIsOpenOrderConfirm] = useState(false);
@@ -16,14 +18,26 @@ function OrderForm({ isOpen, orderData, totalPrice }) {
     // let newTest = { ...test, d: "4" };
     // console.log(newTest)
 
-    const onSubmit = (data) => {
-        const newData = { ...data, products: orderData, totalPrice: totalPrice };
+    const onSubmit = async (data) => {
+        // console.log(data);
+        console.log(orderData);
+        const newData = {
+            ...data,
+            quantity: 2,
+            orderType: 'wholesale',
+            status: 'pending',
+            products: JSON.stringify({ id: 1, name: 'name' }),
+            totalPrice: totalPrice,
+            customer_id: 1
+        };
         console.log(newData);
-        useOrder(newData);
+        const res = await axios.post('http://localhost:8000/api/create-orders', newData);
+        const datas = res.data;
+        // console.log(data);
     };
 
     return (
-        <Modal show={isOpen} hide={handleOrderClose}>
+        <Modal show={isOpen}>
             <ModalHeader closeButton>
                 <ModalTitle>Order & Address</ModalTitle>
             </ModalHeader>

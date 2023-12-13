@@ -18,79 +18,106 @@ export default function EditForm({ heading, data, setShow }) {
                   <Row>
                       <Col>
                           <Form.Group className="mb-3">
-                              <Form.Label>Product Name</Form.Label>
+                              <Form.Label>Name</Form.Label>
                               <Form.Control
-                                  id="productName"
-                                  name="productName"
-                                  defaultValue={data.orderItem}
+                                  id="name"
+                                  name="name"
                                   size="md"
                                   type="text"
                                   required
-                                  {...register('productName', { required: true })}
+                                  {...register('name', { required: true })}
                               />
                           </Form.Group>
                           <Form.Group className="mb-3">
-                              <Form.Label>Box</Form.Label>
+                              <Form.Label>Email</Form.Label>
                               <Form.Control
-                                  id="box"
-                                  name="box"
-                                  defaultValue={data.orderQuantity}
+                                  id="email"
+                                  name="email"
                                   size="md"
-                                  type="number"
+                                  type="text"
                                   required
-                                  {...register('box', { required: true })}
+                                  {...register('email', { required: true })}
                               />
                           </Form.Group>
                           <Form.Group className="mb-3">
-                              <Form.Label>Piece</Form.Label>
+                              <Form.Label>Password</Form.Label>
                               <Form.Control
-                                  id="piece"
-                                  name="piece"
-                                  defaultValue={data.salesPermit}
+                                  id="password"
+                                  name="password"
+                                  defaultValue={data.Permit}
                                   size="md"
-                                  type="number"
+                                  type="password"
                                   required
-                                  {...register('piece', { required: true })}
+                                  {...register('password', { required: true })}
                               />
                           </Form.Group>
+                          <Form.Select
+                              id="role_id"
+                              name="role_id"
+                              size="md"
+                              required
+                              {...register('role_id', { required: true })}
+                          >
+                              <option disabled selected value={''}>
+                                  Choose Role
+                              </option>
+                              {['manager', 'senior', 'junior'].map((t, id) => (
+                                  <option key={t} value={id + 1}>
+                                      {t}
+                                  </option>
+                              ))}
+                          </Form.Select>
                       </Col>
                       <Col>
                           <Form.Group className="mb-3">
-                              <Form.Label>Price</Form.Label>
+                              <Form.Label>Salary</Form.Label>
                               <Form.Control
-                                  id="price"
-                                  name="price"
-                                  defaultValue={data.sales}
+                                  id="salary"
+                                  name="salary"
                                   size="md"
                                   type="number"
                                   required
-                                  {...register('price', { required: true })}
+                                  {...register('salary', { required: true })}
                               />
                           </Form.Group>
                           <Form.Group className="mb-3">
-                              <Form.Label>Expire Date</Form.Label>
+                              <Form.Label>Entry Date</Form.Label>
                               <Form.Control
-                                  id="expireDate"
-                                  name="expireDate"
-                                  defaultValue={data.Permit}
+                                  id="entryDate"
+                                  name="entryDate"
                                   size="md"
-                                  type="text"
+                                  type="date"
                                   required
-                                  {...register('expireDate', { required: true })}
+                                  {...register('entry_date', { required: true })}
                               />
                           </Form.Group>
                           <Form.Group className="mb-3">
-                              <Form.Label>Location</Form.Label>
+                              <Form.Label>Phone</Form.Label>
                               <Form.Control
-                                  id="location"
-                                  name="location"
-                                  defaultValue={data.Permit}
+                                  id="phone"
+                                  name="phone"
                                   size="md"
-                                  type="text"
+                                  type="number"
                                   required
-                                  {...register('location', { required: true })}
+                                  {...register('phone', { required: true })}
                               />
                           </Form.Group>
+                          <Form.Select
+                              id="department_id"
+                              name="department_id"
+                              size="md"
+                              required
+                              {...register('department_id', { required: true })}
+                          >
+                              <option disabled selected value={''}>
+                                  Choose Department
+                              </option>
+                              {['sales', 'logistic', 'factory', 'warehouse'].map((t, id) => (
+                                  <option key={t} value={id + 1}>
+                                      {t}
+                                  </option>
+                              ))}
+                          </Form.Select>
                       </Col>
                   </Row>
                   <div className="mx-auto my-3 d-flex justify-content-center">

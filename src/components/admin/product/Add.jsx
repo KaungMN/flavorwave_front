@@ -1,6 +1,6 @@
 import { useState } from "react";
 import Modal from "react-bootstrap/Modal";
-import EditForm from "./EditForm";
+import AddForm from "./AddForm";
 import Button from "react-bootstrap/Button";
 
 export default function AddStaff({ initialData }) {
@@ -31,7 +31,7 @@ export default function AddStaff({ initialData }) {
           <h5 style={{ fontWeight: 600 }} className="mb-3 text-center">
             Add Truck
           </h5>
-          <EditForm data={data} />
+          <AddForm data={data} />
         </Modal.Body>
       </Modal>
     </>

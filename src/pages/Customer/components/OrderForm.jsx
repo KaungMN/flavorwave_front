@@ -17,7 +17,7 @@ function AddOrder({ orderData, totalPrice }) {
     console.log(orderData);
 
     const onSubmit = (data) => {
-        const newData = { ...data, products: orderData, totalPrice: totalPrice };
+        const newData = { ...data, products: orderData, totalPrice: totalPrice,status:"pending",quantity:"1000" };
         console.log(newData);
         useOrder(newData);
     };

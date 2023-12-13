@@ -12,7 +12,7 @@ function CustomerLogin() {
     } = useForm();
 
     const onSubmit = async (data) => {
-        const res = await login(data);
+        // const res = await login(data);
         console.log(data);
     };
 

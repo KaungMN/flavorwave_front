@@ -16,10 +16,7 @@ function AddOrder({ orderData, totalPrice }) {
     // console.log(newTest)
     console.log(orderData);
 
-    const onSubmit = (data) => {
-        const newData = { ...data, order: orderData, totalPrice: totalPrice };
-        console.log(newData);
-    };
+    const onSubmit = (data) => console.log(data);
 
     return (
         <div className="contact-form-section" style={{ textAlign: 'left', margin: '50px auto', maxWidth: '500px' }}>
@@ -45,6 +42,7 @@ function AddOrder({ orderData, totalPrice }) {
                                 name="name"
                                 type="text"
                                 placeholder="Name*"
+                                required
                                 {...register('name', { required: true })}
                             />
                         </Col>
@@ -61,10 +59,9 @@ function AddOrder({ orderData, totalPrice }) {
                                 name="customerType"
                                 size="md"
                                 required
-                                defaultValue="Customer Type"
                                 {...register('customerType', { required: true })}
                             >
-                                <option disabled>Customer Type</option>
+                                <option disabled selected value={""}>Customer Type</option>
                                 <option>Keyholder</option>
                                 <option>Distributor</option>
                                 <option>Wholesale</option>
@@ -76,10 +73,9 @@ function AddOrder({ orderData, totalPrice }) {
                                 name="city"
                                 size="md"
                                 required
-                                defaultValue="Cities"
                                 {...register('city', { required: true })}
                             >
-                                <option disabled>Cities</option>
+                                <option disabled selected value={""}>Cities</option>
                                 {Cities.map((city) => (
                                     <option key={city} value={city}>
                                         {city}
@@ -97,10 +93,9 @@ function AddOrder({ orderData, totalPrice }) {
                                 name="township"
                                 size="md"
                                 required
-                                defaultValue="Townships"
                                 {...register('township', { required: true })}
                             >
-                                <option disabled>Townships</option>
+                                <option disabled selected value={""}>Townships</option>
                                 {Townships.map((township) => (
                                     <option key={township} value={township}>
                                         {township}
@@ -115,6 +110,7 @@ function AddOrder({ orderData, totalPrice }) {
                                 size="md"
                                 type="text"
                                 placeholder="Address"
+                                required
                                 {...register('address', { required: true })}
                             />
                         </Col>
@@ -127,8 +123,9 @@ function AddOrder({ orderData, totalPrice }) {
                                 id="phone"
                                 name="phone"
                                 size="md"
-                                type="text"
+                                type="number"
                                 placeholder="Phone Number"
+                                required
                                 {...register('phone', { required: true })}
                             />
                         </Col>
@@ -139,6 +136,7 @@ function AddOrder({ orderData, totalPrice }) {
                                 size="md"
                                 type="text"
                                 placeholder="Remark"
+                                required
                                 {...register('remark', { required: true })}
                             />
                         </Col>

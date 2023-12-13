@@ -1,0 +1,10 @@
+.current-path-container {
+  display: flex;
+  justify-content: flex-start;
+}
+
+.current-path-section {
+  padding: 18px;
+  padding-left: 0;
+  text-align: left;
+}

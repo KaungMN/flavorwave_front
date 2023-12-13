@@ -1,7 +1,7 @@
-import RawCard from "../components/factory/RawCard";
+import RawCard from "../../components/factory/RawCard";
 import { Container } from "react-bootstrap";
 
-function factory() {
+function Raw() {
   return (
     <Container>
       <h2>Factory</h2>
@@ -10,4 +10,4 @@ function factory() {
   );
 }
 
-export default factory;
+export default Raw;

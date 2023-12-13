@@ -11,7 +11,7 @@ export default function ApproveDeliveryModal() {
   return (
     <>
       <Button className="me-2" variant="outline-success" onClick={handleShow}>
-        Approve Delivery
+        Approve
       </Button>
 
       <Modal
@@ -23,7 +23,7 @@ export default function ApproveDeliveryModal() {
         <Modal.Header closeButton className="border-0"></Modal.Header>
         <Modal.Body className="pt-0 px-5">
           <h5 style={{ fontWeight: 600 }} className="mb-3 text-center">
-            Are you sure you want to approve this order?
+            Are you sure you want to approve this order's delivery?
           </h5>
           <div className="mx-auto my-3 d-flex justify-content-center">
             <Button className="me-2 mx-3" variant="outline-success">

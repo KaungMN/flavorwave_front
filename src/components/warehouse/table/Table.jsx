@@ -177,7 +177,7 @@ function TableComponent() {
           <Col sm={5}>
             <Form.Label >Search Product Name: </Form.Label>
             <Form.Control
-              size="sm"
+              size="md"
               type="text"
               onChange={(e) => {
                 filterQuantity(e.target.value);

@@ -17,7 +17,7 @@ export default function EditForm({ data }) {
                 disabled
                 readOnly
                 defaultValue={data.orderItem}
-                size="sm"
+                size="md"
                 type="email"
               />
             </Col>
@@ -27,7 +27,7 @@ export default function EditForm({ data }) {
                 disabled
                 readOnly
                 defaultValue={data.orderQuantity}
-                size="sm"
+                size="md"
                 type="email"
               />
             </Col>
@@ -41,13 +41,13 @@ export default function EditForm({ data }) {
                 disabled
                 readOnly
                 defaultValue={data.salesPermit}
-                size="sm"
+                size="md"
                 type="email"
               />
             </Col>
             <Col>
               <Form.Label>Choose Truck: </Form.Label>
-              <Form.Select size="sm" required defaultValue="Choose Truck">
+              <Form.Select size="md" required defaultValue="Choose Truck">
                 <option disabled>Choose Truck</option>
                 {truck.map((t) => (
                   <option key={t} value={t}>

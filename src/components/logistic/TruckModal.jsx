@@ -6,7 +6,6 @@ import Button from 'react-bootstrap/Button';
 export default function AddTruckModal({ initialData }) {
     const [show, setShow] = useState(false);
     const [data, setData] = useState(initialData);
-
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
 
@@ -22,7 +21,7 @@ export default function AddTruckModal({ initialData }) {
                     <h5 style={{ fontWeight: 600 }} className="mb-3 text-center">
                         Add Truck
                     </h5>
-                    <EditForm data={data} setShow={setShow} />
+                    <EditForm data={initialData} setShow={setShow} />
                 </Modal.Body>
             </Modal>
         </>

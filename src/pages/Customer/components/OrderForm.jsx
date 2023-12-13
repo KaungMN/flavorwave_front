@@ -2,6 +2,7 @@ import { Button, Col, Form, Row } from 'react-bootstrap';
 import { useForm } from 'react-hook-form';
 import { Cities, Townships } from '../../../datas/CitiesAndTownship';
 import { useOrder } from '../../../services/order';
+import axios from 'axios';
 
 function AddOrder({ orderData, totalPrice }) {
     const {
@@ -14,12 +15,23 @@ function AddOrder({ orderData, totalPrice }) {
     // let test = { a: "1", b: "2", c: "3" };
     // let newTest = { ...test, d: "4" };
     // console.log(newTest)
-    console.log(orderData);
 
-    const onSubmit = (data) => {
-        const newData = { ...data, products: orderData, totalPrice: totalPrice };
+    const onSubmit = async (data) => {
+        // console.log(data);
+        console.log(orderData);
+        const newData = {
+            ...data,
+            quantity: 2,
+            orderType: 'wholesale',
+            status: 'pending',
+            products: JSON.stringify({ id: 1, name: 'name' }),
+            totalPrice: totalPrice,
+            customer_id: 1
+        };
         console.log(newData);
-        useOrder(newData);
+        const res = await axios.post('http://localhost:8000/api/create-orders', newData);
+        const datas = res.data;
+        // console.log(data);
     };
 
     return (

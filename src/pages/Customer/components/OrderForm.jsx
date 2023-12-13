@@ -1,7 +1,7 @@
 import { Button, Col, Form, Row } from 'react-bootstrap';
 import { useForm } from 'react-hook-form';
 import { Cities, Townships } from '../../../datas/CitiesAndTownship';
-import OrderItemsDropDown from '../../../components/customers/OrderItems';
+import { useOrder } from '../../../services/order';
 
 function AddOrder({ orderData, totalPrice }) {
     const {
@@ -17,8 +17,9 @@ function AddOrder({ orderData, totalPrice }) {
     console.log(orderData);
 
     const onSubmit = (data) => {
-        const newData = { ...data, order: orderData, totalPrice: totalPrice };
+        const newData = { ...data, products: orderData, totalPrice: totalPrice };
         console.log(newData);
+        useOrder(newData);
     };
 
     return (

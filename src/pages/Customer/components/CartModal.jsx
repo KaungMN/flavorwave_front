@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Modal, Button, Table } from 'react-bootstrap';
 
 function CartModal({ isOpen, cartList, handleClose, increment, decrement, totalPrice, listToForm }) {

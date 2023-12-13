@@ -10,6 +10,12 @@ const Sidebar = () => {
     const handleToggle = () => {
         setExpanded(!expanded);
     };
+
+    sessionStorage.setItem('staffId', '3');
+    let staffId = JSON.parse(sessionStorage.getItem('staffId'));
+    sessionStorage.setItem('dept', 'Admin');
+    let dept = sessionStorage.getItem('dept');
+
     return (
         <div className="sidebar">
             <Navbar expand="lg" className="custom-navbar" style={{ marginRight: '25px' }} expanded={expanded}>
@@ -23,26 +29,28 @@ const Sidebar = () => {
                             </Link>
                         </Navbar.Brand>
                         <Accordion>
-                            {menuList.map((item, index) => (
-                                <Accordion.Item key={index} eventKey={index}>
-                                    <Accordion.Header>
-                                        <Link to={item.route} className="fs-5">
-                                            {item.label}
-                                        </Link>
-                                    </Accordion.Header>
-                                    <Accordion.Body className="fs-6">
-                                        <ul className="ps-2">
-                                            {item.subMenu
-                                                ? item.subMenu.map((subMenu, index) => (
-                                                      <li key={index}>
-                                                          <Link to={subMenu.route}>{subMenu.label}</Link>
-                                                      </li>
-                                                  ))
-                                                : null}
-                                        </ul>
-                                    </Accordion.Body>
-                                </Accordion.Item>
-                            ))}
+                            {menuList.map((item, index) =>
+                                item.label.includes(dept) || dept === 'Admin' ? (
+                                    <Accordion.Item key={index} eventKey={index}>
+                                        <Accordion.Header>
+                                            <Link to={item.route} className="fs-5">
+                                                {item.label}
+                                            </Link>
+                                        </Accordion.Header>
+                                        <Accordion.Body className="fs-6">
+                                            <ul className="ps-2">
+                                                {item.subMenu
+                                                    ? item.subMenu.map((subMenu, index) => (
+                                                          <li key={index}>
+                                                              <Link to={subMenu.route}>{subMenu.label}</Link>
+                                                          </li>
+                                                      ))
+                                                    : null}
+                                            </ul>
+                                        </Accordion.Body>
+                                    </Accordion.Item>
+                                ) : null
+                            )}
                         </Accordion>
                     </Nav>
                 </Navbar.Collapse>

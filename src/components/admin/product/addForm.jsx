@@ -36,12 +36,13 @@ export default function AddForm({ heading, data, setShow }) {
                                     size="md"
                                     type="file"
                                     required
-                                    {...register('photo', { required: true })}
+                                    {...register('photo')}
                                 />
                             </Form.Group>
-                            
+
                         </Col>
-                        <Col><Form.Group className="mb-3">
+                        <Col>
+                            <Form.Group className="mb-3">
                                 <Form.Label>Price</Form.Label>
                                 <Form.Control
                                     id="price"
@@ -55,7 +56,7 @@ export default function AddForm({ heading, data, setShow }) {
                             <Form.Group className="mb-3">
                                 <Form.Label>Description</Form.Label>
                                 <Form.Control
-                                as="textarea"
+                                    as="textarea"
                                     id="description"
                                     name="description"
                                     defaultValue={data.Permit}
@@ -65,7 +66,7 @@ export default function AddForm({ heading, data, setShow }) {
                                     {...register('description', { required: true })}
                                 />
                             </Form.Group>
-                            
+
                         </Col>
                     </Row>
                     <div className="mx-auto my-3 d-flex justify-content-center">

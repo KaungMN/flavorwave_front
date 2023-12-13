@@ -16,10 +16,7 @@ function AddOrder({ orderData, totalPrice }) {
     // console.log(newTest)
     console.log(orderData);
 
-    const onSubmit = (data) => {
-        const newData = { ...data, order: orderData, totalPrice: totalPrice };
-        console.log(newData);
-    };
+    const onSubmit = (data) => console.log(data);
 
     return (
         <div className="contact-form-section" style={{ textAlign: 'left', margin: '50px auto', maxWidth: '500px' }}>
@@ -45,11 +42,12 @@ function AddOrder({ orderData, totalPrice }) {
                                 name="name"
                                 type="text"
                                 placeholder="Name*"
+                                required
                                 {...register('name', { required: true })}
                             />
                         </Col>
                         <Col>
-                            <Form.Control size="sm" type="email" placeholder="Email*" />
+                            <Form.Control size="sm" type="email" placeholder="Email*" required/>
                         </Col>
                     </Row>
                 </div>
@@ -61,10 +59,9 @@ function AddOrder({ orderData, totalPrice }) {
                                 name="customerType"
                                 size="sm"
                                 required
-                                defaultValue="Customer Type"
                                 {...register('customerType', { required: true })}
                             >
-                                <option disabled>Customer Type</option>
+                                <option disabled selected value={""}>Customer Type</option>
                                 <option>Keyholder</option>
                                 <option>Distributor</option>
                                 <option>Wholesale</option>
@@ -76,10 +73,9 @@ function AddOrder({ orderData, totalPrice }) {
                                 name="city"
                                 size="sm"
                                 required
-                                defaultValue="Cities"
                                 {...register('city', { required: true })}
                             >
-                                <option disabled>Cities</option>
+                                <option disabled selected value={""}>Cities</option>
                                 {Cities.map((city) => (
                                     <option key={city} value={city}>
                                         {city}
@@ -97,10 +93,9 @@ function AddOrder({ orderData, totalPrice }) {
                                 name="township"
                                 size="sm"
                                 required
-                                defaultValue="Townships"
                                 {...register('township', { required: true })}
                             >
-                                <option disabled>Townships</option>
+                                <option disabled selected value={""}>Townships</option>
                                 {Townships.map((township) => (
                                     <option key={township} value={township}>
                                         {township}
@@ -115,6 +110,7 @@ function AddOrder({ orderData, totalPrice }) {
                                 size="sm"
                                 type="text"
                                 placeholder="Address"
+                                required
                                 {...register('address', { required: true })}
                             />
                         </Col>
@@ -127,8 +123,9 @@ function AddOrder({ orderData, totalPrice }) {
                                 id="phone"
                                 name="phone"
                                 size="sm"
-                                type="text"
+                                type="number"
                                 placeholder="Phone Number"
+                                required
                                 {...register('phone', { required: true })}
                             />
                         </Col>
@@ -139,6 +136,7 @@ function AddOrder({ orderData, totalPrice }) {
                                 size="sm"
                                 type="text"
                                 placeholder="Remark"
+                                required
                                 {...register('remark', { required: true })}
                             />
                         </Col>

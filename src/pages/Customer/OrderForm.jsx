@@ -35,7 +35,7 @@ function AddOrder({ orderData }) {
               <Form.Control
                 //   disabled
                 //   readOnly
-                size="sm"
+                size="md"
                 id="name"
                 name="name"
                 type="text"
@@ -51,13 +51,13 @@ function AddOrder({ orderData }) {
         <div className="mb-4">
           <Row>
             <Col>
-              <Form.Control size="sm" type="email" placeholder="Email*" />
+              <Form.Control size="md" type="email" placeholder="Email*" />
             </Col>
             <Col>
               <Form.Select
                 id="customerType"
                 name="customerType"
-                size="sm"
+                size="md"
                 required
                 defaultValue="Customer Type"
                 {...register("customerType", { required: true })}
@@ -76,7 +76,7 @@ function AddOrder({ orderData }) {
               <Form.Select
                 id="city"
                 name="city"
-                size="sm"
+                size="md"
                 required
                 defaultValue="Cities"
                 {...register("city", { required: true })}
@@ -93,7 +93,7 @@ function AddOrder({ orderData }) {
               <Form.Select
                 id="township"
                 name="township"
-                size="sm"
+                size="md"
                 required
                 defaultValue="Townships"
                 {...register("township", { required: true })}
@@ -114,7 +114,7 @@ function AddOrder({ orderData }) {
               <Form.Control
                 id="address"
                 name="address"
-                size="sm"
+                size="md"
                 type="text"
                 placeholder="Address"
                 {...register("address", { required: true })}
@@ -124,7 +124,7 @@ function AddOrder({ orderData }) {
               <Form.Control
                 id="phone"
                 name="phone"
-                size="sm"
+                size="md"
                 type="text"
                 placeholder="Phone Number"
                 {...register("phone", { required: true })}

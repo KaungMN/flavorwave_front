@@ -26,30 +26,44 @@ export default function EditForm({ heading, data }) {
         <div className="mb-4">
           <Row>
             <Col>
-              <InputGroup size="sm" className="mb-3">
+              <InputGroup size="md" className="mb-3">
                 <Form.Control
                   id="amount"
                   name="amount"
                   type="number"
-                  size="sm"
+                  size="md"
                   required
                   placeholder="Amount in grams"
                   {...register("amount", { required: true })}
                 />
-                <InputGroup.Text size="sm">g</InputGroup.Text>
+                <InputGroup.Text size="md">g</InputGroup.Text>
               </InputGroup>
-              <Form.Select size="sm" required                
-               {...register("supplier", { required: true })}>
-                <option disabled selected value={""}>Supplier Name</option>
+              <Form.Select
+                size="md"
+                required
+                {...register("supplier", { required: true })}
+              >
+                <option disabled selected value={""}>
+                  Supplier Name
+                </option>
                 <option>Keyholder</option>
                 <option>Distributor</option>
                 <option>Wholesale</option>
               </Form.Select>
             </Col>
           </Row>
-          <Button type="submit" className="mt-4 d-block mx-auto" variant="success">
+        <div className="mx-auto my-3 d-flex justify-content-center">
+          <Button type="submit" className="me-2 mx-3" variant="success">
             Done
           </Button>
+          <Button
+            className="me-2"
+            variant="outline-secondary"
+            onClick={() => setShow(false)}
+          >
+            Cancel
+          </Button>
+          </div>
         </div>
       </Form>
     </div>

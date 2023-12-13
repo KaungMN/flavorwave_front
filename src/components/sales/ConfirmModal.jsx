@@ -11,7 +11,7 @@ export default function OrderConfirmModal() {
   return (
     <>
       <Button className="me-2" variant="outline-success" onClick={handleShow}>
-        Confrim Order
+        Confrim
       </Button>
 
       <Modal

@@ -9,10 +9,11 @@ const heading = [
   "Pcs",
   "Price",
   "expire-date",
-  "Location",
 ];
 
 export default function TableSingleRow({ order, handleDelete }) {
+  let staffId = JSON.parse(sessionStorage.getItem("staffId"));
+
   return (
     <Table striped bordered hover>
       <thead>
@@ -32,10 +33,12 @@ export default function TableSingleRow({ order, handleDelete }) {
             <td key={item.salesPermit}>{item.salesPermit}</td>
             <td key={item.sales}>{item.sales}</td>
             <td key={item.Permit}>{item.Permit}</td>
-            <td>
-              <Edit initialData={item} />
-              <Delete handleDelete={handleDelete} id={item.orderItem}/>
-            </td>
+            {staffId >= 2 ? (
+              <td>
+                <Edit initialData={item} />
+                <Delete handleDelete={handleDelete} id={item.orderItem} />
+              </td>
+            ) : null}
           </tr>
         ))}
       </tbody>

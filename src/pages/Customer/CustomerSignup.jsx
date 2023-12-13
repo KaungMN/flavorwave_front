@@ -25,7 +25,7 @@ function CustomerSignup() {
             <Row>
               <Col>
                 <Form.Control
-                  size="sm"
+                  size="md"
                   id="name"
                   name="name"
                   type="text"
@@ -36,7 +36,7 @@ function CustomerSignup() {
               </Col>
               <Col>
                 <Form.Control
-                  size="sm"
+                  size="md"
                   id="password"
                   name="password"
                   type="password"
@@ -50,13 +50,13 @@ function CustomerSignup() {
           <div className="mb-4">
             <Row>
               <Col>
-                <Form.Control size="sm" type="email" required placeholder="Email*" />
+                <Form.Control size="md" type="email" required placeholder="Email*" />
               </Col>
               <Col>
                 <Form.Select
                   id="customerType"
                   name="customerType"
-                  size="sm"
+                  size="md"
                   required
                   defaultValue={""}
                   {...register("customerType", { required: true })}
@@ -75,7 +75,7 @@ function CustomerSignup() {
                 <Form.Select
                   id="city"
                   name="city"
-                  size="sm"
+                  size="md"
                   required
                   {...register("city", { required: true })}
                 >
@@ -91,7 +91,7 @@ function CustomerSignup() {
                 <Form.Select
                   id="township"
                   name="township"
-                  size="sm" required
+                  size="md" required
                   {...register("township", { required: true })}>
                   <option disabled selected value={""}>Townships</option>
                   {Townships.map((township) => (
@@ -109,7 +109,7 @@ function CustomerSignup() {
                 <Form.Control
                   id="address"
                   name="address"
-                  size="sm"
+                  size="md"
                   type="text"
                   placeholder="Address"
                   required
@@ -120,7 +120,7 @@ function CustomerSignup() {
                 <Form.Control
                   id="phone"
                   name="phone"
-                  size="sm"
+                  size="md"
                   type="number"
                   placeholder="Phone Number"
                   required

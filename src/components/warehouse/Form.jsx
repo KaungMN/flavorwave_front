@@ -1,8 +1,7 @@
 import { Form, Row, Col, Button } from "react-bootstrap";
 import { useForm } from "react-hook-form";
 
-export default function EditForm({ heading, data }) {
-
+export default function EditForm({ data }) {
   const {
     register,
     handleSubmit,
@@ -27,7 +26,7 @@ export default function EditForm({ heading, data }) {
                   id="productName"
                   name="productName"
                   defaultValue={data.orderItem}
-                  size="sm"
+                  size="md"
                   type="text"
                   required
                   {...register("productName", { required: true })}
@@ -39,7 +38,7 @@ export default function EditForm({ heading, data }) {
                   id="box"
                   name="box"
                   defaultValue={data.orderQuantity}
-                  size="sm"
+                  size="md"
                   type="number"
                   required
                   {...register("box", { required: true })}
@@ -51,7 +50,7 @@ export default function EditForm({ heading, data }) {
                   id="piece"
                   name="piece"
                   defaultValue={data.salesPermit}
-                  size="sm"
+                  size="md"
                   type="number"
                   required
                   {...register("piece", { required: true })}
@@ -65,7 +64,7 @@ export default function EditForm({ heading, data }) {
                   id="price"
                   name="price"
                   defaultValue={data.sales}
-                  size="sm"
+                  size="md"
                   type="number"
                   required
                   {...register("price", { required: true })}
@@ -77,7 +76,7 @@ export default function EditForm({ heading, data }) {
                   id="expireDate"
                   name="expireDate"
                   defaultValue={data.Permit}
-                  size="sm"
+                  size="md"
                   type="text"
                   required
                   {...register("expireDate", { required: true })}
@@ -89,7 +88,7 @@ export default function EditForm({ heading, data }) {
                   id="location"
                   name="location"
                   defaultValue={data.Permit}
-                  size="sm"
+                  size="md"
                   type="text"
                   required
                   {...register("location", { required: true })}
@@ -97,7 +96,11 @@ export default function EditForm({ heading, data }) {
               </Form.Group>
             </Col>
           </Row>
-          <Button type="submit" className="mt-4 d-block mx-auto" variant="success">
+          <Button
+            type="submit"
+            className="mt-4 d-block mx-auto"
+            variant="success"
+          >
             Submit
           </Button>
         </div>

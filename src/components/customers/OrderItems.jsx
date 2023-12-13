@@ -3,7 +3,7 @@ import { Dropdown, DropdownButton } from "react-bootstrap";
 function OrderItemsDropDown({ data }) {
   return (
     <DropdownButton
-      size="sm"
+      size="md"
       variant="outline-primary"
       title="Dropdown button"
     >

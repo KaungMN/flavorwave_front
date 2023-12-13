@@ -24,23 +24,23 @@ function CustomerForm() {
                 <Form.Control
                   disabled
                   readOnly
-                  size="sm"
+                  size="md"
                   type="email"
                   placeholder="Name*"
                 />
               </Col>
               <Col>
-                <Form.Control size="sm" type="email" placeholder="Email*" />
+                <Form.Control size="md" type="email" placeholder="Email*" />
               </Col>
             </Row>
           </div>
           <div className="mb-4">
             <Row>
               <Col>
-                <Form.Control size="sm" type="email" placeholder="Phone" />
+                <Form.Control size="md" type="email" placeholder="Phone" />
               </Col>
               <Col>
-                <Form.Control size="sm" type="email" placeholder="Subject" />
+                <Form.Control size="md" type="email" placeholder="Subject" />
               </Col>
             </Row>
           </div>

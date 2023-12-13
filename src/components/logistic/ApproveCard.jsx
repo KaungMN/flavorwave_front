@@ -1,4 +1,5 @@
 import InfoCard from "./SingleCard";
+import { Row } from "react-bootstrap";
 
 export default function ApproveDeliveryCard() {
   const order = [
@@ -24,7 +25,11 @@ export default function ApproveDeliveryCard() {
     { orderItem: "Product T", orderQuantity: 19, salesPermit: "approved" },
   ];
 
-  return order.map((i) => 
-    <InfoCard key={i.orderItem} data={i} />
+  return (
+    <Row>
+      {order.map((i) => (
+        <InfoCard key={i.orderItem} data={i} />
+      ))}
+    </Row>
   );
 }

@@ -1,5 +1,5 @@
 import SingleRawCard from "./SingleRaw";
-import { Row, Col } from "react-bootstrap";
+import { Row } from "react-bootstrap";
 
 export default function RawCard() {
   const order = [

@@ -43,7 +43,7 @@ function TableComponent() {
           <Col xs={3}>
             <Form.Label>OrderQuantity: </Form.Label>
             <Form.Control
-              size="sm"
+              size="md"
               type="email"
               onChange={(e) => {
                 filterQuantity(e.target.value);

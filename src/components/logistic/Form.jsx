@@ -39,7 +39,7 @@ export default function EditForm({ data }) {
                 disabled
                 readOnly
                 // defaultValue={data.orderItem}
-                size="sm"
+                size="md"
                 type="text"
                 {...register("orderItem")}
               />
@@ -52,7 +52,7 @@ export default function EditForm({ data }) {
                 disabled
                 readOnly
                 // defaultValue={data.orderQuantity}
-                size="sm"
+                size="md"
                 type="text"
                 {...register("orderQuantity")}
               />
@@ -69,7 +69,7 @@ export default function EditForm({ data }) {
                 disabled
                 readOnly
                 // defaultValue={data.salesPermit}
-                size="sm"
+                size="md"
                 type="text"
                 {...register("salesPermit")}
               />
@@ -79,7 +79,7 @@ export default function EditForm({ data }) {
               <Form.Select
                 id="truck"
                 name="truck"
-                size="sm"
+                size="md"
                 required
                 // defaultValue="Choose Truck"
                 {...register("truck", { required: true })}

@@ -1,7 +1,7 @@
 import { Form, Row, Col, Button } from 'react-bootstrap';
 import { useForm } from 'react-hook-form';
 
-export default function EditForm({ heading, data }) {
+export default function AddForm({ heading, data, setShow }) {
     const {
         register,
         handleSubmit,
@@ -18,27 +18,28 @@ export default function EditForm({ heading, data }) {
                     <Row>
                         <Col>
                             <Form.Group className="mb-3">
-                                <Form.Label>Department Id</Form.Label>
+                                <Form.Label>Product Name</Form.Label>
                                 <Form.Control
-                                    id="departmentId"
-                                    name="departmentId"
+                                    id="name"
+                                    name="name"
                                     size="md"
                                     type="text"
                                     required
-                                    {...register('productName', { required: true })}
+                                    {...register('name', { required: true })}
                                 />
                             </Form.Group>
                             <Form.Group className="mb-3">
-                                <Form.Label>Target Year</Form.Label>
+                                <Form.Label>Photo</Form.Label>
                                 <Form.Control
-                                    id="targetYear"
-                                    name="targetYear"
+                                    id="photo"
+                                    name="photo"
                                     size="md"
-                                    type="number"
+                                    type="file"
                                     required
-                                    {...register('box', { required: true })}
+                                    {...register('photo')}
                                 />
                             </Form.Group>
+
                         </Col>
                         <Col>
                             <Form.Group className="mb-3">
@@ -46,7 +47,6 @@ export default function EditForm({ heading, data }) {
                                 <Form.Control
                                     id="price"
                                     name="price"
-                                    defaultValue={data.sales}
                                     size="md"
                                     type="number"
                                     required
@@ -54,34 +54,29 @@ export default function EditForm({ heading, data }) {
                                 />
                             </Form.Group>
                             <Form.Group className="mb-3">
-                                <Form.Label>Report Budget</Form.Label>
+                                <Form.Label>Description</Form.Label>
                                 <Form.Control
-                                    id="reportBudget"
-                                    name="reportBudget"
+                                    as="textarea"
+                                    id="description"
+                                    name="description"
+                                    defaultValue={data.Permit}
                                     size="md"
-                                    type="number"
+                                    type="text"
                                     required
-                                    {...register('piece', { required: true })}
+                                    {...register('description', { required: true })}
                                 />
                             </Form.Group>
-                        </Col>
-                        <Col>
-                            <Form.Group className="mb-3">
-                                <Form.Label>Total Budget</Form.Label>
-                                <Form.Control
-                                    id="totalBudget"
-                                    name="totalBudget"
-                                    size="md"
-                                    type="number"
-                                    required
-                                    {...register('piece', { required: true })}
-                                />
-                            </Form.Group>
+
                         </Col>
                     </Row>
-                    <Button type="submit" className="mt-4 d-block mx-auto" variant="success">
-                        Submit
-                    </Button>
+                    <div className="mx-auto my-3 d-flex justify-content-center">
+                        <Button type="submit" className="me-2 mx-3" variant="success">
+                            Done
+                        </Button>
+                        <Button className="me-2" variant="outline-secondary" onClick={() => setShow(false)}>
+                            Cancel
+                        </Button>
+                    </div>
                 </div>
             </Form>
         </div>

@@ -13,6 +13,7 @@ export default function FilterForm({ heading }) {
   const[totalCount,setTotalCount] = useState(null);
   const[damageCount,setDamageCount] = useState(null);
   const [priceChanges,setPriceChanges] = useState(null);
+  const [product,setProduct] = useState(null);
 
   const {
     register,
@@ -25,16 +26,13 @@ export default function FilterForm({ heading }) {
     const product = products?.find(p=>{
       return p.name == productName
     });
-    const res = await axios.post('http://localhost:8000/api/get-total-count',{
-      product_id:product?.id,
-      targetYear
-    });
+    const res = await axios.get(`http://localhost:8000/api/get-total-count?product_id=${product?.id}&targetYear=${targetYear}`);
     const datas = res.data;
     setTotalCount(datas)
   }
 
   const productDamageCount = async(productId)=>{
-    const res = await axios.post('https://localhost:8000/api/get-damage-return-count',{
+    const res = await axios.get('https://localhost:8000/api/get-damage-return-count',{
       id:productId
     });
     const datas = res.data;
@@ -42,7 +40,7 @@ export default function FilterForm({ heading }) {
   }
 
   const productPriceChanges = async(productId,year) => {
-    const res = await axios.post('https://localhost:8000/api/get-product-prices-change',{
+    const res = await axios.get('https://localhost:8000/api/get-product-prices-change',{
       year:year,
       product_id:productId
     });
@@ -50,16 +48,30 @@ export default function FilterForm({ heading }) {
     setPriceChanges(datas)
   }
 
-  const onSubmit = (data) => {
+  const getProduct = async(name) => {
+    const res = await axios.get('https://localhost:8000/api/get-product/'+name);
+    const datas = res.data;
+    setProduct(datas)
+    console.log(datas)
+  }
 
-    sellCounts.filter((p)=>{
-      // if(){
-        console.log(p.product_name)
-      console.log(data)
-      //   setSelectedSellCount(p);
-      // }
+  const onSubmit = (data) => {
+    getProduct(data.productName);
+    sellCounts.filter(async(p)=>{
+      
+      if(p.target_year == data.year && p.product_name == data.productName){
+        
+      setSelectedSellCount(p.sell_count);
+      console.log(selectedSellCount)
+      await productTotalCount(data.productName,data.year)
+      // await productDamageCount(product_id)
+      await productPriceChanges(product?.id,data.year)
+      console.log(totalCount);
+      console.log(priceChanges)
+      }
     })
-    console.log(selectedSellCount)
+
+    
 
     
   };

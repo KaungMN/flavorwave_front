@@ -13,7 +13,7 @@ export default function AddForm({ heading, data, setShow }) {
     const onSubmit = async (data) => {
         // console.log(data);
 
-        const res = await axios.post('http://localhost:8000/api/postStaff', data);
+        const res = await axios.post('http://localhost:8000/api/store-staffs', data);
         const datas = res.data;
         console.log(datas);
     };

@@ -31,7 +31,7 @@ function AddOrder({ isOpen, handleClose, orderData, totalPrice, openToConfirm })
             customer_id: 1
         };
         console.log(newData);
-        const res = await axios.post('http://localhost:8000/api/create-orders', newData);
+        const res = await axios.post('http://localhost:8000/api/createorders', newData);
         const datas = res.data;
         // console.log(data);
     };

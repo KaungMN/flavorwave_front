@@ -1,12 +1,13 @@
 import {
     DEFAULT_ROUTE,
-    FACTORY_ROUTE,
     RAW_ROUTE,
+    MANUFACTURED_ROUTE,
     ADMIN_ROUTE,
     PRODUCT_ROUTE,
     STAFF_ROUTE,
     BUDGET_ROUTE,
     LOGISTIC_ROUTE,
+    LOGISTIC_TRUCK_ROUTE,
     DELIVERY_ROUTE,
     CUSTOMER_ROUTE,
     CUSTOMER_LOGIN_ROUTE,
@@ -27,7 +28,14 @@ export const menuList = [
             { route: BUDGET_ROUTE, label: 'Budget' }
         ]
     },
-    { route: LOGISTIC_ROUTE, label: 'Logistic', subMenu: [{ route: DELIVERY_ROUTE, label: 'Delivery' }] },
+    {
+        route: LOGISTIC_ROUTE,
+        label: 'Logistic',
+        subMenu: [
+            { route: DELIVERY_ROUTE, label: 'Delivery' },
+            { route: LOGISTIC_TRUCK_ROUTE, label: 'Truck' }
+        ]
+    },
     {
         route: CUSTOMER_ROUTE,
         label: 'Customer',
@@ -37,7 +45,7 @@ export const menuList = [
             { route: CUSTOMER_ORDER_ROUTE, label: 'Order' }
         ]
     },
-    { route: FACTORY_ROUTE, label: 'Factory', subMenu: [{ route: RAW_ROUTE, label: 'Raw' }] },
-    { route: WAREHOUSE_ROUTE, label: 'Warehouse' },
+    { route: RAW_ROUTE, label: 'Raw' },
+    { route: MANUFACTURED_ROUTE, label: 'Manufactured', subMenu: [{ route: WAREHOUSE_ROUTE, label: 'Warehouse' }] },
     { route: SALES_ROUTE, label: 'Sales' }
 ];

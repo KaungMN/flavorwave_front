@@ -6,12 +6,18 @@
   left: 0;
   float: left;
   height: 100%;
-  width: min-content;
+  width: 200px;
   background-color: #333; /* Change this to your preferred background color */
   padding-top: 20px;
   padding-left: 30px;
   text-align: left;
   z-index: 2;
+}
+
+@media (max-width: 1000px) {
+  .sidebar {
+    width: min-content;
+  }
 }
 
 /* Style links inside the sidebar */

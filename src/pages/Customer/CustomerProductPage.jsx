@@ -14,12 +14,6 @@ function CustomerProductPage() {
     const [items, setItems] = useState(null);
 
     useEffect(() => {
-        const isAuthToken = getSessionStorage('authToken');
-        if (!isAuthToken) {
-            history(CUSTOMER_LOGIN_ROUTE);
-            return;
-        }
-
         const fetchData = async () => {
             const data = await getProducts();
             setItems(data);
@@ -38,6 +32,11 @@ function CustomerProductPage() {
     const toggleModal = () => setIsOpenCartModal((prev) => !prev);
 
     const addToCart = (product) => {
+        const isAuthToken = getSessionStorage('authToken');
+        if (!isAuthToken) {
+            history(CUSTOMER_LOGIN_ROUTE);
+            return;
+        }
         toggleModal();
         // Check if the item is already in the cartList
         const existingItem = cartList.find((item) => item.id === product.id);

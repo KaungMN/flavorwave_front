@@ -1,17 +1,17 @@
+import { getSessionStorage } from '../utils';
 import { axios } from './api';
 
 const useOrder = async (data) => {
-
-    const sessionToken = sessionStorage.getItem('authToken');
-    console.log(sessionToken);
-    const res = await axios.post('/api/createorders', data, {
-        headers: {
-            'Authorization': `Bearer ${sessionToken}`,
-            'Content-Type': 'application/json',
-        },
-    });
+    const res = await axios.post('createorders', data);
+    console.log(res);
     return res;
-
 };
 
-export { useOrder };
+const customerOrder = async (data) => {
+    const customer = getSessionStorage('customer');
+    data.email = customer.email;
+    const res = await axios.post('createorders', data);
+    console.log(res);
+};
+
+export { useOrder, customerOrder };

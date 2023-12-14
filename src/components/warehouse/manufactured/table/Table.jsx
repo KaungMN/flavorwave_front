@@ -2,10 +2,10 @@ import { func } from 'prop-types';
 import Paginator from './Pagination';
 import { useState } from 'react';
 import { Form, Row, Col, Container } from 'react-bootstrap';
-import AddProduct from "../Add";
-const heading = ['Product', 'Raw Material', 'Price', 'Total Quantity', 'Release Date' , 'Expire Date' , 'WareHouse', 'Location'];
+import AddProduct from '../Add';
+const heading = ['Product', 'Raw Material', 'Price', 'Total Quantity', 'Release Date'];
 
-function TableComponent( { data } ) {
+function TableComponent({ data }) {
     let [filterData, setFilterData] = useState(data);
 
     const handleDelete = async (id) => {
@@ -42,7 +42,7 @@ function TableComponent( { data } ) {
                         />
                     </Col>
                     <Col>
-                    <AddProduct />
+                        <AddProduct />
                     </Col>
                 </Row>
             </div>

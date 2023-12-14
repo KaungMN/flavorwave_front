@@ -5,10 +5,21 @@ import AddOrder from './components/OrderForm.jsx';
 import CartModal from './components/CartModal.jsx';
 import { getProducts } from '../../services/loadProduct.js';
 import Spinner from 'react-bootstrap/Spinner';
+import { getSessionStorage } from '../../utils/index.js';
+import { CUSTOMER_LOGIN_ROUTE } from '../../constants/routes.js';
+import { useNavigate } from 'react-router-dom';
 
 function CustomerProductPage() {
+    const history = useNavigate();
     const [items, setItems] = useState(null);
+
     useEffect(() => {
+        const isAuthToken = getSessionStorage('authToken');
+        if (!isAuthToken) {
+            history(CUSTOMER_LOGIN_ROUTE);
+            return;
+        }
+
         const fetchData = async () => {
             const data = await getProducts();
             setItems(data);
@@ -145,6 +156,7 @@ function CustomerProductPage() {
             />
             <AddOrder
                 isOpen={isOpenAddress}
+                setIsAddressModal={setIsAddressModal}
                 handleClose={handleCloseAddress}
                 openToConfirm={handleOpenConfirm}
                 orderData={listToForm}

@@ -1,7 +1,8 @@
 import { Form, Row, Col, Button } from 'react-bootstrap';
 import { useForm } from 'react-hook-form';
+import axios from 'axios';
 
-export default function EditForm({ data, setShow }) {
+export default function EditForm({ setShow }) {
     const {
         register,
         handleSubmit,
@@ -9,18 +10,20 @@ export default function EditForm({ data, setShow }) {
         formState: { errors }
     } = useForm();
 
-    const onSubmit = (data) => {
+    const onSubmit = async (data) => {
         const transformedData = {
             department_id: data.department_id,
             target_year: data.target_year,
             total_budget: data.total_budget,
-            report_budget: {
+            report_budget: JSON.stringify({
                 planned_budget: data.planned_budget,
                 spent_budget: data.spent_budget
-            }
+            })
         };
-        console.log(JSON.stringify(transformedData));
-        setShow(false);
+        const res = await axios.post('http://localhost:8000/api/store-budgets', transformedData);
+        const datas = await res.data;
+
+        console.log(datas);
     };
 
     return (
@@ -41,10 +44,10 @@ export default function EditForm({ data, setShow }) {
                                     <option disabled selected value={''}>
                                         choose
                                     </option>
-                                    <option>sale</option>
-                                    <option>factory</option>
-                                    <option>warehouse</option>
-                                    <option>logistic</option>
+                                    <option value={2}>sale</option>
+                                    <option value={5}>factory</option>
+                                    <option value={4}>warehouse</option>
+                                    <option value={3}>logistic</option>
                                 </Form.Select>
                             </Form.Group>
                             <Form.Group>

@@ -3,16 +3,17 @@ import { useForm } from 'react-hook-form';
 import { Cities, Townships } from '../../../datas/CitiesAndTownship';
 import axios from 'axios';
 import { useState } from 'react';
+import { customerOrder } from '../../../services/order';
 
-function AddOrder({ isOpen, handleClose, orderData, totalPrice }) {
+function AddOrder({ isOpen, setIsAddressModal, handleClose, orderData, totalPrice }) {
     const [isOpenConfirm, setIsOpenConfirm] = useState(false);
-    const [confirmData, setConFirmData] = useState({});
+    const [newOrderData, setNewOrderData] = useState({});
+
     const handleCloseConfirm = () => {
         setIsOpenConfirm(false);
+        setIsAddressModal(true);
     };
-    const handleOpenConfirm = () => {
-        setIsOpenConfirm(true);
-    };
+
     const {
         register,
         handleSubmit,
@@ -20,15 +21,9 @@ function AddOrder({ isOpen, handleClose, orderData, totalPrice }) {
         formState: { errors }
     } = useForm();
 
-    const handleSubimtConfirm = () => {
-        axios.post('http://localhost:8000/api/createorders', confirmData);
-        setIsOpenConfirm(false);
-        console.log(confirmData);
-    };
-    const onNewOrder = (data) => {
-        setConFirmData(data);
-    };
-    const onSubmit = async (data) => {
+    const onSubmit = (data) => {
+        handleClose();
+        setIsOpenConfirm(true);
         const newData = {
             ...data,
             quantity: 2,
@@ -38,9 +33,14 @@ function AddOrder({ isOpen, handleClose, orderData, totalPrice }) {
             totalPrice: totalPrice,
             customer_id: 1
         };
-
-        onNewOrder(newData);
+        setNewOrderData(newData);
     };
+
+    const handleConfirm = async () => {
+        await customerOrder(newOrderData);
+        setIsOpenConfirm(false);
+    };
+
     const CustomCloseButton = (
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
             Close
@@ -196,16 +196,7 @@ function AddOrder({ isOpen, handleClose, orderData, totalPrice }) {
                             </Row>
                         </div>
                         <div className="d-flex align-items-center justify-content-center">
-                            <Button
-                                type="submit"
-                                onClick={() => {
-                                    handleClose();
-                                    handleOpenConfirm();
-                                }}
-                            >
-                                {' '}
-                                Submit{' '}
-                            </Button>
+                            <Button type="submit"> Submit </Button>
                         </div>
                     </Form>
                 </div>
@@ -221,7 +212,7 @@ function AddOrder({ isOpen, handleClose, orderData, totalPrice }) {
                     <Button variant="secondary" onClick={handleCloseConfirm}>
                         Cancel
                     </Button>
-                    <Button variant="primary" type="submit" onClick={handleSubimtConfirm}>
+                    <Button variant="primary" onClick={handleConfirm}>
                         Confirm
                     </Button>
                 </Modal.Footer>

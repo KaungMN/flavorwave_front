@@ -1,7 +1,7 @@
-import Edit from '../EditStaff';
-import Delete from '../Delete';
+// import Edit from '../EditStaff';
+// import Delete from '../Delete';
 import Table from 'react-bootstrap/Table';
-import { Button } from 'react-bootstrap';
+import TableRow from './TableRow';
 
 const heading = ['Name', 'Email', 'Phone', 'Role', 'Department', 'salary', 'Entry Date'];
 
@@ -20,22 +20,7 @@ export default function TableSingleRow({ order, handleDelete }) {
             </thead>
             <tbody>
                 {order.map((item, id) => (
-                    <tr key={id}>
-                        <td>{id + 1}</td>
-                        <td key={item.orderItem}>{item.orderItem}</td>
-                        <td key={item.orderQuantity}>{item.orderQuantity}</td>
-                        <td key={item.salesPermit}>{item.salesPermit}</td>
-                        <td key={item.sales}>{item.sales}</td>
-                        <td key={item.Permit}>{item.Permit}</td>
-                        <td></td>
-                        <td></td>
-                        {staffId >= 2 ? (
-                            <td>
-                                <Edit initialData={item} />
-                                <Delete handleDelete={handleDelete} id={item.orderItem} />
-                            </td>
-                        ) : null}
-                    </tr>
+                    <TableRow item={item} key={id} id={id} />
                 ))}
             </tbody>
         </Table>

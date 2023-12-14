@@ -7,6 +7,7 @@ import {
     STAFF_ROUTE,
     BUDGET_ROUTE,
     LOGISTIC_ROUTE,
+    LOGISTIC_TRUCK_ROUTE,
     DELIVERY_ROUTE,
     CUSTOMER_ROUTE,
     CUSTOMER_LOGIN_ROUTE,
@@ -27,7 +28,14 @@ export const menuList = [
             { route: BUDGET_ROUTE, label: 'Budget' }
         ]
     },
-    { route: LOGISTIC_ROUTE, label: 'Logistic', subMenu: [{ route: DELIVERY_ROUTE, label: 'Delivery' }] },
+    {
+        route: LOGISTIC_ROUTE,
+        label: 'Logistic',
+        subMenu: [
+            { route: DELIVERY_ROUTE, label: 'Delivery' },
+            { route: LOGISTIC_TRUCK_ROUTE, label: 'Truck' }
+        ]
+    },
     {
         route: CUSTOMER_ROUTE,
         label: 'Customer',

@@ -26,15 +26,20 @@ function CartModal({ isOpen, cartList, handleClose, increment, decrement, totalP
                                     <Button
                                         className="round-button"
                                         variant="primary"
-                                        onClick={() => increment && increment(item.id)}
+                                        onClick={() => decrement && decrement(item.id)}
                                     >
-                                        <div className="d-flex justify-content-center align-items-center">+</div>
+                                        -
                                     </Button>
+
                                     <p className="product-counter">
                                         {cartList.find((cartListItem) => cartListItem.id === item.id)?.quantity || 0}{' '}
                                     </p>
-                                    <Button variant="primary" onClick={() => decrement && decrement(item.id)}>
-                                        -
+                                    <Button
+                                        className="round-button"
+                                        variant="primary"
+                                        onClick={() => increment && increment(item.id)}
+                                    >
+                                        <div className="d-flex justify-content-center align-items-center">+</div>
                                     </Button>
                                 </td>
                                 <td>${(item.price * item.quantity).toFixed(2)}</td>

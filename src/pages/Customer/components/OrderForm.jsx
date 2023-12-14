@@ -52,10 +52,7 @@ function AddOrder({ isOpen, handleClose, orderData, totalPrice }) {
                 <ModalHeader closeButton={CustomCloseButton}>
                     <Modal.Title>Cart List</Modal.Title>
                 </ModalHeader>
-                <div
-                    className="contact-form-section"
-                    style={{ textAlign: 'left', margin: '50px auto', maxWidth: '600px' }}
-                >
+                <div className="contact-form-section p-4">
                     <Form onSubmit={handleSubmit(onSubmit)}>
                         <div className="mb-4">
                             <Row>
@@ -76,7 +73,7 @@ function AddOrder({ isOpen, handleClose, orderData, totalPrice }) {
                                 </Row>
                             ))}
                             <Row className="mt-2">
-                                <Col className="col-sm-8">Total Price</Col>
+                                <Col className="col-sm\-8">Total Price</Col>
                                 <Col className="col-sm-4">
                                     {totalPrice && totalPrice.toFixed(2)}
                                     <span>$</span>
@@ -105,18 +102,17 @@ function AddOrder({ isOpen, handleClose, orderData, totalPrice }) {
                             <Row>
                                 <Col>
                                     <Form.Select
-                                        id="customerType"
-                                        name="customerType"
+                                        id="orderType"
+                                        name="orderType"
                                         size="md"
                                         required
-                                        {...register('customerType', { required: true })}
+                                        {...register('orderType', { required: true })}
                                     >
                                         <option disabled selected value={''}>
-                                            Customer Type
+                                            Order Type
                                         </option>
-                                        <option>Keyholder</option>
-                                        <option>Distributor</option>
-                                        <option>Wholesale</option>
+                                        <option>Delivery</option>
+                                        <option>Pickup</option>
                                     </Form.Select>
                                 </Col>
                                 <Col>
@@ -191,6 +187,7 @@ function AddOrder({ isOpen, handleClose, orderData, totalPrice }) {
                                         name="remark"
                                         size="md"
                                         type="text"
+                                        as="textarea"
                                         placeholder="Remark"
                                         required
                                         {...register('remark', { required: true })}
@@ -198,16 +195,18 @@ function AddOrder({ isOpen, handleClose, orderData, totalPrice }) {
                                 </Col>
                             </Row>
                         </div>
-                        <Button
-                            type="submit"
-                            onClick={() => {
-                                handleClose();
-                                handleOpenConfirm();
-                            }}
-                        >
-                            {' '}
-                            Submit{' '}
-                        </Button>
+                        <div className="d-flex align-items-center justify-content-center">
+                            <Button
+                                type="submit"
+                                onClick={() => {
+                                    handleClose();
+                                    handleOpenConfirm();
+                                }}
+                            >
+                                {' '}
+                                Submit{' '}
+                            </Button>
+                        </div>
                     </Form>
                 </div>
             </Modal>

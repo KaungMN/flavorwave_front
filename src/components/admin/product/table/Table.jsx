@@ -7,7 +7,7 @@ import AddStaff from '../Add';
 const heading = ['Product Name', 'Raw Material', 'Price', 'Description'];
 
 function TableComponent({ order }) {
-    let [filterData, setFilterData] = useState(order);
+    let [filterData, setFilterData] = useState();
     console.log(order);
     const handleDelete = async (id) => {
         try {

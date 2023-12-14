@@ -3,12 +3,12 @@ import TableComponent from '../../components/logistic/truck-table/Table';
 import Spinner from 'react-bootstrap/Spinner';
 
 
-const dummyData = null;
-// [
-//     { id: 1, truck_number: "fda", truck_name: "TOYOTA", capacity: 500, staff_id: 3 },
-//     { id: 1, truck_number: "erw", truck_name: "TOYOTA", capacity: 500, staff_id: 3 },
-//     { id: 1, truck_number: "ehrq", truck_name: "TOYOTA", capacity: 500, staff_id: 3 }
-// ];
+
+const dummyData = [
+    { id: 1, truck_number: "fda", truck_name: "TOYOTA", capacity: 500, staff_id: 3 },
+    { id: 1, truck_number: "erw", truck_name: "TOYOTA", capacity: 500, staff_id: 3 },
+    { id: 1, truck_number: "ehrq", truck_name: "TOYOTA", capacity: 500, staff_id: 3 }
+];
 
 function Truck() {
     // useEffect(() => {

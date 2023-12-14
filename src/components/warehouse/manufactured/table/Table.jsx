@@ -3,7 +3,7 @@ import Paginator from './Pagination';
 import { useState } from 'react';
 import { Form, Row, Col, Container } from 'react-bootstrap';
 import AddProduct from "../Add";
-const heading = ['Product', 'Raw Material', 'Price', 'Total Quantity', 'Release Date'];
+const heading = ['Product', 'Raw Material', 'Price', 'Total Quantity', 'Release Date' , 'Expire Date' , 'WareHouse', 'Location'];
 
 function TableComponent( { data } ) {
     let [filterData, setFilterData] = useState(data);
@@ -23,7 +23,7 @@ function TableComponent( { data } ) {
     function filterQuantity(name) {
         console.log(name);
         let result = data.filter((item) => {
-            return item.orderItem.toLowerCase().includes(name.toLowerCase());
+            return item.product_id.toString().includes(name.toString().toLowerCase());
         });
         setFilterData(result.length > 0 ? result : data);
     }
@@ -32,7 +32,7 @@ function TableComponent( { data } ) {
             <div className="mb-4">
                 <Row>
                     <Col sm={5}>
-                        <Form.Label>Search Product Name: </Form.Label>
+                        <Form.Label>Search Product: </Form.Label>
                         <Form.Control
                             size="md"
                             type="text"

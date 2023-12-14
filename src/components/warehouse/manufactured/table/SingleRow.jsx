@@ -19,12 +19,14 @@ export default function TableSingleRow({ heading, order, handleDelete }) {
                 {order.map((item, id) => (
                     <tr key={id}>
                         <td>{id + 1}</td>
-                        <td key={item.name}>{item.name}</td>
-                        <td key={item.orderItem}>{item.orderItem}</td>
-
-                        <td key={item.salesPermit}>{item.salesPermit}</td>
-                        <td key={item.price}>{item.price}</td>
-                        <td key={item.Permit}>{item.Permit}</td>
+                        <td>{item.product_id}</td>
+                        <td>{item.raw_material_id}</td>
+                        <td>{item.product_price}</td>
+                        <td>{item.total_quantity}</td>
+                        <td>{item.release_date}</td>
+                        <td>{item.expire_date}</td>
+                        <td>{item.warehouse_id}</td>
+                        <td>{item.location}</td>
                         {staffId >= 2 ? (
                             <td>
                                 <Edit initialData={item} />

@@ -3,7 +3,6 @@ import { Row, Col, Card, Button } from 'react-bootstrap';
 import { items } from '../../components/customers/Products.jsx';
 import AddOrder from './components/OrderForm.jsx';
 import CartModal from './components/CartModal.jsx';
-import ConfirmationModal from './components/ConfirmationModal.jsx';
 import { getProducts } from '../../services/loadProduct.js';
 
 function CustomerProductPage() {
@@ -60,19 +59,17 @@ function CustomerProductPage() {
     const handleCloseAddress = () => {
         setIsAddressModal(false);
     };
-    const handleCloseConfirm = () => {
-        setIsOpenConfirm(false);
-    };
+
     const handleOpenAddress = () => {
         setIsAddressModal(true);
     };
     const handleOpenConfirm = () => {
         setIsOpenConfirm(true);
     };
-    // const handleCancel = () => {
-    //     setCartList([]);
-    // };
 
+    const handleNewOrderData = (newData) => {
+        console.log('Received new order data in parent:', newData);
+    };
     useEffect(() => {
         calculateTotalPrice(cartList);
     }, [cartList]);
@@ -104,7 +101,6 @@ function CustomerProductPage() {
         subTotalPrice
     }));
 
-    const onNewOrder = () => console.log(newData);
     return (
         <div>
             <h1>Products</h1>
@@ -157,13 +153,8 @@ function CustomerProductPage() {
                 openToConfirm={handleOpenConfirm}
                 orderData={listToForm}
                 totalPrice={totalPrice}
-                onNewOrder={onNewOrder}
-            />
-            <ConfirmationModal
-                isOpen={isOpenConfirm}
-                handleClose={handleCloseConfirm}
-                orderData={listToForm}
-                totalPrice={totalPrice}
+                listToForm={listToForm}
+                onNewOrder={handleNewOrderData}
             />
         </div>
     );

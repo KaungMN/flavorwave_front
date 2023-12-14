@@ -3,7 +3,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
 import { login } from '../../services/login';
 import { useState } from 'react';
-import { CUSTOMER_ORDER_ROUTE } from '../../constants/routes';
+import { CUSTOMER_ORDER_ROUTE, CUSTOMER_SIGN_UP_ROUTE } from '../../constants/routes';
 
 function CustomerLogin() {
     const [showError, setShowError] = useState();
@@ -18,10 +18,11 @@ function CustomerLogin() {
 
     const onSubmit = async (data) => {
         try {
+            console.log(data);
             await login(data);
             setLoginSuccessful(true);
             if (isLoginSuccessful) {
-                history.pushState(CUSTOMER_ORDER_ROUTE);
+                history(CUSTOMER_ORDER_ROUTE);
             }
         } catch (error) {
             console.error('Login failed:', error);
@@ -61,7 +62,7 @@ function CustomerLogin() {
                 <Button type="submit"> Submit </Button>
             </Form>
             <p className="mt-3 text-center">
-                Don't have an account? <Link to="/customer/signup">Signup</Link>
+                Don't have an account? <Link to={CUSTOMER_SIGN_UP_ROUTE}>Signup</Link>
             </p>
             {showError && (
                 <Modal show={showError} onHide={() => setShowError(false)}>

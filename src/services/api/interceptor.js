@@ -2,7 +2,7 @@ import axios from 'axios';
 import { getSessionStorage } from '../../utils';
 
 // TODO: need to change
-axios.defaults.baseURL = 'https://dd8b-2a09-bac5-492b-18c8-00-278-84.ngrok-free.app/api/';
+axios.defaults.baseURL = 'http://localhost:8000/api/';
 
 // Add a request interceptor
 axios.interceptors.request.use(

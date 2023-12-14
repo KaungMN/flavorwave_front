@@ -10,13 +10,13 @@ import {
     LOGISTIC_ROUTE,
     LOGISTIC_TRUCK_ROUTE,
     DELIVERY_ROUTE,
-    CUSTOMER_ROUTE,
     CUSTOMER_LOGIN_ROUTE,
     CUSTOMER_SIGN_UP_ROUTE,
     CUSTOMER_ORDER_ROUTE,
     CUSTOMER_HISTORY_ROUTE,
     WAREHOUSE_ROUTE,
-    SALES_ROUTE
+    SALES_ROUTE,
+    CUSTOMER_ABOUTUS_ROUTE
 } from './routes';
 
 export const menuList = [
@@ -39,12 +39,13 @@ export const menuList = [
         ]
     },
     {
-        route: CUSTOMER_ROUTE,
+        route: DEFAULT_ROUTE,
         label: 'Customer',
         subMenu: [
             { route: CUSTOMER_LOGIN_ROUTE, label: 'Login' },
             { route: CUSTOMER_SIGN_UP_ROUTE, label: 'SignUp' },
-            { route: CUSTOMER_ORDER_ROUTE, label: 'Order' }
+            { route: CUSTOMER_ORDER_ROUTE, label: 'Order' },
+            { route: CUSTOMER_ABOUTUS_ROUTE, label: 'About Us' }
         ]
     },
     { route: RAW_ROUTE, label: 'Raw' },

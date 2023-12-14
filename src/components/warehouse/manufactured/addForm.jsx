@@ -116,7 +116,7 @@ export default function AddForm({ setShow }) {
                         </Col>
                     </Row>
                     <div className="mx-auto my-3 d-flex justify-content-center">
-                        <Button className="me-2 mx-3" variant="outline-success">
+                        <Button className="me-2 mx-3" variant="outline-success" onClick={() => setShow(false)}> 
                             Yes
                         </Button>
                         <Button className="me-2" variant="outline-secondary" onClick={() => setShow(false)}>

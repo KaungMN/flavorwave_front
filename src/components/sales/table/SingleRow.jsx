@@ -1,6 +1,10 @@
-import OrderConfirmModal from '../ConfirmModal';
-import OrderRejectModal from '../RejectModal';
 import Table from 'react-bootstrap/Table';
+import TableRow from './TableRow';
+
+const list = {
+    listStyle: 'none',
+    paddingLeft: '0'
+};
 
 export default function TableSingleRow({ header, order }) {
     let staffId = JSON.parse(sessionStorage.getItem('staffId'));
@@ -17,24 +21,7 @@ export default function TableSingleRow({ header, order }) {
             </thead>
             <tbody>
                 {order.map((item, id) => (
-                    <tr key={id}>
-                        <td>{id + 1}</td>
-                        <td key={item.id}>{item.id}</td>
-                        <td key={item.customer_id}>{item.customer_id}</td>
-                        <td key={item.address}>{item.city + item.township + item.address}</td>
-                        <td></td>
-                        <td>{item.quantity}</td>
-                        <td></td>
-                        <td></td>
-                        <td>{item.sub_total}</td>
-                        <td>{item.remark}</td>
-                        {staffId >= 2 ? (
-                            <td>
-                                <OrderConfirmModal preorderId={item.id} />
-                                <OrderRejectModal />
-                            </td>
-                        ) : null}
-                    </tr>
+                    <TableRow key={id} item={item} id={id} />
                 ))}
             </tbody>
         </Table>

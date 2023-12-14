@@ -20,7 +20,7 @@ export default function EditProduct({ initialData }) {
                 <Modal.Header closeButton className="border-0"></Modal.Header>
                 <Modal.Body className="pt-0 px-5">
                     <h5 style={{ fontWeight: 600 }} className="mb-3 text-center">
-                        Edit Product
+                        Edit Warehouse
                     </h5>
                     <EditForm data={data} setShow={setShow} />
                 </Modal.Body>

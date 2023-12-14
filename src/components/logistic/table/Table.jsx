@@ -2,43 +2,11 @@ import Paginator from './Pagination';
 import { useState, useEffect } from 'react';
 import { Form, Row, Col, Button, Container } from 'react-bootstrap';
 
-const heading = [
-    'Order Id',
-    'Customer Name',
-    'Address',
-    'Order Item',
-    'Qty',
-    'each price',
-    'Average/item',
-    'Total amount',
-    'Remark'
-];
-// const order = [
-//   { orderItem: "Product A", orderQuantity: 5, salesPermit: "approved" },
-//   { orderItem: "Product B", orderQuantity: 10, salesPermit: "approved" },
-//   { orderItem: "Product C", orderQuantity: 8, salesPermit: "approved" },
-//   { orderItem: "Product D", orderQuantity: 15, salesPermit: "approved" },
-//   { orderItem: "Product E", orderQuantity: 3, salesPermit: "approved" },
-//   { orderItem: "Product F", orderQuantity: 7, salesPermit: "approved" },
-//   { orderItem: "Product G", orderQuantity: 12, salesPermit: "approved" },
-//   { orderItem: "Product H", orderQuantity: 4, salesPermit: "approved" },
-//   { orderItem: "Product I", orderQuantity: 6, salesPermit: "approved" },
-//   { orderItem: "Product J", orderQuantity: 9, salesPermit: "approved" },
-//   { orderItem: "Product K", orderQuantity: 11, salesPermit: "approved" },
-//   { orderItem: "Product L", orderQuantity: 13, salesPermit: "approved" },
-//   { orderItem: "Product M", orderQuantity: 2, salesPermit: "approved" },
-//   { orderItem: "Product N", orderQuantity: 14, salesPermit: "approved" },
-//   { orderItem: "Product O", orderQuantity: 20, salesPermit: "approved" },
-//   { orderItem: "Product P", orderQuantity: 18, salesPermit: "approved" },
-//   { orderItem: "Product Q", orderQuantity: 16, salesPermit: "approved" },
-//   { orderItem: "Product R", orderQuantity: 1, salesPermit: "approved" },
-//   { orderItem: "Product S", orderQuantity: 17, salesPermit: "approved" },
-//   { orderItem: "Product T", orderQuantity: 19, salesPermit: "approved" },
-// ];
+const heading = ['Order Id', 'Customer Name', 'Address', 'Order Item', 'Qty', 'Total Qty', 'Remark'];
 
 function TableComponent() {
     let [data, setData] = useState();
-    let [filterOrders, setFilterOrders] = useState(data);
+    let [filterData, setFilterData] = useState(data);
 
     useEffect(() => {
         const fetchInfo = async () => {
@@ -51,9 +19,19 @@ function TableComponent() {
 
     function filterQuantity(quantity) {
         let result = data.filter((item) => {
-            return item.orderQuantity === parseInt(quantity);
+            return parseInt(item.quantity) === parseInt(quantity);
         });
-        setFilterOrders(result.length > 0 ? result : order);
+        console.log(result);
+        setFilterData(result.length > 0 ? result : data);
+    }
+
+    function filterAddress(address) {
+        let result = data.filter((item) => {
+            let totalAddress = item.city + item.township + item.address;
+            return totalAddress.toLowerCase().includes(address);
+        });
+        console.log(result);
+        setFilterData(result.length > 0 ? result : data);
     }
 
     return (
@@ -70,9 +48,19 @@ function TableComponent() {
                             }}
                         />
                     </Col>
+                    <Col xs={4}>
+                        <Form.Label>Address: </Form.Label>
+                        <Form.Control
+                            size="md"
+                            type="text"
+                            onChange={(e) => {
+                                filterAddress(e.target.value);
+                            }}
+                        />
+                    </Col>
                 </Row>
             </div>
-            {data ? <Paginator header={heading} data={data} /> : null}
+            {data ? <Paginator header={heading} data={filterData ? filterData : data} /> : null}
         </Container>
     );
 }

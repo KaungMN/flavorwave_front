@@ -1,26 +1,26 @@
 import React, { useState, useEffect } from 'react';
-import { Row, Col, Card, Button } from 'react-bootstrap';
+import { Row, Col, Card, Button, Container } from 'react-bootstrap';
 // import { items } from '../../components/customers/Products.jsx';
 import AddOrder from './components/OrderForm.jsx';
 import CartModal from './components/CartModal.jsx';
-import ConfirmationModal from './components/ConfirmationModal.jsx';
 import { getProducts } from '../../services/loadProduct.js';
+import Spinner from 'react-bootstrap/Spinner';
 
 function CustomerProductPage() {
-    const [items , setItems] = useState();
-    useEffect(()=>{
-        const fetchData = async () => {
-            try {
-                const data = await getProducts();
-                console.log('Loaded data:', data);
-                setItems(data)
-            } catch (error) {
-                console.error('Error fetching products:', error);
-            }
-        };
+    const [items, setItems] = useState(null);
+    // useEffect(()=>{
+    //     const fetchData = async () => {
+    //         try {
+    //             const data = await getProducts();
+    //             console.log('Loaded data:', data);
+    //             setItems(data)
+    //         } catch (error) {
+    //             console.error('Error fetching products:', error);
+    //         }
+    //     };
 
-        fetchData();
-    },[])
+    //     fetchData();
+    // },[])
 
     const [cartList, setCartList] = useState([]);
     const [showCart, setShowCart] = useState(false);
@@ -60,19 +60,17 @@ function CustomerProductPage() {
     const handleCloseAddress = () => {
         setIsAddressModal(false);
     };
-    const handleCloseConfirm = () => {
-        setIsOpenConfirm(false);
-    };
+
     const handleOpenAddress = () => {
         setIsAddressModal(true);
     };
     const handleOpenConfirm = () => {
         setIsOpenConfirm(true);
     };
-    // const handleCancel = () => {
-    //     setCartList([]);
-    // };
 
+    const handleNewOrderData = (newData) => {
+        console.log('Received new order data in parent:', newData);
+    };
     useEffect(() => {
         calculateTotalPrice(cartList);
     }, [cartList]);
@@ -108,35 +106,36 @@ function CustomerProductPage() {
         <div>
             <h1>Products</h1>
             <Row>
-                {items && items.map((item) => (
-                    <Col key={item.id} xs={12} md={6} lg={4} className="p-3">
-                        <Card className="h-100">
-                            <Card.Img
-                                style={{
-                                    objectFit: 'cover',
-                                    height: '30vh',
-                                    overflow: 'hidden'
-                                }}
-                                src={"http://127.0.0.1:8000" +item.photo}
-                                alt="product image"
-                            />
-                            <Card.Body>
-                                <Card.Title>{item.name} </Card.Title>
-                                <Card.Text>
-                                    {item.description}
-                                    <p>
-                                        <strong>Price:</strong> ${item.price.toFixed(2)}
-                                    </p>
-                                </Card.Text>
-                            </Card.Body>
-                            <Card.Footer className="card-footer">
-                                <Button variant="primary" onClick={() => addToCart(item)}>
-                                    Add to Cart
-                                </Button>
-                            </Card.Footer>
-                        </Card>
-                    </Col>
-                ))}
+                {items &&
+                    items.map((item) => (
+                        <Col key={item.id} xs={12} md={6} lg={4} className="p-3">
+                            <Card className="h-100">
+                                <Card.Img
+                                    style={{
+                                        objectFit: 'cover',
+                                        height: '30vh',
+                                        overflow: 'hidden'
+                                    }}
+                                    src={'http://127.0.0.1:8000' + item.photo}
+                                    alt="product image"
+                                />
+                                <Card.Body>
+                                    <Card.Title>{item.name} </Card.Title>
+                                    <Card.Text>
+                                        {item.description}
+                                        <p>
+                                            <strong>Price:</strong> ${item.price.toFixed(2)}
+                                        </p>
+                                    </Card.Text>
+                                </Card.Body>
+                                <Card.Footer className="card-footer">
+                                    <Button variant="primary" onClick={() => addToCart(item)}>
+                                        Add to Cart
+                                    </Button>
+                                </Card.Footer>
+                            </Card>
+                        </Col>
+                    ))}
             </Row>
 
             <CartModal
@@ -155,12 +154,8 @@ function CustomerProductPage() {
                 openToConfirm={handleOpenConfirm}
                 orderData={listToForm}
                 totalPrice={totalPrice}
-            />
-            <ConfirmationModal
-                isOpen={isOpenConfirm}
-                handleClose={handleCloseConfirm}
-                orderData={listToForm}
-                totalPrice={totalPrice}
+                listToForm={listToForm}
+                onNewOrder={handleNewOrderData}
             />
         </div>
     );

@@ -1,8 +1,8 @@
 import { axios } from './api';
 
-const logout = async (data) => {
+const logout = async () => {
     try {
-        const res = await axios.post('/api/client-logout', data);
+        const res = await axios.post('/api/client-logout');
         return res;
     } catch (error) {
         // Handle error or log it

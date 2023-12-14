@@ -8,7 +8,6 @@ export default function AddTruckModal({ initialData }) {
     const [data, setData] = useState(initialData);
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
-    console.log(initialData);
 
     return (
         <>

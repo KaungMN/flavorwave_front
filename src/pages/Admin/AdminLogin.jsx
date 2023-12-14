@@ -1,7 +1,7 @@
 import { Button, Col, Form, Modal, ModalBody, ModalHeader, Row } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
-import { Login } from '../../services/adminLogin';
+import { login } from '../../services/adminLogin';
 import { useState } from 'react';
 
 function AdminLogin() {
@@ -14,14 +14,7 @@ function AdminLogin() {
     } = useForm();
 
     const onSubmit = async (data) => {
-        try {
-            // Assuming Login is an asynchronous function
-            await Login(data);
-            // If the login was successful, you might want to redirect the user or perform other actions
-        } catch (error) {
-            console.error('Login failed:', error);
-            setShowError(true);
-        }
+        await login(data);
     };
     console.log(watch('example'));
     return (

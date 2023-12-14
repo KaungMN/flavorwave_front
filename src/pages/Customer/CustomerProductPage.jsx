@@ -1,13 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import { Row, Col, Card, Button, Container } from 'react-bootstrap';
-// import { items } from '../../components/customers/Products.jsx';
+import { items } from '../../components/customers/Products.jsx';
 import AddOrder from './components/OrderForm.jsx';
 import CartModal from './components/CartModal.jsx';
 import { getProducts } from '../../services/loadProduct.js';
 import Spinner from 'react-bootstrap/Spinner';
 
 function CustomerProductPage() {
-    const [items, setItems] = useState(null);
+    // const [items, setItems] = useState(null);
     // useEffect(()=>{
     //     const fetchData = async () => {
     //         try {
@@ -116,7 +116,7 @@ function CustomerProductPage() {
                                         height: '30vh',
                                         overflow: 'hidden'
                                     }}
-                                    src={'http://127.0.0.1:8000' + item.photo}
+                                    src={item.image_url}
                                     alt="product image"
                                 />
                                 <Card.Body>

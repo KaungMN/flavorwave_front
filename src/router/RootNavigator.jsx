@@ -25,6 +25,7 @@ import {
     STAFF_ROUTE,
     BUDGET_ROUTE,
     LOGISTIC_ROUTE,
+    LOGISTIC_TRUCK_ROUTE,
     DELIVERY_ROUTE,
     CUSTOMER_ROUTE,
     CUSTOMER_LOGIN_ROUTE,
@@ -34,6 +35,7 @@ import {
     WAREHOUSE_ROUTE,
     SALES_ROUTE
 } from '../constants/routes.js';
+import Truck from '../pages/Logistic/Truck.jsx';
 
 function RootNavigator() {
     return (
@@ -47,6 +49,7 @@ function RootNavigator() {
             <Route path={STAFF_ROUTE} element={<Staff />} />
             <Route path={BUDGET_ROUTE} element={<Budget />} />
             <Route path={LOGISTIC_ROUTE} element={<Logistic />} />
+            <Route path={LOGISTIC_TRUCK_ROUTE} element={<Truck />} />
             <Route path={DELIVERY_ROUTE} element={<Delivery />} />
             <Route path={CUSTOMER_ROUTE} element={<Customer />} />
             <Route path={CUSTOMER_LOGIN_ROUTE} element={<CustomerLogin />} />

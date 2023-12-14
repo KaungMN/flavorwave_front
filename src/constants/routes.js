@@ -6,6 +6,7 @@ export const PRODUCT_ROUTE = '/product';
 export const STAFF_ROUTE = '/staff';
 export const BUDGET_ROUTE = '/budget';
 export const LOGISTIC_ROUTE = '/logistic';
+export const LOGISTIC_TRUCK_ROUTE = '/logistic/truck';
 export const DELIVERY_ROUTE = '/delivery';
 export const CUSTOMER_ROUTE = '/customer';
 export const CUSTOMER_LOGIN_ROUTE = '/customer/login';

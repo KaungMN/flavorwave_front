@@ -1,11 +1,14 @@
 import { Button, Col, Form, Modal, ModalHeader, Row } from 'react-bootstrap';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
 import { login } from '../../services/login';
 import { useState } from 'react';
+import { CUSTOMER_ORDER_ROUTE } from '../../constants/routes';
 
 function CustomerLogin() {
     const [showError, setShowError] = useState();
+    const [isLoginSuccessful, setLoginSuccessful] = useState();
+    const history = useNavigate();
     const {
         register,
         handleSubmit,
@@ -15,9 +18,11 @@ function CustomerLogin() {
 
     const onSubmit = async (data) => {
         try {
-            // Assuming Login is an asynchronous function
             await login(data);
-            // If the login was successful, you might want to redirect the user or perform other actions
+            setLoginSuccessful(true);
+            if (isLoginSuccessful) {
+                history.pushState(CUSTOMER_ORDER_ROUTE);
+            }
         } catch (error) {
             console.error('Login failed:', error);
             setShowError(true);

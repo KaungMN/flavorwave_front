@@ -5,7 +5,7 @@ import { Button } from 'react-bootstrap';
 
 export default function TableSingleRow({ heading, order, handleDelete }) {
     let staffId = JSON.parse(sessionStorage.getItem('staffId'));
-
+    console.log(order)
     return (
         <Table striped bordered hover>
             <thead>
@@ -18,11 +18,12 @@ export default function TableSingleRow({ heading, order, handleDelete }) {
             </thead>
             <tbody>
                 {order.map((item, id) => (
+                    
                     <tr key={id}>
                         <td>{id + 1}</td>
-                        <td key={item.orderItem}>{item.orderItem}</td>
-                        <td key={item.orderQuantity}>{item.orderQuantity}</td>
-                        <td key={item.salesPermit}>{item.salesPermit}</td>
+                        <td>{item.name}</td>
+                        <td>{item.address}</td>
+                        <td>{item.phone}</td>
                         {staffId >= 2 ? (
                             <td>
                                 <Edit initialData={item} />

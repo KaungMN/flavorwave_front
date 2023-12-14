@@ -18,87 +18,42 @@ export default function EditForm({ data, setShow }) {
                     <Row>
                         <Col>
                             <Form.Group className="mb-3">
-                                <Form.Label>Product Name</Form.Label>
+                                <Form.Label>Warehouse Name</Form.Label>
                                 <Form.Control
-                                    disabled
-                                    readOnly
-                                    id="product_id"
-                                    name="product_id"
-                                    defaultValue={data.truck_name}
+                                    id="name"
+                                    name="name"
+                                    defaultValue={data.name}
                                     size="md"
                                     type="text"
                                     required
-                                    {...register('product_id', { required: true })}
+                                    {...register('name', { required: true })}
                                 />
                             </Form.Group>
                             <Form.Group className="mb-3">
-                                <Form.Label>Raw Materials</Form.Label>
+                                <Form.Label>Phone</Form.Label>
                                 <Form.Control
-                                    disabled
-                                    readOnly
-                                    as="textarea"
-                                    id="raw_material_id"
-                                    name="raw_material_id"
-                                    defaultValue={data.orderQuantity}
+                                    id="phone_no"
+                                    name="phone_no"
+                                    defaultValue={data.phone}
                                     size="md"
                                     type="number"
                                     rows={1}
                                     required
-                                    {...register('raw_material_id', { required: true })}
-                                />
-                            </Form.Group>
-                            <Form.Group className="mb-3">
-                                <Form.Label>Price</Form.Label>
-                                <Form.Control
-                                    id="product_price"
-                                    name="product_price"
-                                    defaultValue={data.salesPermit}
-                                    size="md"
-                                    type="number"
-                                    required
-                                    {...register('product_price', { required: true })}
+                                    {...register('phone', { required: true })}
                                 />
                             </Form.Group>
                         </Col>
                         <Col>
-                            <Form.Group className="mb-3">
-                                <Form.Label>Total Quantity</Form.Label>
+                        <Form.Group className="mb-3">
+                                <Form.Label>Address</Form.Label>
                                 <Form.Control
-                                    disabled
-                                    readOnly
-                                    id="total_quantity"
-                                    name="total_quantity"
-                                    defaultValue={data.sales}
-                                    size="md"
-                                    type="number"
-                                    required
-                                    {...register('total_quantity', { required: true })}
-                                />
-                            </Form.Group>
-                            <Form.Group className="mb-3">
-                                <Form.Label>Release Date</Form.Label>
-                                <Form.Control
-                                    disabled
-                                    readOnly
-                                    id="release_date"
-                                    name="release_date"
-                                    defaultValue={data.Permit}
+                                    id="address"
+                                    name="address"
+                                    defaultValue={data.address}
                                     size="md"
                                     type="text"
                                     required
-                                    {...register('release_date', { required: true })}
-                                />
-                            </Form.Group>
-                            <Form.Group className="mb-3">
-                                <Form.Label>Location</Form.Label>
-                                <Form.Control
-                                    id="location"
-                                    name="location"
-                                    defaultValue={data.Permit}
-                                    size="md"
-                                    type="text"
-                                    required
-                                    {...register('location', { required: true })}
+                                    {...register('address', { required: true })}
                                 />
                             </Form.Group>
                         </Col>

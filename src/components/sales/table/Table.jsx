@@ -1,6 +1,7 @@
 import Paginator from './Pagination';
 import { useState, useEffect } from 'react';
 import { Form, Row, Col, Button, Container } from 'react-bootstrap';
+import Spinner from 'react-bootstrap/Spinner';
 
 const heading = [
     'Order Id',
@@ -45,43 +46,52 @@ function TableComponent() {
 
     return (
         <Container>
-            <div className="mb-4">
-                <Row>
-                    <Col xs={4}>
-                        <Form.Label>Order Id: </Form.Label>
-                        <Form.Control
-                            size="md"
-                            type="email"
-                            onChange={(e) => {
-                                filterId(e.target.value);
-                            }}
-                        />
-                    </Col>
-                    <Col xs={4}>
-                        <Form.Label>Address: </Form.Label>
-                        <Form.Select
-                            id="product"
-                            name="product"
-                            size="md"
-                            onChange={(e) => {
-                                filterStatus(e.target.value);
-                            }}
-                        >
-                            <option disabled selected value={''}>
-                                Choose Product
-                            </option>
-                            {['pending', 'approved'].map((t) => (
-                                <option key={t} value={t}>
-                                    {t}
+            {data ? <>
+                <div className="mb-4">
+                    <Row>
+                        <Col xs={4}>
+                            <Form.Label>Order Id: </Form.Label>
+                            <Form.Control
+                                size="md"
+                                type="email"
+                                onChange={(e) => {
+                                    filterId(e.target.value);
+                                }}
+                            />
+                        </Col>
+                        <Col xs={4}>
+                            <Form.Label>Address: </Form.Label>
+                            <Form.Select
+                                id="product"
+                                name="product"
+                                size="md"
+                                onChange={(e) => {
+                                    filterStatus(e.target.value);
+                                }}
+                            >
+                                <option disabled selected value={''}>
+                                    Choose Product
                                 </option>
-                            ))}
-                        </Form.Select>
-                    </Col>
-                </Row>
-            </div>
-            {data ? <Paginator header={heading} data={filterData ? filterData : data} /> : null}
+                                {['pending', 'approved'].map((t) => (
+                                    <option key={t} value={t}>
+                                        {t}
+                                    </option>
+                                ))}
+                            </Form.Select>
+                        </Col>
+                    </Row>
+                </div>
+                {data ? <Paginator header={heading} data={filterData ? filterData : data} />
+
+                    : null}  </>:
+        <Spinner animation="border" role="status">
+            <span className="visually-hidden">Loading...</span>
+        </Spinner>
+        
+        }
+
         </Container>
-    );
+            );
 }
 
-export default TableComponent;
+            export default TableComponent;

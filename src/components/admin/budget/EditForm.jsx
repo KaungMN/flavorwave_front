@@ -9,7 +9,18 @@ export default function EditForm({ heading, data }) {
         formState: { errors }
     } = useForm();
 
-    const onSubmit = (data) => console.log(data);
+    const onSubmit = (data) => {
+        const transformedData = {
+            department_id: data.department_id,
+            target_year: data.target_year,
+            total_budget: data.total_budget,
+            report_budget: {
+                planned_budget: data.planned_budget,
+                spent_budget: data.spent_budget
+            }
+        }
+        console.log(transformedData)
+    }
 
     return (
         <div className="contact-form-section" style={{ textAlign: 'left', maxWidth: '500px' }}>

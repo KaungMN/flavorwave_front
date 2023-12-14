@@ -1,8 +1,9 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import BarChart from "./BarChart";
 import LineChart from "./LineChart";
 import PieChart from "./PieChart";
 import { UserData } from "./Data";
+import axios from "axios"
 
 function App() {
   const [userData, setUserData] = useState({
@@ -23,6 +24,15 @@ function App() {
       },
     ],
   });
+
+  const getBudgets = async() => {
+    const response = await axios.get('http://localhost:8000/api/getBudgets?year=2023');
+    console.log(response.data)
+  }
+
+  useEffect(()=>{
+    getBudgets()
+  },[])
 
   // IF YOU SEE THIS COMMENT: I HAVE GOOD EYESIGHT
 

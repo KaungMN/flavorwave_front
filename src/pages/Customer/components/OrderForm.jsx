@@ -17,6 +17,10 @@ function AddOrder({ isOpen, handleClose, orderData, totalPrice, openToConfirm })
     // let test = { a: "1", b: "2", c: "3" };
     // let newTest = { ...test, d: "4" };
     // console.log(newTest)
+    console.log(orderData);
+
+    const onSubmit = (data) => {
+        const newData = { ...data, products: orderData, totalPrice: totalPrice,status:"pending",quantity:"1000" };
 
     const onSubmit = async (data) => {
         // console.log(data);

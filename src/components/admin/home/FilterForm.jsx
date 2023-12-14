@@ -1,10 +1,19 @@
 import { Form, Row, Col, Button } from "react-bootstrap";
 import { useForm } from "react-hook-form";
+import axios from "axios"
+import { useEffect, useState } from "react";
+import {sellCounts} from "../../../data/productsSellCount"
 
-const year = ["2021", "2022", "2023", "2024"];
-const product = ["apple", "banana", "orange", "pineapple", "dragon fruit"];
+const year = ["2019", "2020", "2021", "2022","2023"];
+
 
 export default function FilterForm({ heading }) {
+  const [products,setProducts] = useState(null);
+  const[selectedSellCount,setSelectedSellCount] = useState(null);
+  const[totalCount,setTotalCount] = useState(null);
+  const[damageCount,setDamageCount] = useState(null);
+  const [priceChanges,setPriceChanges] = useState(null);
+
   const {
     register,
     handleSubmit,
@@ -12,7 +21,59 @@ export default function FilterForm({ heading }) {
     formState: { errors },
   } = useForm();
 
-  const onSubmit = (data) => console.log(data);
+  const productTotalCount = async(productName,targetYear)=>{
+    const product = products?.find(p=>{
+      return p.name == productName
+    });
+    const res = await axios.post('http://localhost:8000/api/get-total-count',{
+      product_id:product?.id,
+      targetYear
+    });
+    const datas = res.data;
+    setTotalCount(datas)
+  }
+
+  const productDamageCount = async(productId)=>{
+    const res = await axios.post('https://localhost:8000/api/get-damage-return-count',{
+      id:productId
+    });
+    const datas = res.data;
+    setDamageCount(datas)
+  }
+
+  const productPriceChanges = async(productId,year) => {
+    const res = await axios.post('https://localhost:8000/api/get-product-prices-change',{
+      year:year,
+      product_id:productId
+    });
+    const datas = res.data;
+    setPriceChanges(datas)
+  }
+
+  const onSubmit = (data) => {
+
+    sellCounts.filter((p)=>{
+      // if(){
+        console.log(p.product_name)
+      console.log(data)
+      //   setSelectedSellCount(p);
+      // }
+    })
+    console.log(selectedSellCount)
+
+    
+  };
+
+  const getProducts = async() => {
+    const res = await axios.get('http://localhost:8000/api/product');
+    const products = res.data;
+    console.log(products)
+    setProducts(products)
+  }
+
+  useEffect(()=>{
+    getProducts()
+  },[])
 
   return (
     <div
@@ -35,9 +96,9 @@ export default function FilterForm({ heading }) {
                 <option disabled selected value={""}>
                   Choose Product
                 </option>
-                {product.map((t) => (
-                  <option key={t} value={t}>
-                    {t}
+                {products?.map((t) => (
+                  <option key={t.id} value={t.name}>
+                    {t.name}
                   </option>
                 ))}
               </Form.Select>

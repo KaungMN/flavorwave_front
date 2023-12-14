@@ -6,7 +6,7 @@ function Admin() {
   return (
     <Container>
       <h1>Admin</h1>
-      <FilterForm />
+      {/* <FilterForm /> */}
       <ChartTest />
     </Container>
   );

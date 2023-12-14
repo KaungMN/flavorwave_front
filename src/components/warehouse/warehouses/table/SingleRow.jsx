@@ -1,11 +1,9 @@
-import Edit from '../EditStaff';
+import Edit from '../EditProduct';
 import Delete from '../Delete';
 import Table from 'react-bootstrap/Table';
 import { Button } from 'react-bootstrap';
 
-const heading = ['Name', 'Email', 'Phone', 'Role', 'Department', 'salary', 'Entry Date'];
-
-export default function TableSingleRow({ order, handleDelete }) {
+export default function TableSingleRow({ heading, order, handleDelete }) {
     let staffId = JSON.parse(sessionStorage.getItem('staffId'));
 
     return (
@@ -25,10 +23,6 @@ export default function TableSingleRow({ order, handleDelete }) {
                         <td key={item.orderItem}>{item.orderItem}</td>
                         <td key={item.orderQuantity}>{item.orderQuantity}</td>
                         <td key={item.salesPermit}>{item.salesPermit}</td>
-                        <td key={item.sales}>{item.sales}</td>
-                        <td key={item.Permit}>{item.Permit}</td>
-                        <td></td>
-                        <td></td>
                         {staffId >= 2 ? (
                             <td>
                                 <Edit initialData={item} />

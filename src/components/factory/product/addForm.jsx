@@ -1,8 +1,8 @@
 import { Form, Row, Col, Button } from 'react-bootstrap';
 import { useForm } from 'react-hook-form';
-import { useState } from 'react';
+import { useState } from "react";
 
-export default function AddForm({ heading, data, setShow }) {
+export default function AddForm({ setShow }) {
     const [selectedItems, setSelectedItems] = useState([]);
     const {
         register,
@@ -11,7 +11,17 @@ export default function AddForm({ heading, data, setShow }) {
         formState: { errors }
     } = useForm();
 
-    const onSubmit = (data) => console.log(data);
+    const onSubmit = async (data) => {
+        // console.log(data);
+        console.log(orderData);
+        const newData = {
+            ...data,
+        };
+        console.log(newData);
+        const res = await axios.post('http://localhost:8000/api/create-orders', newData);
+        const datas = res.data;
+        // console.log(data);
+    };
 
     const handleCheckboxChange = (event, item) => {
         const selectedIndex = selectedItems.indexOf(item);
@@ -35,6 +45,7 @@ export default function AddForm({ heading, data, setShow }) {
     const isSelected = (item) => selectedItems.indexOf(item) !== -1;
 
     console.log(selectedItems);
+
     return (
         <div className="contact-form-section" style={{ textAlign: 'left', maxWidth: '500px' }}>
             <Form onSubmit={handleSubmit(onSubmit)}>
@@ -44,61 +55,69 @@ export default function AddForm({ heading, data, setShow }) {
                             <Form.Group className="mb-3">
                                 <Form.Label>Product Name</Form.Label>
                                 <Form.Control
-                                    id="name"
-                                    name="name"
-                                    defaultValue={data.orderItem}
+                                    id="product_id"
+                                    name="product_id"
                                     size="md"
                                     type="text"
                                     required
-                                    {...register('name', { required: true })}
+                                    {...register('product_id', { required: true })}
                                 />
                             </Form.Group>
-                            <Form.Label>Raw Material</Form.Label>
-                            {['abcd', 'efgh', 'ijk', 'lmno'].map((item, id) => (
-                                <Form.Check
-                                    key={item}
-                                    value={id}
-                                    label={item}
-                                    checked={isSelected(id)}
-                                    onChange={(event) => {
-                                        handleCheckboxChange(event, id);
-                                    }}
-                                    type="checkbox"
-                                />
-                            ))}
+                            <Form.Group className="mb-3">
+                                <Form.Label>Raw Materials</Form.Label>
+                                {['abcd', 'efgh', 'ijk', 'lmno'].map((item, id) => (
+                                    <Form.Check
+                                        key={item}
+                                        value={id}
+                                        label={item}
+                                        checked={isSelected(id)}
+                                        onChange={(event) => {
+                                            handleCheckboxChange(event, id);
+                                        }}
+                                        type="checkbox"
+                                    />
+                                ))}
+                            </Form.Group>
                         </Col>
                         <Col>
                             <Form.Group className="mb-3">
-                                <Form.Label>Price</Form.Label>
+                                <Form.Label>Total Quantity</Form.Label>
                                 <Form.Control
-                                    id="price"
-                                    name="price"
-                                    defaultValue={data.sales}
+                                    id="total_quantity"
+                                    name="total_quantity"
                                     size="md"
                                     type="number"
                                     required
-                                    {...register('price', { required: true })}
+                                    {...register('total_quantity', { required: true })}
                                 />
                             </Form.Group>
                             <Form.Group className="mb-3">
-                                <Form.Label>Description</Form.Label>
+                                <Form.Label>Release Date</Form.Label>
                                 <Form.Control
-                                    as="textarea"
-                                    id="description"
-                                    name="description"
-                                    defaultValue={data.orderQuantity}
+                                    id="release_date"
+                                    name="release_date"
+                                    size="md"
+                                    type="text"
+                                    required
+                                    {...register('release_date', { required: true })}
+                                />
+                            </Form.Group>
+                            <Form.Group className="mb-3">
+                                <Form.Label>Price</Form.Label>
+                                <Form.Control
+                                    id="product_price"
+                                    name="product_price"
                                     size="md"
                                     type="number"
-                                    rows={4}
                                     required
-                                    {...register('description', { required: true })}
+                                    {...register('product_price', { required: true })}
                                 />
                             </Form.Group>
                         </Col>
                     </Row>
                     <div className="mx-auto my-3 d-flex justify-content-center">
-                        <Button type="submit" className="me-2 mx-3" variant="success">
-                            Done
+                        <Button className="me-2 mx-3" variant="outline-success">
+                            Yes
                         </Button>
                         <Button className="me-2" variant="outline-secondary" onClick={() => setShow(false)}>
                             Cancel

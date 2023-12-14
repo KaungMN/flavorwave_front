@@ -1,11 +1,11 @@
 import { Routes, Route } from 'react-router-dom';
 import Customer from '../pages/Customer/Customer.jsx';
-import Factory from '../pages/Factory/Factory';
+import Manufactured from '../pages/Warehouse/Manufactured';
 import Raw from '../pages/Factory/Raw';
 import Sales from '../pages/sales';
 import Logistic from '../pages/Logistic/Logistic.jsx';
 import Delivery from '../pages/Logistic/Delivery.jsx';
-import Warehouse from '../pages/Warehouse';
+import Warehouse from '../pages/Warehouse/Warehouse.jsx';
 import Admin from '../pages/admin/admin';
 import Budget from '../pages/Admin/budget';
 import Product from '../pages/Admin/product';
@@ -18,7 +18,7 @@ import NoMatch from '../pages/nomatch.jsx';
 import Home from '../pages/Home.jsx';
 import {
     DEFAULT_ROUTE,
-    FACTORY_ROUTE,
+    MANUFACTURED_ROUTE,
     RAW_ROUTE,
     ADMIN_ROUTE,
     PRODUCT_ROUTE,
@@ -42,7 +42,7 @@ function RootNavigator() {
         <Routes>
             {/* <Route path="/" element={<Sidebar />} /> */}
             <Route path={DEFAULT_ROUTE} element={<Home />} />
-            <Route path={FACTORY_ROUTE} element={<Factory />} />
+            <Route path={MANUFACTURED_ROUTE} element={<Manufactured />} />
             <Route path={RAW_ROUTE} element={<Raw />} />
             <Route path={ADMIN_ROUTE} element={<Admin />} />
             <Route path={PRODUCT_ROUTE} element={<Product />} />

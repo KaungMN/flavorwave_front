@@ -1,9 +1,10 @@
 import { Form, Row, Col, Button } from 'react-bootstrap';
 import { useForm } from 'react-hook-form';
+import axios from 'axios';
 
 const truck = ['Suzuki', 'Mercedes', 'Toyota', 'Honda'];
 
-export default function EditForm({ data, setShow }) {
+export default function EditForm({ initialData, setShow }) {
     const {
         register,
         handleSubmit,
@@ -11,8 +12,17 @@ export default function EditForm({ data, setShow }) {
         formState: { errors }
     } = useForm();
 
-    const onSubmit = (data) => console.log(data);
-    console.log(data)
+    const onSubmit = async (data) => {
+        const res = await axios.post(`http://localhost:8000/api/post-delivery`, {
+            truck_id: data.truck_id,
+            preorder_id: initialData.id,
+            delivery_date: "2023-12-13",
+            status: 'pending'
+        });
+
+        const datas = res.data;
+        console.log(datas);
+    };
 
     return (
         <div className="contact-form-section" style={{ textAlign: 'left', maxWidth: '500px' }}>
@@ -22,7 +32,7 @@ export default function EditForm({ data, setShow }) {
                         <Col>
                             <Form.Label>Order Quantity: </Form.Label>
                             <Form.Control
-                                defaultValue={data.totalQuantity}
+                                defaultValue={initialData.totalQuantity}
                                 id="salesPermit"
                                 name="salesPermit"
                                 disabled
@@ -38,13 +48,13 @@ export default function EditForm({ data, setShow }) {
                                 name="truck"
                                 size="md"
                                 required
-                                {...register('truck', { required: true })}
+                                {...register('truck_id', { required: true })}
                             >
                                 <option disabled selected value={''}>
                                     Choose Truck
                                 </option>
-                                {truck.map((t) => (
-                                    <option key={t} value={t}>
+                                {truck.map((t, id) => (
+                                    <option key={t} value={id + 1}>
                                         {t}
                                     </option>
                                 ))}

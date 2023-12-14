@@ -1,36 +1,42 @@
-import OrderConfirmModal from "../ConfirmModal";
-import OrderRejectModal from "../RejectModal";
-import Table from "react-bootstrap/Table";
+import OrderConfirmModal from '../ConfirmModal';
+import OrderRejectModal from '../RejectModal';
+import Table from 'react-bootstrap/Table';
 
 export default function TableSingleRow({ header, order }) {
-  let staffId = JSON.parse(sessionStorage.getItem("staffId"));
+    let staffId = JSON.parse(sessionStorage.getItem('staffId'));
 
-  return (
-    <Table striped bordered hover>
-      <thead>
-        <tr>
-          <th>#</th>
-          {header.map((item) => (
-            <th key={item}>{item}</th>
-          ))}
-        </tr>
-      </thead>
-      <tbody>
-        {order.map((item, id) => (
-          <tr key={id}>
-            <td>{id + 1}</td>
-            <td key={item.orderItem}>{item.orderItem}</td>
-            <td key={item.orderQuantity}>{item.orderQuantity}</td>
-            <td key={item.salesPermit}>{item.salesPermit}</td>
-            {staffId >= 2 ? (
-              <td>
-                <OrderConfirmModal />
-                <OrderRejectModal />
-              </td>
-            ) : null}
-          </tr>
-        ))}
-      </tbody>
-    </Table>
-  );
+    return (
+        <Table striped bordered hover responsive="sm">
+            <thead>
+                <tr>
+                    <th>#</th>
+                    {header.map((item) => (
+                        <th key={item}>{item}</th>
+                    ))}
+                </tr>
+            </thead>
+            <tbody>
+                {order.map((item, id) => (
+                    <tr key={id}>
+                        <td>{id + 1}</td>
+                        <td key={item.id}>{item.id}</td>
+                        <td key={item.customer_id}>{item.customer_id}</td>
+                        <td key={item.address}>{item.city + item.township + item.address}</td>
+                        <td></td>
+                        <td>{item.quantity}</td>
+                        <td></td>
+                        <td></td>
+                        <td>{item.sub_total}</td>
+                        <td>{item.remark}</td>
+                        {staffId >= 2 ? (
+                            <td>
+                                <OrderConfirmModal preorderId={item.id} />
+                                <OrderRejectModal />
+                            </td>
+                        ) : null}
+                    </tr>
+                ))}
+            </tbody>
+        </Table>
+    );
 }

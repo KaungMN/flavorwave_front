@@ -1,10 +1,13 @@
 import { Button, Col, Form, Modal, ModalBody, ModalHeader, Row } from 'react-bootstrap';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
 import { login } from '../../services/adminLogin';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import { getSessionStorage } from '../../utils';
+import { STAFF_ROUTE } from '../../constants/routes';
 
 function AdminLogin() {
+    const history = useNavigate();
     const [showError, setShowError] = useState();
     const {
         register,
@@ -15,8 +18,15 @@ function AdminLogin() {
 
     const onSubmit = async (data) => {
         await login(data);
+        history(STAFF_ROUTE);
     };
-    console.log(watch('example'));
+
+    useEffect(() => {
+        const isStaffToken = getSessionStorage('staffToken');
+        if (!isStaffToken) return;
+        history(STAFF_ROUTE);
+    }, []);
+
     return (
         <div className="contact-form-section" style={{ textAlign: 'left', margin: '50px auto', maxWidth: '500px' }}>
             <h2>Log-in</h2>

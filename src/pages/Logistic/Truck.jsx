@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import TableComponent from '../../components/logistic/table/Table';
+import TableComponent from '../../components/logistic/truck-table/Table';
 
 function Truck() {
     useEffect(() => {

@@ -24,7 +24,7 @@ export default function EditForm({ data, setShow }) {
                                     readOnly
                                     id="product_id"
                                     name="product_id"
-                                    defaultValue={data.orderItem}
+                                    defaultValue={data.truck_name}
                                     size="md"
                                     type="text"
                                     required

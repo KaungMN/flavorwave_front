@@ -34,10 +34,12 @@ import {
     CUSTOMER_ORDER_ROUTE,
     CUSTOMER_HISTORY_ROUTE,
     WAREHOUSE_ROUTE,
-    SALES_ROUTE
+    SALES_ROUTE,
+    CUSTOMER_ABOUTUS_ROUTE
 } from '../constants/routes.js';
 import Truck from '../pages/Logistic/Truck.jsx';
 import AdminLogin from '../pages/Admin/AdminLogin.jsx';
+import AboutUs from '../pages/AboutUs.jsx';
 
 function RootNavigator() {
     return (
@@ -57,6 +59,7 @@ function RootNavigator() {
             <Route path={CUSTOMER_ROUTE} element={<Customer />} />
             <Route path={CUSTOMER_LOGIN_ROUTE} element={<CustomerLogin />} />
             <Route path={CUSTOMER_SIGN_UP_ROUTE} element={<CustomerSignUp />} />
+            <Route path={CUSTOMER_ABOUTUS_ROUTE} element={<AboutUs />} />
             <Route path={CUSTOMER_ORDER_ROUTE} element={<CustomerProductPage />} />
             <Route path={CUSTOMER_HISTORY_ROUTE} element={<CustomerOrderHistory />} />
             <Route path={WAREHOUSE_ROUTE} element={<Warehouse />} />

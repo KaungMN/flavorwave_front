@@ -1,12 +1,13 @@
 import React, { useState, useEffect } from 'react';
-import { Row, Col, Card, Button } from 'react-bootstrap';
-import { items } from '../../components/customers/Products.jsx';
+import { Row, Col, Card, Button, Container } from 'react-bootstrap';
+// import { items } from '../../components/customers/Products.jsx';
 import AddOrder from './components/OrderForm.jsx';
 import CartModal from './components/CartModal.jsx';
 import { getProducts } from '../../services/loadProduct.js';
+import Spinner from 'react-bootstrap/Spinner';
 
 function CustomerProductPage() {
-    // const [items , setItems] = useState();
+    const [items, setItems] = useState(null);
     // useEffect(()=>{
     //     const fetchData = async () => {
     //         try {

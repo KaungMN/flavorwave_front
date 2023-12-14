@@ -1,7 +1,7 @@
 import { Form, Row, Col, Button } from 'react-bootstrap';
 import { useForm } from 'react-hook-form';
 
-export default function EditForm({ heading, data }) {
+export default function EditForm() {
     const {
         register,
         handleSubmit,

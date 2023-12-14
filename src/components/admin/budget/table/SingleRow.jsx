@@ -1,7 +1,7 @@
 import Edit from "../EditBudget";
 import Table from "react-bootstrap/Table";
 
-const heading = ["Product Name", "Box", "Pcs", "Price", "expire-date"];
+const heading = ["Department", "Target Year", "Planned Budget", "Spent Budget"];
 
 export default function TableSingleRow({ order, handleDelete }) {
   let staffId = JSON.parse(sessionStorage.getItem("staffId"));
@@ -20,16 +20,10 @@ export default function TableSingleRow({ order, handleDelete }) {
         {order.map((item, id) => (
           <tr key={id}>
             <td>{id + 1}</td>
-            <td key={item.orderItem}>{item.orderItem}</td>
-            <td key={item.orderQuantity}>{item.orderQuantity}</td>
-            <td key={item.salesPermit}>{item.salesPermit}</td>
-            <td key={item.sales}>{item.sales}</td>
-            <td key={item.Permit}>{item.Permit}</td>
-            {staffId >= 2 ? (
-              <td>
-                <Edit initialData={item} />
-              </td>
-            ) : null}
+            <td>{item.department_id}</td>
+            <td>{item.target_year}</td>
+            <td>{item.planned_budget}</td>
+            <td>{item.spent_budget}</td>
           </tr>
         ))}
       </tbody>

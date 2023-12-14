@@ -8,6 +8,7 @@ import Spinner from 'react-bootstrap/Spinner';
 import { getSessionStorage } from '../../utils/index.js';
 import { CUSTOMER_LOGIN_ROUTE } from '../../constants/routes.js';
 import { useNavigate } from 'react-router-dom';
+import Logout from './components/Logout.jsx';
 
 function CustomerProductPage() {
     const history = useNavigate();
@@ -163,6 +164,7 @@ function CustomerProductPage() {
                 listToForm={listToForm}
                 onNewOrder={handleNewOrderData}
             />
+            <Logout />
         </div>
     );
 }

@@ -24,9 +24,9 @@ export default function TableSingleRow({ heading, order, handleDelete }) {
                         <td>{item.product_price}</td>
                         <td>{item.total_quantity}</td>
                         <td>{item.release_date}</td>
-                        <td>{item.expire_date}</td>
+                        {/* <td>{item.expire_date}</td>
                         <td>{item.warehouse_id}</td>
-                        <td>{item.location}</td>
+                        <td>{item.location}</td> */}
                         {staffId >= 2 ? (
                             <td>
                                 <Edit initialData={item} />

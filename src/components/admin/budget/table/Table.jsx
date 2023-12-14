@@ -46,7 +46,7 @@ function TableComponent({ data }) {
                     </Col>
                 </Row>
             </div>
-            <Paginator data={budgets} handleDelete={handleDelete} />
+            <Paginator data={data} handleDelete={handleDelete} />
         </Container>
     );
 }

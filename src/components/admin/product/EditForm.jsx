@@ -11,7 +11,10 @@ export default function AddForm({ heading, data, setShow }) {
         formState: { errors }
     } = useForm();
 
-    const onSubmit = (data) => console.log(data);
+    const onSubmit = (data) => {
+        console.log(data);
+        setShow(false);
+    };
 
     const handleCheckboxChange = (event, item) => {
         const selectedIndex = selectedItems.indexOf(item);

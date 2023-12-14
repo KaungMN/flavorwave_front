@@ -2,11 +2,10 @@
 import Paginator from './Pagination';
 import { useState } from 'react';
 import { Form, Row, Col, Container } from 'react-bootstrap';
-// import AddStaff from "../Add";
+import AddTruck from './Add';
 
 function TableComponent({ data }) {
     let [filterData, setFilterData] = useState(data);
-    const [trucks, setTrucks] = useState(null);
 
     const handleDelete = async (id) => {
         try {
@@ -22,23 +21,11 @@ function TableComponent({ data }) {
 
     function filterQuantity(name) {
         console.log(name);
-        let result = dummyData.filter((item) => {
+        let result = data.filter((item) => {
             return item.truck_number.toLowerCase().includes(name.toLowerCase());
         });
         setFilterData(result.length > 0 ? result : order);
     }
-
-    const getTrucks = async () => {
-        const res = await axios.get('http://localhost:8000/api/get-trucks');
-        const datas = res.data;
-        console.log(datas);
-        setTrucks(datas);
-    };
-
-    useEffect(async () => {
-        await getTrucks();
-        
-    }, []);
 
     return (
         <Container>
@@ -54,12 +41,12 @@ function TableComponent({ data }) {
                             }}
                         />
                     </Col>
-                    {/* <Col>
-            <AddStaff initialData={filterData} />
-          </Col> */}
+                    <Col>
+                        <AddTruck />
+                    </Col>
                 </Row>
             </div>
-            <Paginator data={trucks} handleDelete={handleDelete} />
+            <Paginator data={data} handleDelete={handleDelete} />
         </Container>
     );
 }

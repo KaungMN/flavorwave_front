@@ -2,15 +2,17 @@ import TableComponent from '../../components/warehouse/warehouses/table/Table';
 import { useState, useEffect } from 'react';
 import { Button, Row, Col, Container, Form, InputGroup } from 'react-bootstrap';
 import Spinner from 'react-bootstrap/Spinner';
+import axios from 'axios';
 
 function warehouse() {
     const [data, setData] = useState();
 
     useEffect(() => {
         const fetchInfo = async () => {
-            const res = await fetch(`http://localhost:8000/api/get-warehouses`);
-            const data = await res.json();
-            console.log(data);
+            // const res = await fetch(`http://localhost:8000/api/get-warehouses`);
+            // const data = await res.json();
+            const res = await axios.get('http://localhost:8000/api/get-warehouses');
+            const data = res.data;
             setData(data);
         };
         fetchInfo();

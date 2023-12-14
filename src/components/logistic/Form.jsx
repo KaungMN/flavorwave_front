@@ -16,8 +16,10 @@ export default function EditForm({ initialData, setShow }) {
 
     useEffect(() => {
         const fetchInfo = async () => {
-            const res = await fetch(`http://localhost:8000/api/get-trucks`);
-            const data = await res.json();
+            // const res = await fetch(`http://localhost:8000/api/get-trucks`);
+            // const data = await res.json();
+            const res = await axios.get(`http://localhost:8000/api/get-trucks`);
+            const data = res.data;
             console.log(data);
             setTruckData(data);
         };

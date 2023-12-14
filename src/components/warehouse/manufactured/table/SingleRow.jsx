@@ -1,5 +1,7 @@
-import Edit from '../EditProduct';
+// import Edit from '../EditProduct';
 import Table from 'react-bootstrap/Table';
+// import { useState, useEffect } from 'react';
+import TableRow from './TableRow';
 
 export default function TableSingleRow({ heading, order, handleDelete }) {
     let staffId = JSON.parse(sessionStorage.getItem('staffId'));
@@ -17,22 +19,7 @@ export default function TableSingleRow({ heading, order, handleDelete }) {
             </thead>
             <tbody>
                 {order.map((item, id) => (
-                    <tr key={id}>
-                        <td>{id + 1}</td>
-                        <td>{item.product_id}</td>
-                        <td>{item.raw_material_id}</td>
-                        <td>{item.product_price}</td>
-                        <td>{item.total_quantity}</td>
-                        <td>{item.release_date}</td>
-                        {/* <td>{item.expire_date}</td>
-                        <td>{item.warehouse_id}</td>
-                        <td>{item.location}</td> */}
-                        {staffId >= 2 ? (
-                            <td>
-                                <Edit initialData={item} />
-                            </td>
-                        ) : null}
-                    </tr>
+                    <TableRow item={item} key={id} id={id}/>
                 ))}
             </tbody>
         </Table>

@@ -3,6 +3,7 @@ import {
     RAW_ROUTE,
     MANUFACTURED_ROUTE,
     ADMIN_ROUTE,
+    ADMIN_LOGIN_ROUTE,
     PRODUCT_ROUTE,
     STAFF_ROUTE,
     BUDGET_ROUTE,
@@ -25,7 +26,8 @@ export const menuList = [
         subMenu: [
             { route: STAFF_ROUTE, label: 'Staff' },
             { route: PRODUCT_ROUTE, label: 'Product' },
-            { route: BUDGET_ROUTE, label: 'Budget' }
+            { route: BUDGET_ROUTE, label: 'Budget' },
+            { route: ADMIN_LOGIN_ROUTE, label: 'Admin Login' }
         ]
     },
     {

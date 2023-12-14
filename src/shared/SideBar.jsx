@@ -3,6 +3,8 @@ import './sidebar.css'; // Import your custom CSS file
 import { Link } from 'react-router-dom';
 import { useState } from 'react';
 import { menuList } from '../constants';
+import LogoutButton from './LogoutButton';
+import LoginButtonAdmin from './LoginButtonAdmin';
 
 const Sidebar = () => {
     const [expanded, setExpanded] = useState(false);
@@ -23,8 +25,14 @@ const Sidebar = () => {
                 <Navbar.Collapse id="responsive-sidebar">
                     <Nav defaultActiveKey="/home" className="flex-column">
                         <Navbar.Brand className="mb-2">
-                            <Link to="/"  className="p-0">
-                                <img alt="" className="mx-auto d-block" src="/src/images/Logo (1).png" width="70" height="70" />{' '}
+                            <Link to="/" className="p-0">
+                                <img
+                                    alt=""
+                                    className="mx-auto d-block"
+                                    src="/src/images/Logo (1).png"
+                                    width="70"
+                                    height="70"
+                                />{' '}
                                 <span className="mt-2 fs-4">Flavor Wave</span>
                             </Link>
                         </Navbar.Brand>

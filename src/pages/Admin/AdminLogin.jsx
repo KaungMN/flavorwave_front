@@ -1,10 +1,10 @@
-import { Button, Col, Form, Modal, ModalHeader, Row } from 'react-bootstrap';
+import { Button, Col, Form, Modal, ModalBody, ModalHeader, Row } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
-import { login } from '../../services/login';
+import { Login } from '../../services/adminLogin';
 import { useState } from 'react';
 
-function CustomerLogin() {
+function AdminLogin() {
     const [showError, setShowError] = useState();
     const {
         register,
@@ -16,14 +16,13 @@ function CustomerLogin() {
     const onSubmit = async (data) => {
         try {
             // Assuming Login is an asynchronous function
-            await login(data);
+            await Login(data);
             // If the login was successful, you might want to redirect the user or perform other actions
         } catch (error) {
             console.error('Login failed:', error);
             setShowError(true);
         }
     };
-
     console.log(watch('example'));
     return (
         <div className="contact-form-section" style={{ textAlign: 'left', margin: '50px auto', maxWidth: '500px' }}>
@@ -71,4 +70,4 @@ function CustomerLogin() {
     );
 }
 
-export default CustomerLogin;
+export default AdminLogin;

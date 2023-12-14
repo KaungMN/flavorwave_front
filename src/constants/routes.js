@@ -2,6 +2,7 @@ export const DEFAULT_ROUTE = '/';
 export const MANUFACTURED_ROUTE = '/manufactured';
 export const RAW_ROUTE = '/raw';
 export const ADMIN_ROUTE = '/admin';
+export const ADMIN_LOGIN_ROUTE = '/admin-login';
 export const PRODUCT_ROUTE = '/product';
 export const STAFF_ROUTE = '/staff';
 export const BUDGET_ROUTE = '/budget';

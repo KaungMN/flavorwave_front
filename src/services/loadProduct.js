@@ -2,7 +2,7 @@ import { axios } from './api';
 
 const getProducts = async () => {
     try {
-        const res = await axios.get('/api/products');
+        const res = await axios.get('/api/product');
         return res.data;
     } catch (error) {
         console.error('Error during order:', error);

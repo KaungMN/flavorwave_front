@@ -97,11 +97,11 @@ function CustomerProductPage() {
                                     height: '30vh',
                                     overflow: 'hidden'
                                 }}
-                                src={item.image_url}
+                                src={"http://127.0.0.1:8000" +item.photo}
                                 alt="product image"
                             />
                             <Card.Body>
-                                <Card.Title>{item.name} / {item.photo}</Card.Title>
+                                <Card.Title>{item.name} </Card.Title>
                                 <Card.Text>
                                     {item.description}
                                     <p>

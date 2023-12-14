@@ -5,14 +5,6 @@ import { useEffect } from "react";
 // import axios from "axios";
 
 function logstic() {
-  useEffect(() => {
-    const fetchInfo = async () => {
-      const res = await fetch(`http://localhost:8000/api/products`);
-      const data = await res.json();
-      console.log(data);
-    };
-    fetchInfo();
-  }, []);
 
   return (
     <div>

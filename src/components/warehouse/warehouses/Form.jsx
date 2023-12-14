@@ -24,7 +24,7 @@ export default function EditForm({ data, setShow }) {
                                     readOnly
                                     id="product_id"
                                     name="product_id"
-                                    defaultValue={data.orderItem}
+                                    defaultValue={data.truck_name}
                                     size="md"
                                     type="text"
                                     required
@@ -42,9 +42,21 @@ export default function EditForm({ data, setShow }) {
                                     defaultValue={data.orderQuantity}
                                     size="md"
                                     type="number"
-                                    rows={5}
+                                    rows={1}
                                     required
                                     {...register('raw_material_id', { required: true })}
+                                />
+                            </Form.Group>
+                            <Form.Group className="mb-3">
+                                <Form.Label>Price</Form.Label>
+                                <Form.Control
+                                    id="product_price"
+                                    name="product_price"
+                                    defaultValue={data.salesPermit}
+                                    size="md"
+                                    type="number"
+                                    required
+                                    {...register('product_price', { required: true })}
                                 />
                             </Form.Group>
                         </Col>
@@ -78,15 +90,15 @@ export default function EditForm({ data, setShow }) {
                                 />
                             </Form.Group>
                             <Form.Group className="mb-3">
-                                <Form.Label>Price</Form.Label>
+                                <Form.Label>Location</Form.Label>
                                 <Form.Control
-                                    id="product_price"
-                                    name="product_price"
-                                    defaultValue={data.salesPermit}
+                                    id="location"
+                                    name="location"
+                                    defaultValue={data.Permit}
                                     size="md"
-                                    type="number"
+                                    type="text"
                                     required
-                                    {...register('product_price', { required: true })}
+                                    {...register('location', { required: true })}
                                 />
                             </Form.Group>
                         </Col>

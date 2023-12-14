@@ -2,7 +2,7 @@
 import Paginator from "./Pagination";
 import { useState } from "react";
 import { Form, Row, Col, Container } from "react-bootstrap";
-import AddStaff from "../Add";
+// import AddStaff from "../Add";
 const order = [
   {
     orderItem: "Product A",
@@ -146,8 +146,14 @@ const order = [
   },
 ];
 
+const dummyData = [
+  { id: 1, truck_number : "fda", truck_name: "TOYOTA", capacity: 500, staff_id: 3},
+  { id: 1, truck_number : "erw", truck_name: "TOYOTA",capacity: 500, staff_id: 3},
+  { id: 1, truck_number : "ehrq", truck_name: "TOYOTA",capacity: 500, staff_id: 3}
+];
+
 function TableComponent() {
-  let [filterData, setFilterData] = useState(order);
+  let [filterData, setFilterData] = useState(dummyData);
 
   const handleDelete = async (id) => {
     try {
@@ -163,8 +169,8 @@ function TableComponent() {
 
   function filterQuantity(name) {
     console.log(name);
-    let result = order.filter((item) => {
-      return item.orderItem.toLowerCase().includes(name.toLowerCase());
+    let result = dummyData.filter((item) => {
+      return item.truck_number.toLowerCase().includes(name.toLowerCase());
     });
     setFilterData(result.length > 0 ? result : order);
   }
@@ -172,8 +178,8 @@ function TableComponent() {
     <Container>
       <div className="mb-4">
         <Row>
-          <Col xs={9}>
-            <Form.Label>Search Product Name: </Form.Label>
+          <Col xs={4}>
+            <Form.Label>Search Truck Number: </Form.Label>
             <Form.Control
               size="md"
               type="text"
@@ -182,9 +188,9 @@ function TableComponent() {
               }}
             />
           </Col>
-          <Col>
+          {/* <Col>
             <AddStaff initialData={filterData} />
-          </Col>
+          </Col> */}
         </Row>
       </div>
       <Paginator data={filterData} handleDelete={handleDelete} />

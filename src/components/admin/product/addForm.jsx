@@ -20,39 +20,26 @@ export default function AddForm({ heading, data, setShow }) {
                             <Form.Group className="mb-3">
                                 <Form.Label>Product Name</Form.Label>
                                 <Form.Control
-                                    id="productName"
-                                    name="productName"
-                                    defaultValue={data.orderItem}
+                                    id="name"
+                                    name="name"
                                     size="md"
                                     type="text"
                                     required
-                                    {...register('productName', { required: true })}
+                                    {...register('name', { required: true })}
                                 />
                             </Form.Group>
                             <Form.Group className="mb-3">
-                                <Form.Label>Box</Form.Label>
+                                <Form.Label>Photo</Form.Label>
                                 <Form.Control
-                                    id="box"
-                                    name="box"
-                                    defaultValue={data.orderQuantity}
+                                    id="photo"
+                                    name="photo"
                                     size="md"
-                                    type="number"
+                                    type="file"
                                     required
-                                    {...register('box', { required: true })}
+                                    {...register('photo')}
                                 />
                             </Form.Group>
-                            <Form.Group className="mb-3">
-                                <Form.Label>Piece</Form.Label>
-                                <Form.Control
-                                    id="piece"
-                                    name="piece"
-                                    defaultValue={data.salesPermit}
-                                    size="md"
-                                    type="number"
-                                    required
-                                    {...register('piece', { required: true })}
-                                />
-                            </Form.Group>
+
                         </Col>
                         <Col>
                             <Form.Group className="mb-3">
@@ -60,7 +47,6 @@ export default function AddForm({ heading, data, setShow }) {
                                 <Form.Control
                                     id="price"
                                     name="price"
-                                    defaultValue={data.sales}
                                     size="md"
                                     type="number"
                                     required
@@ -68,29 +54,19 @@ export default function AddForm({ heading, data, setShow }) {
                                 />
                             </Form.Group>
                             <Form.Group className="mb-3">
-                                <Form.Label>Expire Date</Form.Label>
+                                <Form.Label>Description</Form.Label>
                                 <Form.Control
-                                    id="expireDate"
-                                    name="expireDate"
+                                    as="textarea"
+                                    id="description"
+                                    name="description"
                                     defaultValue={data.Permit}
                                     size="md"
                                     type="text"
                                     required
-                                    {...register('expireDate', { required: true })}
+                                    {...register('description', { required: true })}
                                 />
                             </Form.Group>
-                            <Form.Group className="mb-3">
-                                <Form.Label>Location</Form.Label>
-                                <Form.Control
-                                    id="location"
-                                    name="location"
-                                    defaultValue={data.Permit}
-                                    size="md"
-                                    type="text"
-                                    required
-                                    {...register('location', { required: true })}
-                                />
-                            </Form.Group>
+
                         </Col>
                     </Row>
                     <div className="mx-auto my-3 d-flex justify-content-center">

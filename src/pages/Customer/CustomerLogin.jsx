@@ -29,10 +29,10 @@ function CustomerLogin() {
                                 //   disabled
                                 //   readOnly
                                 size="md"
-                                type="text"
-                                placeholder="Name*"
+                                type="email"
+                                placeholder="Email*"
                                 required
-                                {...register('name', { required: true })}
+                                {...register('email', { required: true })}
                             />
                         </Col>
                         <Col>

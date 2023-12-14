@@ -1,5 +1,5 @@
 import React from 'react';
-import BlogFront from '../images/Blog_Front.png';
+import BlogFront from '../images/Banner Image.jpg';
 import { Carousel, Container, Nav, Navbar } from 'react-bootstrap';
 import ExampleCarouselImage from './ExampleCarouselImage';
 import { useNavigate } from 'react-router-dom';
@@ -38,22 +38,22 @@ function Home() {
                         </li>
                     </ol>
                     <div>
-                        <Carousel className="carousel" onClick={() => nagivate(CUSTOMER_ORDER_ROUTE)}>
-                            <Carousel.Item style={{ height: '300px' }}>
+                        <Carousel onClick={() => nagivate(CUSTOMER_ORDER_ROUTE)}>
+                            <Carousel.Item className="carousel" style={{ height: '300px' }}>
                                 <ExampleCarouselImage text="First slide" />
                                 <Carousel.Caption>
                                     <h3>First slide label</h3>
                                     <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
                                 </Carousel.Caption>
                             </Carousel.Item>
-                            <Carousel.Item style={{ height: '300px' }}>
+                            <Carousel.Item className="carousel" style={{ height: '300px' }}>
                                 <ExampleCarouselImage text="Second slide" />
                                 <Carousel.Caption>
                                     <h3>Second slide label</h3>
                                     <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
                                 </Carousel.Caption>
                             </Carousel.Item>
-                            <Carousel.Item style={{ height: '300px' }}>
+                            <Carousel.Item className="carousel" style={{ height: '300px' }}>
                                 <ExampleCarouselImage text="Third slide" />
                                 <Carousel.Caption>
                                     <h3>Third slide label</h3>

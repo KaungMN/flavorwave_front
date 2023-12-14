@@ -112,7 +112,7 @@ function CustomerProductPage() {
         <div>
             <h1>Products</h1>
             <Row>
-                {items &&
+                {items && 
                     items.map((item) => (
                         <Col key={item.id} xs={12} md={6} lg={4} className="p-3">
                             <Card className="h-100">

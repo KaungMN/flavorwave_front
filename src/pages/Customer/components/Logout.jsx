@@ -2,14 +2,11 @@ import React from 'react';
 import { Button } from 'react-bootstrap';
 import { logout } from '../../../services/logout';
 import { getSessionStorage } from '../../../utils';
-import { useNavigate } from 'react-router-dom';
-import { DEFAULT_ROUTE } from '../../../constants/routes';
 
 function Logout() {
-    const nagivate = useNavigate();
     const handleLogout = async () => {
         await logout();
-        nagivate(DEFAULT_ROUTE);
+       window.location.reload();
     };
     return <>{getSessionStorage('authToken') && <Button onClick={handleLogout}>Logout</Button>}</>;
 }

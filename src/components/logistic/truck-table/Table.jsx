@@ -5,7 +5,7 @@ import { Form, Row, Col, Container } from 'react-bootstrap';
 import AddTruck from './Add';
 
 function TableComponent({ data }) {
-    let [filterData, setFilterData] = useState(data);
+    let [filterData, setFilterData] = useState();
 
     const handleDelete = async (id) => {
         try {

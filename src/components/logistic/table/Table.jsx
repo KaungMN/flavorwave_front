@@ -5,7 +5,7 @@ import { Form, Row, Col, Button, Container } from 'react-bootstrap';
 const heading = ['Order Id', 'Customer Name', 'Address', 'Order Item', 'Qty', 'Total Qty', 'Remark'];
 
 function TableComponent({data}) {
-    let [filterData, setFilterData] = useState(data);
+    let [filterData, setFilterData] = useState();
 
     function filterQuantity(quantity) {
         let result = data.filter((item) => {

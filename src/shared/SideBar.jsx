@@ -2,7 +2,7 @@ import { Navbar, Nav, Accordion } from 'react-bootstrap';
 import './sidebar.css'; // Import your custom CSS file
 import { Link } from 'react-router-dom';
 import { useState } from 'react';
-import { menuList } from '../constants';
+import { menuList, getMenuList } from '../constants';
 import LogoutButton from './LogoutButton';
 import LoginButtonAdmin from './LoginButtonAdmin';
 
@@ -37,7 +37,7 @@ const Sidebar = () => {
                             </Link>
                         </Navbar.Brand>
                         <Accordion>
-                            {menuList.map((item, index) =>
+                            {getMenuList().map((item, index) =>
                                 item.label.includes(dept) || dept === 'Admin' ? (
                                     <Accordion.Item key={index} eventKey={index}>
                                         <Accordion.Header>

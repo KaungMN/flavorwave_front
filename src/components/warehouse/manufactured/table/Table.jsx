@@ -6,7 +6,7 @@ import AddProduct from '../Add';
 const heading = ['Product', 'Raw Material', 'Price', 'Total Quantity', 'Release Date'];
 
 function TableComponent({ data }) {
-    let [filterData, setFilterData] = useState(data);
+    let [filterData, setFilterData] = useState();
 
     const handleDelete = async (id) => {
         try {

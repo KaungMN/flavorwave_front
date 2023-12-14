@@ -148,7 +148,7 @@ const order = [
 ];
 
 function TableComponent() {
-    let [filterData, setFilterData] = useState(order);
+    let [filterData, setFilterData] = useState();
 
     const handleDelete = async (id) => {
         try {

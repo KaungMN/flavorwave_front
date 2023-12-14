@@ -6,7 +6,7 @@ import { Form, Row, Col, Container } from 'react-bootstrap';
 const heading = ['Name', 'Address', 'Phone'];
 
 function TableComponent({ data }) {
-    let [filterData, setFilterData] = useState(data);
+    let [filterData, setFilterData] = useState();
     const handleDelete = async (id) => {
         try {
             console.log(id);

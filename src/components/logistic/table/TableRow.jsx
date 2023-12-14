@@ -10,19 +10,29 @@ const list = {
 
 export default function TableRow({ item, id }) {
     const [cusData, setCusData] = useState();
+    const [deliveryData, setDeliveryData] = useState();
     let staffId = JSON.parse(sessionStorage.getItem('staffId'));
 
+    const fetchInfo = async () => {
+        // const res = await fetch(`http://localhost:8000/api/get-customer/${item.customer_id}`);
+        // const data = await res.json();
+        const res = await axios.get(`http://localhost:8000/api/get-customer/${item.customer_id}`);
+        const data = res.data;
+        console.log(data);
+        setCusData(data);
+
+        const response = await axios.get('http://localhost:8000/api/get-delivery');
+        const datas = response.data;
+        setDeliveryData(datas);
+    };
+
     useEffect(() => {
-        const fetchInfo = async () => {
-            // const res = await fetch(`http://localhost:8000/api/get-customer/${item.customer_id}`);
-            // const data = await res.json();
-            const res = await axios.get(`http://localhost:8000/api/get-customer/${item.customer_id}`);
-            const data = res.data;
-            console.log(data);
-            setCusData(data);
-        };
         fetchInfo();
     }, []);
+
+    if (deliveryData) {
+        deliveryData.map((p) => p.preorder_id !== item.id);
+    }
 
     return (
         <tr key={id}>
@@ -48,12 +58,19 @@ export default function TableRow({ item, id }) {
             </td>
             <td>{item.quantity}</td>
             <td>{item.remark}</td>
-            {staffId >= 2 ? (
-                <td>
-                    <AddTruckModal initialData={item} />
-                    <CancelDeliveryModal />
-                </td>
-            ) : null}
+            {deliveryData &&
+                deliveryData.map((p) =>
+                    p.preorder_id !== item.id ? (
+                        staffId >= 2 ? (
+                            <td>
+                                <OrderConfirmModal preorderId={item.id} />
+                                <OrderRejectModal />
+                            </td>
+                        ) : null
+                    ) : (
+                        <td>Truck Assigned</td>
+                    )
+                )}
         </tr>
     );
 }

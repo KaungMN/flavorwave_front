@@ -16,7 +16,7 @@ const heading = [
 ];
 
 function TableComponent({ data }) {
-    let [filterData, setFilterData] = useState(data);
+    let [filterData, setFilterData] = useState();
 
     function filterId(id) {
         let result = data?.filter((item) => {

@@ -10,7 +10,6 @@ import {
     LOGISTIC_ROUTE,
     LOGISTIC_TRUCK_ROUTE,
     DELIVERY_ROUTE,
-    CUSTOMER_ROUTE,
     CUSTOMER_LOGIN_ROUTE,
     CUSTOMER_SIGN_UP_ROUTE,
     CUSTOMER_ORDER_ROUTE,
@@ -40,7 +39,7 @@ export const menuList = [
         ]
     },
     {
-        route: CUSTOMER_ROUTE,
+        route: DEFAULT_ROUTE,
         label: 'Customer',
         subMenu: [
             { route: CUSTOMER_LOGIN_ROUTE, label: 'Login' },

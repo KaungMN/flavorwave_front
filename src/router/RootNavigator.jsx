@@ -1,5 +1,4 @@
 import { Routes, Route } from 'react-router-dom';
-import Customer from '../pages/Customer/Customer.jsx';
 import Manufactured from '../pages/Warehouse/Manufactured';
 import Raw from '../pages/Factory/Raw';
 import Sales from '../pages/sales';
@@ -28,7 +27,6 @@ import {
     LOGISTIC_ROUTE,
     LOGISTIC_TRUCK_ROUTE,
     DELIVERY_ROUTE,
-    CUSTOMER_ROUTE,
     CUSTOMER_LOGIN_ROUTE,
     CUSTOMER_SIGN_UP_ROUTE,
     CUSTOMER_ORDER_ROUTE,
@@ -56,7 +54,7 @@ function RootNavigator() {
             <Route path={LOGISTIC_ROUTE} element={<Logistic />} />
             <Route path={LOGISTIC_TRUCK_ROUTE} element={<Truck />} />
             <Route path={DELIVERY_ROUTE} element={<Delivery />} />
-            <Route path={CUSTOMER_ROUTE} element={<Customer />} />
+
             <Route path={CUSTOMER_LOGIN_ROUTE} element={<CustomerLogin />} />
             <Route path={CUSTOMER_SIGN_UP_ROUTE} element={<CustomerSignUp />} />
             <Route path={CUSTOMER_ABOUTUS_ROUTE} element={<AboutUs />} />

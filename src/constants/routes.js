@@ -9,7 +9,6 @@ export const BUDGET_ROUTE = '/budget';
 export const LOGISTIC_ROUTE = '/logistic';
 export const LOGISTIC_TRUCK_ROUTE = '/logistic/truck';
 export const DELIVERY_ROUTE = '/delivery';
-export const CUSTOMER_ROUTE = '/customer';
 export const CUSTOMER_LOGIN_ROUTE = '/customer/login';
 export const CUSTOMER_SIGN_UP_ROUTE = '/customer/sign-up';
 export const CUSTOMER_ORDER_ROUTE = '/customer/order';

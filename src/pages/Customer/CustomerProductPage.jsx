@@ -145,6 +145,7 @@ function CustomerProductPage() {
             />
             <AddOrder
                 isOpen={isOpenAddress}
+                setIsAddressModal={setIsAddressModal}
                 handleClose={handleCloseAddress}
                 openToConfirm={handleOpenConfirm}
                 orderData={listToForm}

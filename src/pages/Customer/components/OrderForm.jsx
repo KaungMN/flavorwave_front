@@ -24,7 +24,7 @@ function AddOrder({ orderData, totalPrice }) {
             quantity: 2,
             orderType: 'wholesale',
             status: 'pending',
-            products: JSON.stringify({ id: 1, name: 'name' }),
+            products: JSON.stringify(orderData),
             totalPrice: totalPrice,
             customer_id: 1
         };

@@ -1,5 +1,6 @@
 import { Form, Row, Col, Button } from 'react-bootstrap';
 import { useForm } from 'react-hook-form';
+import axios from 'axios';
 
 export default function AddForm({ heading, data, setShow }) {
     const {
@@ -9,7 +10,13 @@ export default function AddForm({ heading, data, setShow }) {
         formState: { errors }
     } = useForm();
 
-    const onSubmit = (data) => console.log(data);
+    const onSubmit = async (data) => {
+        // console.log(data);
+
+        const res = await axios.post('http://localhost:8000/api/postStaff', data);
+        const datas = res.data;
+        console.log(datas);
+    };
 
     return (
         <div className="contact-form-section" style={{ textAlign: 'left', maxWidth: '500px' }}>

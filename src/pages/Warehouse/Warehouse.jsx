@@ -1,4 +1,4 @@
-import TableComponent from '../components/warehouse/table/Table';
+import TableComponent from '../../components/warehouse/warehouses/table/Table';
 import { useState } from 'react';
 import { Button, Row, Col, Container, Form, InputGroup } from 'react-bootstrap';
 
@@ -31,7 +31,7 @@ function warehouse() {
             <h1 className="mb-4">Ware House</h1>
             <Row className="mb-4">
                 <Col>
-                    <Form style={{maxWidth: "500px"}} onSubmit={(e) => fetchDataByDate(e)}>
+                    <Form style={{ maxWidth: '500px' }} onSubmit={(e) => fetchDataByDate(e)}>
                         <InputGroup>
                             <Form.Control
                                 type="date"
@@ -45,11 +45,12 @@ function warehouse() {
                     </Form>
                 </Col>
                 <Col sm={4}>
-                    <Button style={{float: "right", marginRight: "50px"}} onClick={fetchAllData}>All Data</Button>
+                    <Button style={{ float: 'right', marginRight: '50px' }} onClick={fetchAllData}>
+                        All Data
+                    </Button>
                 </Col>
             </Row>
             <Row>
-                {/* {data && } */}
                 <TableComponent />
             </Row>
         </Container>

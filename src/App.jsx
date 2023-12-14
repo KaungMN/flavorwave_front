@@ -5,7 +5,7 @@ import Current from './shared/Current.jsx';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import RootNavigator from './router/RootNavigator.jsx';
-// import { getMenuList } from './constants/index.js';
+import { getMenuList } from './constants/index.js';
 import ReloadingContextProvider from './actions/ReloadContext.jsx';
 
 function App() {

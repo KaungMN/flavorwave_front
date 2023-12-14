@@ -27,7 +27,7 @@ export default function OrderConfirmModal({handleDelete ,id}) {
                     </h5>
                     <div className="mx-auto my-3 d-flex justify-content-center">
                         <Button className="me-2 mx-3" variant="outline-success"
-                        onClick={()=>handleDelete(id)}
+                        onClick={()=>{handleDelete(id);handleClose()}}
                         >
                             Yes
                         </Button>

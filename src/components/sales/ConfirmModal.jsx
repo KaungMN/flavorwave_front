@@ -23,6 +23,7 @@ export default function OrderConfirmModal({ preorderId }) {
             id: preorderId,
             status: 'approved'
         });
+        setShow(false);
     };
     return (
         <>

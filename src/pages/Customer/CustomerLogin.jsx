@@ -17,17 +17,9 @@ function CustomerLogin() {
     } = useForm();
 
     const onSubmit = async (data) => {
-        try {
-            console.log(data);
-            await login(data);
-            setLoginSuccessful(true);
-            if (isLoginSuccessful) {
-                history(CUSTOMER_ORDER_ROUTE);
-            }
-        } catch (error) {
-            console.error('Login failed:', error);
-            setShowError(true);
-        }
+        const res = await login(data);
+        if (!res) return;
+        history(CUSTOMER_ORDER_ROUTE);
     };
 
     console.log(watch('example'));

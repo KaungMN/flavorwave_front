@@ -2,7 +2,7 @@ import { Form, Row, Col, Button } from "react-bootstrap";
 
 const truck = ["Suzuki", "Mercedes", "Toyota", "Honda"];
 
-export default function EditForm({ data }) {
+export default function EditForm({ data ,setShow }) {
   return (
     <div
       className="contact-form-section"
@@ -57,7 +57,7 @@ export default function EditForm({ data }) {
               </Form.Select>
             </Col>
           </Row>
-          <Button className="mt-4 d-block mx-auto" variant="success">
+          <Button className="mt-4 d-block mx-auto" variant="success" onClick={() => setShow(false)}>
             Success
           </Button>
         </div>

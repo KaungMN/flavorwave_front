@@ -24,7 +24,7 @@ export default function EditForm({ data, setShow }) {
                                     readOnly
                                     id="product_id"
                                     name="product_id"
-                                    defaultValue={data.orderItem}
+                                    defaultValue={data.product_id}
                                     size="md"
                                     type="text"
                                     required
@@ -39,12 +39,24 @@ export default function EditForm({ data, setShow }) {
                                     as="textarea"
                                     id="raw_material_id"
                                     name="raw_material_id"
-                                    defaultValue={data.orderQuantity}
+                                    defaultValue={data.raw_material_id}
                                     size="md"
                                     type="number"
                                     rows={5}
                                     required
                                     {...register('raw_material_id', { required: true })}
+                                />
+                            </Form.Group>
+                            <Form.Group className="mb-3">
+                                <Form.Label>Warehouse</Form.Label>
+                                <Form.Control
+                                    id="warehouse"
+                                    name="warehouse"
+                                    defaultValue={data.warehouse_id}
+                                    size="md"
+                                    type="text"
+                                    required
+                                    {...register('warehouse_id', { required: true })}
                                 />
                             </Form.Group>
                         </Col>
@@ -56,7 +68,7 @@ export default function EditForm({ data, setShow }) {
                                     readOnly
                                     id="total_quantity"
                                     name="total_quantity"
-                                    defaultValue={data.sales}
+                                    defaultValue={data.total_quantity}
                                     size="md"
                                     type="number"
                                     required
@@ -70,7 +82,7 @@ export default function EditForm({ data, setShow }) {
                                     readOnly
                                     id="release_date"
                                     name="release_date"
-                                    defaultValue={data.Permit}
+                                    defaultValue={data.release_date}
                                     size="md"
                                     type="text"
                                     required
@@ -82,17 +94,29 @@ export default function EditForm({ data, setShow }) {
                                 <Form.Control
                                     id="product_price"
                                     name="product_price"
-                                    defaultValue={data.salesPermit}
+                                    defaultValue={data.product_price}
                                     size="md"
                                     type="number"
                                     required
                                     {...register('product_price', { required: true })}
                                 />
                             </Form.Group>
+                            <Form.Group className="mb-3">
+                                <Form.Label>Location</Form.Label>
+                                <Form.Control
+                                    id="location"
+                                    name="location"
+                                    defaultValue={data.location}
+                                    size="md"
+                                    type="text"
+                                    required
+                                    {...register('location', { required: true })}
+                                />
+                            </Form.Group>
                         </Col>
                     </Row>
                     <div className="mx-auto my-3 d-flex justify-content-center">
-                        <Button className="me-2 mx-3" variant="outline-success">
+                        <Button className="me-2 mx-3" variant="outline-success" onClick={() => setShow(false)}>
                             Yes
                         </Button>
                         <Button className="me-2" variant="outline-secondary" onClick={() => setShow(false)}>

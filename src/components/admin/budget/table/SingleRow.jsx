@@ -1,10 +1,10 @@
-import Edit from "../EditBudget";
-import Table from "react-bootstrap/Table";
+import Edit from '../EditBudget';
+import Table from 'react-bootstrap/Table';
 
-const heading = ["Department", "Target Year", "Planned Budget", "Spent Budget"];
+const heading = ['Department', 'Target Year', 'Planned Budget', 'Spent Budget'];
 
 export default function TableSingleRow({ order, handleDelete }) {
-  let staffId = JSON.parse(sessionStorage.getItem("staffId"));
+    let staffId = JSON.parse(sessionStorage.getItem('staffId'));
 
   return (
     <Table striped bordered hover>

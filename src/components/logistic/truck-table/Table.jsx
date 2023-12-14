@@ -1,24 +1,24 @@
 // import { func } from "prop-types";
-import Paginator from "./Pagination";
-import { useState } from "react";
-import { Form, Row, Col, Container } from "react-bootstrap";
+import Paginator from './Pagination';
+import { useState } from 'react';
+import { Form, Row, Col, Container } from 'react-bootstrap';
 // import AddStaff from "../Add";
 
+function TableComponent({ data }) {
+    let [filterData, setFilterData] = useState(data);
+    const [trucks, setTrucks] = useState(null);
 
-function TableComponent( {data} ) {
-  let [filterData, setFilterData] = useState( data ) ;
- 
-  const handleDelete = async (id) => {
-    try {
-      console.log(id);
-      // api.delete(`posts/${id}`);
-      // const updatedPostList = postList.filter(post => post.id !== id);
-      // setPostList(updatedPostList);
-      // navigate('/');
-    } catch (err) {
-      console.log(err.message);
-    }
-  };
+    const handleDelete = async (id) => {
+        try {
+            console.log(id);
+            // api.delete(`posts/${id}`);
+            // const updatedPostList = postList.filter(post => post.id !== id);
+            // setPostList(updatedPostList);
+            // navigate('/');
+        } catch (err) {
+            console.log(err.message);
+        }
+    };
 
   function filterQuantity(name) {
     console.log(name);
@@ -45,11 +45,11 @@ function TableComponent( {data} ) {
           {/* <Col>
             <AddStaff initialData={filterData} />
           </Col> */}
-        </Row>
-      </div>
-      <Paginator data={filterData} handleDelete={handleDelete} />
-    </Container>
-  );
+                </Row>
+            </div>
+            <Paginator data={trucks} handleDelete={handleDelete} />
+        </Container>
+    );
 }
 
 export default TableComponent;

@@ -8,15 +8,15 @@ const heading = [
     'Address',
     'Order Item',
     'Qty',
-    'each price',
-    'Average/item',
+    'Each Price',
+    'Sub Total',
     'Total amount',
     'Remark'
 ];
 
 function TableComponent() {
     let [data, setData] = useState();
-    let [filterOrders, setFilterOrders] = useState(data);
+    let [filterData, setFilterData] = useState(data);
 
     useEffect(() => {
         const fetchInfo = async () => {
@@ -28,11 +28,19 @@ function TableComponent() {
         fetchInfo();
     }, []);
 
-    function filterQuantity(quantity) {
+    function filterId(id) {
         let result = data?.filter((item) => {
-            return item.orderQuantity === parseInt(quantity);
+            return item.id === parseInt(id);
         });
-        setFilterOrders(result.length > 0 ? result : data);
+        setFilterData(result.length > 0 ? result : data);
+    }
+
+    function filterStatus(status) {
+        let result = data.filter((item) => {
+            return item.status === status;
+        });
+        console.log(result);
+        setFilterData(result.length > 0 ? result : data);
     }
 
     return (
@@ -40,18 +48,38 @@ function TableComponent() {
             <div className="mb-4">
                 <Row>
                     <Col xs={4}>
-                        <Form.Label>OrderQuantity: </Form.Label>
+                        <Form.Label>Order Id: </Form.Label>
                         <Form.Control
                             size="md"
                             type="email"
                             onChange={(e) => {
-                                filterQuantity(e.target.value);
+                                filterId(e.target.value);
                             }}
                         />
                     </Col>
+                    <Col xs={4}>
+                        <Form.Label>Address: </Form.Label>
+                        <Form.Select
+                            id="product"
+                            name="product"
+                            size="md"
+                            onChange={(e) => {
+                                filterStatus(e.target.value);
+                            }}
+                        >
+                            <option disabled selected value={''}>
+                                Choose Product
+                            </option>
+                            {['pending', 'approved'].map((t) => (
+                                <option key={t} value={t}>
+                                    {t}
+                                </option>
+                            ))}
+                        </Form.Select>
+                    </Col>
                 </Row>
             </div>
-            {data ? <Paginator header={heading} data={data} /> : null}
+            {data ? <Paginator header={heading} data={filterData ? filterData : data} /> : null}
         </Container>
     );
 }

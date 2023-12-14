@@ -12,12 +12,7 @@ export default function ApproveDeliveryCard() {
         };
         fetchInfo();
     }, []);
+    console.log(data);
 
-    return (
-        <Row>
-            {data?.map((i) => (
-                <InfoCard key={i.orderItem} data={i} />
-            ))}
-        </Row>
-    );
+    return <Row>{data?.map((i) => i.status !== 'approved' && <InfoCard key={i.orderItem} data={i} />)}</Row>;
 }

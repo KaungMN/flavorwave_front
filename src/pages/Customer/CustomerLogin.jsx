@@ -15,7 +15,7 @@ function CustomerLogin() {
 
     const onSubmit = async (data) => {
         try {
-            // Assuming Login is an asynchronous function
+            console.log(data);
             await login(data);
             // If the login was successful, you might want to redirect the user or perform other actions
         } catch (error) {

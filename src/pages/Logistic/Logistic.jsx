@@ -4,6 +4,7 @@ import TableComponent from "../../components/logistic/table/Table.jsx";
 import { useEffect } from "react";
 // import axios from "axios";
 
+
 function logstic() {
 
   return (

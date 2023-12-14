@@ -1,9 +1,11 @@
 import { Form, Row, Col, Button } from 'react-bootstrap';
 import { useForm } from 'react-hook-form';
-import { useState } from "react";
+import { useState, useEffect } from 'react';
+import axios from 'axios';
 
 export default function AddForm({ setShow }) {
-    const [selectedItems, setSelectedItems] = useState([]);
+    const [products, setProducts] = useState([]);
+    const [currentProduct, setCurrentProduct] = useState([]);
     const {
         register,
         handleSubmit,
@@ -11,40 +13,38 @@ export default function AddForm({ setShow }) {
         formState: { errors }
     } = useForm();
 
-    const onSubmit = async (data) => {
-        // console.log(data);
-        console.log(orderData);
-        const newData = {
-            ...data,
-        };
-        console.log(newData);
-        const res = await axios.post('http://localhost:8000/api/create-orders', newData);
+    async function getProducts() {
+        const res = await axios.get('http://localhost:8000/api/get-products');
         const datas = res.data;
-        // console.log(data);
+        setProducts(datas);
+    }
+
+    useEffect(() => {
+        getProducts();
+    }, []);
+    console.log(products);
+
+    const onSubmit = async (data) => {
+        const res = await axios.post('http://localhost:8000/api/post-product', { ...data, raw_material_id: rawId });
+        const datas = res.data;
+        console.log(datas);
+        setShow(false);
     };
 
-    const handleCheckboxChange = (event, item) => {
-        const selectedIndex = selectedItems.indexOf(item);
-        let newSelected = [];
+    let rawId;
+    if (currentProduct.length > 0) {
+        currentProduct.map((p) => p.raw.map((r) => (rawId = r.id)));
+    }
+    console.log(rawId);
 
-        if (selectedIndex === -1) {
-            newSelected = newSelected.concat(selectedItems, item);
-        } else if (selectedIndex === 0) {
-            newSelected = newSelected.concat(selectedItems.slice(1));
-        } else if (selectedIndex === selectedItems.length - 1) {
-            newSelected = newSelected.concat(selectedItems.slice(0, -1));
-        } else if (selectedIndex > 0) {
-            newSelected = newSelected.concat(
-                selectedItems.slice(0, selectedIndex),
-                selectedItems.slice(selectedIndex + 1)
-            );
-        }
-        setSelectedItems(newSelected);
+    const handleChange = (e) => {
+        console.log(e.target.value);
+        let result = products?.filter((item) => {
+            return item.id === parseInt(e.target.value);
+        });
+        setCurrentProduct(result);
+        console.log(result);
     };
-
-    const isSelected = (item) => selectedItems.indexOf(item) !== -1;
-
-    console.log(selectedItems);
 
     return (
         <div className="contact-form-section" style={{ textAlign: 'left', maxWidth: '500px' }}>
@@ -53,30 +53,40 @@ export default function AddForm({ setShow }) {
                     <Row>
                         <Col>
                             <Form.Group className="mb-3">
-                                <Form.Label>Product Name</Form.Label>
-                                <Form.Control
-                                    id="product_id"
-                                    name="product_id"
+                                <Form.Label>Choose Products: </Form.Label>
+                                <Form.Select
+                                    id="product"
+                                    name="product"
                                     size="md"
-                                    type="text"
                                     required
                                     {...register('product_id', { required: true })}
-                                />
+                                    onChange={handleChange}
+                                >
+                                    <option disabled selected value={''}>
+                                        Choose Products
+                                    </option>
+                                    {products &&
+                                        products.map((p) => (
+                                            <option key={p.id} value={p.id}>
+                                                {p.name}
+                                            </option>
+                                        ))}
+                                </Form.Select>
                             </Form.Group>
                             <Form.Group className="mb-3">
                                 <Form.Label>Raw Materials</Form.Label>
-                                {['abcd', 'efgh', 'ijk', 'lmno'].map((item, id) => (
-                                    <Form.Check
-                                        key={item}
-                                        value={id}
-                                        label={item}
-                                        checked={isSelected(id)}
-                                        onChange={(event) => {
-                                            handleCheckboxChange(event, id);
-                                        }}
-                                        type="checkbox"
-                                    />
-                                ))}
+                                <ul>
+                                    {currentProduct.map((p) =>
+                                        p.raw.map((r) => (
+                                            <>
+                                                <li key={r.name1}>{r.name1}</li>
+                                                <li key={r.name2}>{r.name2}</li>
+                                                <li key={r.name3}>{r.name3}</li>
+                                                <li key={r.name4}>{r.name4}</li>
+                                            </>
+                                        ))
+                                    )}
+                                </ul>
                             </Form.Group>
                         </Col>
                         <Col>
@@ -97,7 +107,7 @@ export default function AddForm({ setShow }) {
                                     id="release_date"
                                     name="release_date"
                                     size="md"
-                                    type="text"
+                                    type="date"
                                     required
                                     {...register('release_date', { required: true })}
                                 />
@@ -116,7 +126,7 @@ export default function AddForm({ setShow }) {
                         </Col>
                     </Row>
                     <div className="mx-auto my-3 d-flex justify-content-center">
-                        <Button className="me-2 mx-3" variant="outline-success">
+                        <Button type="submit" className="me-2 mx-3" variant="outline-success">
                             Yes
                         </Button>
                         <Button className="me-2" variant="outline-secondary" onClick={() => setShow(false)}>

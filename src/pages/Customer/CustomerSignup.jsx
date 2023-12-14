@@ -2,8 +2,13 @@ import { Button, Col, Form, Row } from 'react-bootstrap';
 import { Cities, Townships } from '../../datas/CitiesAndTownship';
 import { useForm } from 'react-hook-form';
 import { signup } from '../../services/signup';
+import { CUSTOMER_ORDER_ROUTE } from '../../constants/routes';
+import { useNavigate } from 'react-router-dom';
+import { useEffect } from 'react';
+import { getSessionStorage } from '../../utils';
 
 function CustomerSignup() {
+    const nagivate = useNavigate();
     const {
         register,
         handleSubmit,
@@ -14,7 +19,14 @@ function CustomerSignup() {
     const onSubmit = (data) => {
         console.log(data);
         signup(data);
+        nagivate(CUSTOMER_ORDER_ROUTE);
     };
+
+    useEffect(() => {
+        const isAuthToken = getSessionStorage('authToken');
+        if (!isAuthToken) return;
+        nagivate(CUSTOMER_ORDER_ROUTE);
+    }, []);
 
     console.log(watch('example'));
     return (

@@ -1,6 +1,7 @@
 import Paginator from './Pagination';
 import { useState, useEffect } from 'react';
 import { Form, Row, Col, Button, Container } from 'react-bootstrap';
+import Spinner from 'react-bootstrap/Spinner';
 
 const heading = [
     'Order Id',
@@ -14,19 +15,8 @@ const heading = [
     'Remark'
 ];
 
-function TableComponent() {
-    let [data, setData] = useState();
-    let [filterData, setFilterData] = useState(data);
-
-    useEffect(() => {
-        const fetchInfo = async () => {
-            const res = await fetch(`http://localhost:8000/api/getpreorders`);
-            const data = await res.json();
-            console.log(data);
-            setData(data);
-        };
-        fetchInfo();
-    }, []);
+function TableComponent({ data }) {
+    let [filterData, setFilterData] = useState();
 
     function filterId(id) {
         let result = data?.filter((item) => {
@@ -45,41 +35,49 @@ function TableComponent() {
 
     return (
         <Container>
-            <div className="mb-4">
-                <Row>
-                    <Col xs={4}>
-                        <Form.Label>Order Id: </Form.Label>
-                        <Form.Control
-                            size="md"
-                            type="email"
-                            onChange={(e) => {
-                                filterId(e.target.value);
-                            }}
-                        />
-                    </Col>
-                    <Col xs={4}>
-                        <Form.Label>Address: </Form.Label>
-                        <Form.Select
-                            id="product"
-                            name="product"
-                            size="md"
-                            onChange={(e) => {
-                                filterStatus(e.target.value);
-                            }}
-                        >
-                            <option disabled selected value={''}>
-                                Choose Product
-                            </option>
-                            {['pending', 'approved'].map((t) => (
-                                <option key={t} value={t}>
-                                    {t}
-                                </option>
-                            ))}
-                        </Form.Select>
-                    </Col>
-                </Row>
-            </div>
-            {data ? <Paginator header={heading} data={filterData ? filterData : data} /> : null}
+            {data ? (
+                <>
+                    <div className="mb-4">
+                        <Row>
+                            <Col xs={4}>
+                                <Form.Label>Order Id: </Form.Label>
+                                <Form.Control
+                                    size="md"
+                                    type="email"
+                                    onChange={(e) => {
+                                        filterId(e.target.value);
+                                    }}
+                                />
+                            </Col>
+                            <Col xs={4}>
+                                <Form.Label>Status: </Form.Label>
+                                <Form.Select
+                                    id="product"
+                                    name="product"
+                                    size="md"
+                                    onChange={(e) => {
+                                        filterStatus(e.target.value);
+                                    }}
+                                >
+                                    <option disabled selected value={''}>
+                                        Choose Status
+                                    </option>
+                                    {['pending', 'approved'].map((t) => (
+                                        <option key={t} value={t}>
+                                            {t}
+                                        </option>
+                                    ))}
+                                </Form.Select>
+                            </Col>
+                        </Row>
+                    </div>
+                    {data ? <Paginator header={heading} data={filterData ? filterData : data} /> : null}{' '}
+                </>
+            ) : (
+                <Spinner animation="border" role="status">
+                    <span className="visually-hidden">Loading...</span>
+                </Spinner>
+            )}
         </Container>
     );
 }

@@ -1,10 +1,12 @@
-import { useState } from 'react';
+import { useState, useContext } from 'react';
 import Modal from 'react-bootstrap/Modal';
 import Button from 'react-bootstrap/Button';
-import axios from "axios";
+import axios from 'axios';
+import { ReloadingContext } from '../../actions/ReloadContext';
 
 export default function ApproveDeliveryModal({ initialData }) {
     const [show, setShow] = useState(false);
+    const { reload, setReload } = useContext(ReloadingContext);
 
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
@@ -16,6 +18,11 @@ export default function ApproveDeliveryModal({ initialData }) {
             id: initialData.id,
             status: 'approved'
         });
+        setShow(false);
+
+        if (res.statusText === 'OK') {
+            setReload(reload + 1);
+        }
 
         const datas = res.data;
         console.log(datas);

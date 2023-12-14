@@ -1,10 +1,13 @@
 import { Button, Col, Form, Modal, ModalBody, ModalHeader, Row } from 'react-bootstrap';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
-import { Login } from '../../services/adminLogin';
-import { useState } from 'react';
+import { login } from '../../services/adminLogin';
+import { useState, useEffect } from 'react';
+import { getSessionStorage } from '../../utils';
+import { STAFF_ROUTE } from '../../constants/routes';
 
 function AdminLogin() {
+    const history = useNavigate();
     const [showError, setShowError] = useState();
     const {
         register,
@@ -14,16 +17,16 @@ function AdminLogin() {
     } = useForm();
 
     const onSubmit = async (data) => {
-        try {
-            // Assuming Login is an asynchronous function
-            await Login(data);
-            // If the login was successful, you might want to redirect the user or perform other actions
-        } catch (error) {
-            console.error('Login failed:', error);
-            setShowError(true);
-        }
+        await login(data);
+       window.location.reload();
     };
-    console.log(watch('example'));
+
+    useEffect(() => {
+        const isStaffToken = getSessionStorage('staffToken');
+        if (!isStaffToken) return;
+        history(STAFF_ROUTE);
+    }, []);
+
     return (
         <div className="contact-form-section" style={{ textAlign: 'left', margin: '50px auto', maxWidth: '500px' }}>
             <h2>Log-in</h2>

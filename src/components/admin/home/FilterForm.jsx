@@ -2,13 +2,14 @@ import { Form, Row, Col, Button } from "react-bootstrap";
 import { useForm } from "react-hook-form";
 import axios from "axios"
 import { useEffect, useState } from "react";
-import {sellCounts} from "../../../data/productsSellCount"
-
-const year = ["2019", "2020", "2021", "2022","2023"];
+import {sellCounts } from './productsSellCount';
 
 
-export default function FilterForm({ heading }) {
-  const [products,setProducts] = useState(null);
+const year = ["2020", "2021", "2022","2023"];
+
+
+export default function FilterForm() {
+  const [products,setProducts] = useState(sellCounts);
   const[selectedSellCount,setSelectedSellCount] = useState(null);
   const[totalCount,setTotalCount] = useState(null);
   const[damageCount,setDamageCount] = useState(null);
@@ -21,60 +22,61 @@ export default function FilterForm({ heading }) {
     formState: { errors },
   } = useForm();
 
-  const productTotalCount = async(productName,targetYear)=>{
-    const product = products?.find(p=>{
-      return p.name == productName
-    });
-    const res = await axios.post('http://localhost:8000/api/get-total-count',{
-      product_id:product?.id,
-      targetYear
-    });
-    const datas = res.data;
-    setTotalCount(datas)
-  }
+  // const productTotalCount = async(productName,targetYear)=>{
+  //   const product = products?.find(p=>{
+  //     return p.name == productName
+  //   });
+  //   const res = await axios.post('http://localhost:8000/api/get-total-count',{
+  //     product_id:product?.id,
+  //     targetYear
+  //   });
+  //   const datas = res.data;
+  //   setTotalCount(datas)
+  // }
 
-  const productDamageCount = async(productId)=>{
-    const res = await axios.post('https://localhost:8000/api/get-damage-return-count',{
-      id:productId
-    });
-    const datas = res.data;
-    setDamageCount(datas)
-  }
+  // const productDamageCount = async(productId)=>{
+  //   const res = await axios.post('https://localhost:8000/api/get-damage-return-count',{
+  //     id:productId
+  //   });
+  //   const datas = res.data;
+  //   setDamageCount(datas)
+  // }
 
-  const productPriceChanges = async(productId,year) => {
-    const res = await axios.post('https://localhost:8000/api/get-product-prices-change',{
-      year:year,
-      product_id:productId
-    });
-    const datas = res.data;
-    setPriceChanges(datas)
-  }
+  // const productPriceChanges = async(productId,year) => {
+  //   const res = await axios.post('https://localhost:8000/api/get-product-prices-change',{
+  //     year:year,
+  //     product_id:productId
+  //   });
+  //   const datas = res.data;
+  //   setPriceChanges(datas)
+  // }
 
-  const onSubmit = (data) => {
-
-    sellCounts.filter((p)=>{
-      // if(){
-        console.log(p.product_name)
-      console.log(data)
-      //   setSelectedSellCount(p);
-      // }
-    })
-    console.log(selectedSellCount)
+  const onSubmit = (data) => { console.log(data)}
+  //   sellCounts.filter((p)=>{
+  //     // if(){
+  //       console.log(p.product_name)
+  //     console.log(data)
+  //     //   setSelectedSellCount(p);
+  //     // }
+  //   })
+  //   console.log(selectedSellCount)
 
     
-  };
+  // };
 
-  const getProducts = async() => {
-    const res = await axios.get('http://localhost:8000/api/product');
-    const products = res.data;
-    console.log(products)
-    setProducts(products)
-  }
+  // const getProducts = async() => {
+  //   const res = await axios.get('http://localhost:8000/api/product');
+  //   const products = res.data;
+  //   console.log(products)
+  //   setProducts(products)
+  // }
 
-  useEffect(()=>{
-    getProducts()
-  },[])
+  // useEffect(()=>{
+  //   getProducts()
+  // },[])
 
+// Printing the updated sellCounts array
+console.log(sellCounts);
   return (
     <div
       className="contact-form-section"
@@ -93,12 +95,12 @@ export default function FilterForm({ heading }) {
                 // defaultValue="Choose product"
                 {...register("productName", { required: true })}
               >
-                <option disabled selected value={""}>
+                <option disabled selected defaultValue={""}>
                   Choose Product
                 </option>
-                {products?.map((t) => (
-                  <option key={t.id} value={t.name}>
-                    {t.name}
+                {products?.map((item , key) => (
+                  <option key={key} value={item.product_name}>
+                    {item.product_name}
                   </option>
                 ))}
               </Form.Select>
@@ -113,7 +115,7 @@ export default function FilterForm({ heading }) {
                 // defaultValue="Choose year"
                 {...register("year", { required: true })}
               >
-                <option disabled selected value={""}>
+                <option disabled selected defaultValue={""}>
                   Choose Year
                 </option>
                 {year.map((t) => (

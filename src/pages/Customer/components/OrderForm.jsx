@@ -3,16 +3,17 @@ import { useForm } from 'react-hook-form';
 import { Cities, Townships } from '../../../datas/CitiesAndTownship';
 import axios from 'axios';
 import { useState } from 'react';
+import { customerOrder } from '../../../services/order';
 
-function AddOrder({ isOpen, handleClose, orderData, totalPrice }) {
+function AddOrder({ isOpen, setIsAddressModal, handleClose, orderData, totalPrice }) {
     const [isOpenConfirm, setIsOpenConfirm] = useState(false);
-    const [confirmData, setConFirmData] = useState({});
+    const [newOrderData, setNewOrderData] = useState({});
+
     const handleCloseConfirm = () => {
         setIsOpenConfirm(false);
+        setIsAddressModal(true);
     };
-    const handleOpenConfirm = () => {
-        setIsOpenConfirm(true);
-    };
+
     const {
         register,
         handleSubmit,
@@ -20,15 +21,9 @@ function AddOrder({ isOpen, handleClose, orderData, totalPrice }) {
         formState: { errors }
     } = useForm();
 
-    const handleSubimtConfirm = () => {
-        axios.post('http://localhost:8000/api/createorders', confirmData);
-        setIsOpenConfirm(false);
-        console.log(confirmData);
-    };
-    const onNewOrder = (data) => {
-        setConFirmData(data);
-    };
-    const onSubmit = async (data) => {
+    const onSubmit = (data) => {
+        handleClose();
+        setIsOpenConfirm(true);
         const newData = {
             ...data,
             quantity: 2,
@@ -38,9 +33,14 @@ function AddOrder({ isOpen, handleClose, orderData, totalPrice }) {
             totalPrice: totalPrice,
             customer_id: 1
         };
-
-        onNewOrder(newData);
+        setNewOrderData(newData);
     };
+
+    const handleConfirm = async () => {
+        await customerOrder(newOrderData);
+        setIsOpenConfirm(false);
+    };
+
     const CustomCloseButton = (
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
             Close
@@ -52,10 +52,7 @@ function AddOrder({ isOpen, handleClose, orderData, totalPrice }) {
                 <ModalHeader closeButton={CustomCloseButton}>
                     <Modal.Title>Cart List</Modal.Title>
                 </ModalHeader>
-                <div
-                    className="contact-form-section"
-                    style={{ textAlign: 'left', margin: '50px auto', maxWidth: '600px' }}
-                >
+                <div className="contact-form-section p-4">
                     <Form onSubmit={handleSubmit(onSubmit)}>
                         <div className="mb-4">
                             <Row>
@@ -76,7 +73,7 @@ function AddOrder({ isOpen, handleClose, orderData, totalPrice }) {
                                 </Row>
                             ))}
                             <Row className="mt-2">
-                                <Col className="col-sm-8">Total Price</Col>
+                                <Col className="col-sm\-8">Total Price</Col>
                                 <Col className="col-sm-4">
                                     {totalPrice && totalPrice.toFixed(2)}
                                     <span>$</span>
@@ -105,18 +102,17 @@ function AddOrder({ isOpen, handleClose, orderData, totalPrice }) {
                             <Row>
                                 <Col>
                                     <Form.Select
-                                        id="customerType"
-                                        name="customerType"
+                                        id="orderType"
+                                        name="orderType"
                                         size="md"
                                         required
-                                        {...register('customerType', { required: true })}
+                                        {...register('orderType', { required: true })}
                                     >
                                         <option disabled selected value={''}>
-                                            Customer Type
+                                            Order Type
                                         </option>
-                                        <option>Keyholder</option>
-                                        <option>Distributor</option>
-                                        <option>Wholesale</option>
+                                        <option>Delivery</option>
+                                        <option>Pickup</option>
                                     </Form.Select>
                                 </Col>
                                 <Col>
@@ -191,6 +187,7 @@ function AddOrder({ isOpen, handleClose, orderData, totalPrice }) {
                                         name="remark"
                                         size="md"
                                         type="text"
+                                        as="textarea"
                                         placeholder="Remark"
                                         required
                                         {...register('remark', { required: true })}
@@ -198,16 +195,9 @@ function AddOrder({ isOpen, handleClose, orderData, totalPrice }) {
                                 </Col>
                             </Row>
                         </div>
-                        <Button
-                            type="submit"
-                            onClick={() => {
-                                handleClose();
-                                handleOpenConfirm();
-                            }}
-                        >
-                            {' '}
-                            Submit{' '}
-                        </Button>
+                        <div className="d-flex align-items-center justify-content-center">
+                            <Button type="submit"> Submit </Button>
+                        </div>
                     </Form>
                 </div>
             </Modal>
@@ -222,7 +212,7 @@ function AddOrder({ isOpen, handleClose, orderData, totalPrice }) {
                     <Button variant="secondary" onClick={handleCloseConfirm}>
                         Cancel
                     </Button>
-                    <Button variant="primary" type="submit" onClick={handleSubimtConfirm}>
+                    <Button variant="primary" onClick={handleConfirm}>
                         Confirm
                     </Button>
                 </Modal.Footer>

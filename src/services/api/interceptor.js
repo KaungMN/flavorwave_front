@@ -1,11 +1,22 @@
 import axios from 'axios';
+import { getSessionStorage } from '../../utils';
 
-axios.defaults.baseURL = 'http://localhost:8000';
+// TODO: need to change
+axios.defaults.baseURL = 'http://localhost:8000/api/';
+// axios.defaults.baseURL = 'https://dd8b-2a09-bac5-492b-18c8-00-278-84.ngrok-free.app/api/';
 
 // Add a request interceptor
 axios.interceptors.request.use(
     function (config) {
         // Do something before request is sent
+        const token = getSessionStorage('authToken');
+        if (token) {
+            config.headers = {
+                Authorization: `Bearer ${token}`,
+                'Content-Type': 'application/json'
+            };
+        }
+
         return config;
     },
     function (error) {

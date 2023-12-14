@@ -22,3 +22,7 @@ a:hover {
     border-top-width: 0;
     background: transparent;
 }
+
+.carousel:hover {
+    cursor: pointer;
+}

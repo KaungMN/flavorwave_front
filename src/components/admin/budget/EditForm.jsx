@@ -1,7 +1,7 @@
 import { Form, Row, Col, Button } from 'react-bootstrap';
 import { useForm } from 'react-hook-form';
 
-export default function EditForm() {
+export default function EditForm({ data, setShow }) {
     const {
         register,
         handleSubmit,
@@ -9,20 +9,19 @@ export default function EditForm() {
         formState: { errors }
     } = useForm();
 
-    const onSubmit = (data) =>{
+    const onSubmit = (data) => {
         const transformedData = {
             department_id: data.department_id,
             target_year: data.target_year,
             total_budget: data.total_budget,
             report_budget: {
-                
                 planned_budget: data.planned_budget,
                 spent_budget: data.spent_budget
             }
         };
         console.log(JSON.stringify(transformedData));
-
-    }
+        setShow(false);
+    };
 
     return (
         <div className="contact-form-section" style={{ textAlign: 'left', maxWidth: '500px' }}>
@@ -49,7 +48,6 @@ export default function EditForm() {
                                 </Form.Select>
                             </Form.Group>
                             <Form.Group>
-
                                 <Form.Label>Planned Budget</Form.Label>
                                 <Form.Control
                                     id="plannedBudget"

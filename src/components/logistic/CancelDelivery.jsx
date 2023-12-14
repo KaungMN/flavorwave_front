@@ -26,7 +26,7 @@ export default function CancelDeliveryModal() {
             Are you sure you want to cancel this order's delivery?
           </h5>
           <div className="mx-auto my-3 d-flex justify-content-center">
-            <Button className="me-2 mx-3" variant="outline-success">
+            <Button className="me-2 mx-3" variant="outline-success" onClick={() => setShow(false)}>
               Yes
             </Button>
             <Button

@@ -6,7 +6,7 @@ import AddStaff from '../Add';
 
 
 function TableComponent({data}) {
-    let [filterData, setFilterData] = useState(data);
+    let [filterData, setFilterData] = useState();
 
     const handleDelete = async (id) => {
         try {

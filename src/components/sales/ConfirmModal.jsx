@@ -1,10 +1,12 @@
-import { useState } from 'react';
+import { useState, useContext } from 'react';
 import Modal from 'react-bootstrap/Modal';
 import Button from 'react-bootstrap/Button';
 import axios from 'axios';
+import { ReloadingContext } from '../../actions/ReloadContext';
 
 export default function OrderConfirmModal({ preorderId }) {
     const [show, setShow] = useState(false);
+    const { reload, setReload } = useContext(ReloadingContext);
 
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
@@ -15,14 +17,13 @@ export default function OrderConfirmModal({ preorderId }) {
             staff_id: 3
         });
 
-        const datas = res.data;
-        console.log(datas);
-        console.log(preorderId);
-
         const response = await axios.post(`http://localhost:8000/api/change-status`, {
             id: preorderId,
             status: 'approved'
         });
+        if (response.statusText === 'OK') {
+            setReload(reload + 1);
+        }
         setShow(false);
     };
     return (

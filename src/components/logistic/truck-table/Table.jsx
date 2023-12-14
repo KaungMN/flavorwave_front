@@ -37,10 +37,8 @@ function TableComponent({ data }) {
 
     useEffect(async () => {
         await getTrucks();
-        return () => {
-            second;
-        };
-    }, [third]);
+        
+    }, []);
 
     return (
         <Container>

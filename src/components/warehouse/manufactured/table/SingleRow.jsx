@@ -3,6 +3,7 @@ import Table from 'react-bootstrap/Table';
 
 export default function TableSingleRow({ heading, order, handleDelete }) {
     let staffId = JSON.parse(sessionStorage.getItem('staffId'));
+    console.log(order);
 
     return (
         <Table striped bordered hover>

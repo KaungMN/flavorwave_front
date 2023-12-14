@@ -22,9 +22,9 @@ const Sidebar = () => {
                 <Navbar.Toggle onClick={handleToggle} aria-controls="responsive-sidebar" />
                 <Navbar.Collapse id="responsive-sidebar">
                     <Nav defaultActiveKey="/home" className="flex-column">
-                        <Navbar.Brand className="my-3">
-                            <Link to="/">
-                                <img alt="" className="me-2" src="/src/images/Logo (1).png" width="70" height="70" />{' '}
+                        <Navbar.Brand className="mb-2">
+                            <Link to="/"  className="p-0">
+                                <img alt="" className="mx-auto d-block" src="/src/images/Logo (1).png" width="70" height="70" />{' '}
                                 <span className="mt-2 fs-4">Flavor Wave</span>
                             </Link>
                         </Navbar.Brand>

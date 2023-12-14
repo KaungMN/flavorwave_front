@@ -1,7 +1,7 @@
 import {
     DEFAULT_ROUTE,
-    FACTORY_ROUTE,
     RAW_ROUTE,
+    MANUFACTURED_ROUTE,
     ADMIN_ROUTE,
     PRODUCT_ROUTE,
     STAFF_ROUTE,
@@ -37,7 +37,7 @@ export const menuList = [
             { route: CUSTOMER_ORDER_ROUTE, label: 'Order' }
         ]
     },
-    { route: FACTORY_ROUTE, label: 'Factory', subMenu: [{ route: RAW_ROUTE, label: 'Raw' }] },
-    { route: WAREHOUSE_ROUTE, label: 'Warehouse' },
+    { route: RAW_ROUTE, label: 'Raw' },
+    { route: MANUFACTURED_ROUTE, label: 'Manufactured', subMenu: [{ route: WAREHOUSE_ROUTE, label: 'Warehouse' }] },
     { route: SALES_ROUTE, label: 'Sales' }
 ];

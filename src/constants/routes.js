@@ -1,5 +1,5 @@
 export const DEFAULT_ROUTE = '/';
-export const FACTORY_ROUTE = '/factory';
+export const MANUFACTURED_ROUTE = '/manufactured';
 export const RAW_ROUTE = '/raw';
 export const ADMIN_ROUTE = '/admin';
 export const PRODUCT_ROUTE = '/product';

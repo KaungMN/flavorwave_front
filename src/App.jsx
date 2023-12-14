@@ -18,16 +18,16 @@ function App() {
                     zIndex: '1'
                 }}
             >
-                <Col xl={3} lg={3} xs={2}></Col>
-                <Col xl={9} lg={9} xs={10}>
+                <Col xl={2} lg={2} xs={2}></Col>
+                <Col xl={10} lg={10} xs={10}>
                     <Current />
                 </Col>
             </Row>
             <Row>
-                <Col lg={3} xs={2}>
+                <Col lg={2} xs={2}>
                     <Sidebar />
                 </Col>
-                <Col style={{ marginTop: '80px' }} lg={9} xs={10}>
+                <Col style={{ marginTop: '80px' }} lg={10} xs={10}>
                     <div>
                         <RootNavigator />
                     </div>

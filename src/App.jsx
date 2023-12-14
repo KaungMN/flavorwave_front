@@ -5,9 +5,11 @@ import Current from './shared/Current.jsx';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import RootNavigator from './router/RootNavigator.jsx';
-import { Container } from 'react-bootstrap';
+import { getMenuList } from './constants/index.js';
 
 function App() {
+    if (getMenuList().length === 0) return <RootNavigator />;
+
     return (
         <>
             <Row

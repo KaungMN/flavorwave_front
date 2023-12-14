@@ -18,7 +18,7 @@ function AdminLogin() {
 
     const onSubmit = async (data) => {
         await login(data);
-        history(STAFF_ROUTE);
+       window.location.reload();
     };
 
     useEffect(() => {

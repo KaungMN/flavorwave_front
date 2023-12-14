@@ -26,7 +26,7 @@ export default function OrderConfirmModal({ preorderId }) {
     };
     return (
         <>
-            <Button className="me-2" variant="outline-success" onClick={handleShow}>
+            <Button className="me-2 mb-2" variant="outline-success" onClick={handleShow}>
                 Confrim
             </Button>
 

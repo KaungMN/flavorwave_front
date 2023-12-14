@@ -1,10 +1,12 @@
 import { Form, Row, Col, Button } from 'react-bootstrap';
 import { useForm } from 'react-hook-form';
 import axios from 'axios';
+import { useState, useEffect } from 'react';
 
 const truck = ['Suzuki', 'Mercedes', 'Toyota', 'Honda'];
 
 export default function EditForm({ initialData, setShow }) {
+    const [truckData, setTruckData] = useState();
     const {
         register,
         handleSubmit,
@@ -12,11 +14,21 @@ export default function EditForm({ initialData, setShow }) {
         formState: { errors }
     } = useForm();
 
+    useEffect(() => {
+        const fetchInfo = async () => {
+            const res = await fetch(`http://localhost:8000/api/get-trucks`);
+            const data = await res.json();
+            console.log(data);
+            setTruckData(data);
+        };
+        fetchInfo();
+    }, []);
+
     const onSubmit = async (data) => {
         const res = await axios.post(`http://localhost:8000/api/post-delivery`, {
             truck_id: data.truck_id,
             preorder_id: initialData.id,
-            delivery_date: "2023-12-13",
+            delivery_date: '2023-12-13',
             status: 'pending'
         });
 
@@ -53,9 +65,9 @@ export default function EditForm({ initialData, setShow }) {
                                 <option disabled selected value={''}>
                                     Choose Truck
                                 </option>
-                                {truck.map((t, id) => (
-                                    <option key={t} value={id + 1}>
-                                        {t}
+                                {truckData && truckData.map((t) => (
+                                    <option key={t} value={t.id}>
+                                        {t.truck_number + ' ' + t.truck_name}
                                     </option>
                                 ))}
                             </Form.Select>

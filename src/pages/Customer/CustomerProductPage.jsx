@@ -8,19 +8,14 @@ import Spinner from 'react-bootstrap/Spinner';
 
 function CustomerProductPage() {
     const [items, setItems] = useState(null);
-    // useEffect(()=>{
-    //     const fetchData = async () => {
-    //         try {
-    //             const data = await getProducts();
-    //             console.log('Loaded data:', data);
-    //             setItems(data)
-    //         } catch (error) {
-    //             console.error('Error fetching products:', error);
-    //         }
-    //     };
+    useEffect(() => {
+        const fetchData = async () => {
+            const data = await getProducts();
+            setItems(data);
+        };
 
-    //     fetchData();
-    // },[])
+        fetchData();
+    }, []);
 
     const [cartList, setCartList] = useState([]);
     const [showCart, setShowCart] = useState(false);

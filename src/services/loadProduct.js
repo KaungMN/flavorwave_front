@@ -1,14 +1,12 @@
 import { axios } from './api';
+import productData from '../../__mock__/res/product.json';
 
 const getProducts = async () => {
-    try {
-        const res = await axios.get('/api/product');
-        return res.data;
-    } catch (error) {
-        console.error('Error during order:', error);
-        console.log('Error response:', error.response); // Log the response details
-
-    }
+    const res = await axios.get('product');
+    console.log(res.data);
+    // TODO: need to Fix
+    // return res.data;
+    return productData;
 };
 
 export { getProducts };

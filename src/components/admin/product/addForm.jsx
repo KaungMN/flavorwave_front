@@ -1,6 +1,7 @@
 import { Form, Row, Col, Button } from 'react-bootstrap';
 import { useForm } from 'react-hook-form';
 import { useState } from 'react';
+import axios from 'axios';
 
 export default function AddForm({ heading, data, setShow }) {
     const [selectedItems, setSelectedItems] = useState([]);
@@ -11,7 +12,13 @@ export default function AddForm({ heading, data, setShow }) {
         formState: { errors }
     } = useForm();
 
-    const onSubmit = (data) => console.log(data);
+    const onSubmit = async (data) => {
+        console.log(data);
+        const res = await axios.post('http://localhost:8000/api/post-products', data);
+        const datas = res.data;
+        console.log(datas);
+        setShow(false);
+    };
 
     const handleCheckboxChange = (event, item) => {
         const selectedIndex = selectedItems.indexOf(item);
@@ -53,7 +60,7 @@ export default function AddForm({ heading, data, setShow }) {
                                     {...register('name', { required: true })}
                                 />
                             </Form.Group>
-                            <Form.Label>Raw Material</Form.Label>
+                            {/* <Form.Label>Raw Material</Form.Label>
                             {['abcd', 'efgh', 'ijk', 'lmno'].map((item, id) => (
                                 <Form.Check
                                     key={item}
@@ -65,9 +72,7 @@ export default function AddForm({ heading, data, setShow }) {
                                     }}
                                     type="checkbox"
                                 />
-                            ))}
-                        </Col>
-                        <Col>
+                            ))} */}
                             <Form.Group className="mb-3">
                                 <Form.Label>Price</Form.Label>
                                 <Form.Control
@@ -79,6 +84,8 @@ export default function AddForm({ heading, data, setShow }) {
                                     {...register('price', { required: true })}
                                 />
                             </Form.Group>
+                        </Col>
+                        <Col>
                             <Form.Group className="mb-3">
                                 <Form.Label>Description</Form.Label>
                                 <Form.Label>Description</Form.Label>

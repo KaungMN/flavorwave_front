@@ -2,6 +2,7 @@ import TableComponent from '../../components/warehouse/manufactured/table/Table'
 import { useState, useEffect } from 'react';
 import { Button, Row, Col, Container, Form, InputGroup } from 'react-bootstrap';
 import Spinner from 'react-bootstrap/Spinner';
+import axios from 'axios';
 
 function manufactured() {
     const [data, setData] = useState();
@@ -20,10 +21,12 @@ function manufactured() {
 
     useEffect(() => {
         const fetchInfo = async () => {
-            const res = await fetch(`http://localhost:8000/api/get-products`);
-            const data = await res.json();
-            console.log(data);
+            // const res = await fetch(`http://localhost:8000/api/get-products`);
+            // const data = await res.json();
+            const res = await axios.get('http://localhost:8000/api/check-stock');
+            const data = res.data;
             setData(data);
+            console.log(data);
         };
         fetchInfo();
     }, []);
@@ -39,38 +42,14 @@ function manufactured() {
     return (
         <Container>
             <h1 className="mb-4">Manufactured Porducts</h1>
-            {!data && (
+            {data ? (
+                <Row>
+                    <TableComponent data={data} />
+                </Row>
+            ) : (
                 <Spinner animation="border" role="status">
                     <span className="visually-hidden">Loading...</span>
                 </Spinner>
-            )}
-            {data && (
-                <>
-                    <Row className="mb-4">
-                        <Col>
-                            <Form style={{ maxWidth: '500px' }} onSubmit={(e) => fetchDataByDate(e)}>
-                                <InputGroup>
-                                    <Form.Control
-                                        type="date"
-                                        value={date}
-                                        onChange={handleDateChange}
-                                        required
-                                        className="p-1"
-                                    />
-                                    <Button type="submit">Data By Date</Button>
-                                </InputGroup>
-                            </Form>
-                        </Col>
-                        <Col sm={4}>
-                            <Button style={{ float: 'right', marginRight: '50px' }} onClick={fetchAllData}>
-                                All Data
-                            </Button>
-                        </Col>
-                    </Row>
-                    <Row>
-                        <TableComponent data={data} />
-                    </Row>
-                </>
             )}
         </Container>
     );

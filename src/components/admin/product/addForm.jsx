@@ -46,10 +46,13 @@ export default function AddForm({ heading, data, setShow }) {
                                 <Form.Control
                                     id="name"
                                     name="name"
+                                    id="name"
+                                    name="name"
                                     defaultValue={data.orderItem}
                                     size="md"
                                     type="text"
                                     required
+                                    {...register('name', { required: true })}
                                     {...register('name', { required: true })}
                                 />
                             </Form.Group>
@@ -73,7 +76,6 @@ export default function AddForm({ heading, data, setShow }) {
                                 <Form.Control
                                     id="price"
                                     name="price"
-                                    defaultValue={data.sales}
                                     size="md"
                                     type="number"
                                     required
@@ -81,6 +83,7 @@ export default function AddForm({ heading, data, setShow }) {
                                 />
                             </Form.Group>
                             <Form.Group className="mb-3">
+                                <Form.Label>Description</Form.Label>
                                 <Form.Label>Description</Form.Label>
                                 <Form.Control
                                     as="textarea"

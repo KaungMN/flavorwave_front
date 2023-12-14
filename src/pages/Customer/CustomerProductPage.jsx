@@ -3,12 +3,31 @@ import { Row, Col, Card, Button } from 'react-bootstrap';
 import { items } from '../../components/customers/Products.jsx';
 import AddOrder from './components/OrderForm.jsx';
 import CartModal from './components/CartModal.jsx';
+import ConfirmationModal from './components/ConfirmationModal.jsx';
+import { getProducts } from '../../services/loadProduct.js';
 
 function CustomerProductPage() {
+    // const [items , setItems] = useState();
+    // useEffect(()=>{
+    //     const fetchData = async () => {
+    //         try {
+    //             const data = await getProducts();
+    //             console.log('Loaded data:', data);
+    //             setItems(data)
+    //         } catch (error) {
+    //             console.error('Error fetching products:', error);
+    //         }
+    //     };
+
+    //     fetchData();
+    // },[])
+
     const [cartList, setCartList] = useState([]);
     const [showCart, setShowCart] = useState(false);
     const [totalPrice, setTotalPrice] = useState(0);
     const [isOpenCartModal, setIsOpenCartModal] = useState(false);
+    const [isOpenAddress, setIsAddressModal] = useState(false);
+    const [isOpenConfirm, setIsOpenConfirm] = useState(false);
 
     const toggleModal = () => setIsOpenCartModal((prev) => !prev);
 
@@ -38,7 +57,18 @@ function CustomerProductPage() {
     const handleClose = () => {
         toggleModal();
     };
-
+    const handleCloseAddress = () => {
+        setIsAddressModal(false);
+    };
+    const handleCloseConfirm = () => {
+        setIsOpenConfirm(false);
+    };
+    const handleOpenAddress = () => {
+        setIsAddressModal(true);
+    };
+    const handleOpenConfirm = () => {
+        setIsOpenConfirm(true);
+    };
     // const handleCancel = () => {
     //     setCartList([]);
     // };
@@ -66,40 +96,50 @@ function CustomerProductPage() {
             .filter((item) => item.quantity > 0);
         setCartList(updatedCart);
     };
-    const listToForm = cartList.map(({ id, name, quantity, subTotalPrice }) => ({ id, name, quantity, subTotalPrice }));
+    const listToForm = cartList.map(({ id, name, quantity, price, subTotalPrice }) => ({
+        id,
+        name,
+        quantity,
+        price,
+        subTotalPrice
+    }));
 
     return (
         <div>
             <h1>Products</h1>
             <Row>
-                {items.map((item) => (
-                    <Col key={item.id} xs={12} md={6} lg={4} className="p-3">
-                        <Card className="h-100">
-                            <Card.Img
-                                style={{
-                                    objectFit: 'cover',
-                                    height: '30vh',
-                                    overflow: 'hidden'
-                                }}
-                                src={item.image}
-                            />
-                            <Card.Body>
-                                <Card.Title>{item.name}</Card.Title>
-                                <Card.Text>
-                                    {item.description}
-                                    <p>
-                                        <strong>Price:</strong> ${item.price.toFixed(2)}
-                                    </p>
-                                </Card.Text>
-                            </Card.Body>
-                            <Card.Footer className="card-footer">
-                                <Button variant="primary" onClick={() => addToCart(item)}>
-                                    Add to Cart
-                                </Button>
-                            </Card.Footer>
-                        </Card>
-                    </Col>
-                ))}
+                {items &&
+                    items.map((item) => (
+                        <Col key={item.id} xs={12} md={6} lg={4} className="p-3">
+                            <Card className="h-100">
+                                <Card.Img
+                                    style={{
+                                        objectFit: 'cover',
+                                        height: '30vh',
+                                        overflow: 'hidden'
+                                    }}
+                                    src={item.image_url}
+                                    alt="product image"
+                                />
+                                <Card.Body>
+                                    <Card.Title>
+                                        {item.name} / {item.photo}
+                                    </Card.Title>
+                                    <Card.Text>
+                                        {item.description}
+                                        <p>
+                                            <strong>Price:</strong> ${item.price.toFixed(2)}
+                                        </p>
+                                    </Card.Text>
+                                </Card.Body>
+                                <Card.Footer className="card-footer">
+                                    <Button variant="primary" onClick={() => addToCart(item)}>
+                                        Add to Cart
+                                    </Button>
+                                </Card.Footer>
+                            </Card>
+                        </Col>
+                    ))}
             </Row>
 
             <CartModal
@@ -110,8 +150,21 @@ function CustomerProductPage() {
                 decrement={decrement}
                 totalPrice={totalPrice}
                 listToForm={listToForm}
+                openToAddress={handleOpenAddress}
             />
-            <AddOrder orderData={listToForm} totalPrice={totalPrice} />
+            <AddOrder
+                isOpen={isOpenAddress}
+                handleClose={handleCloseAddress}
+                openToConfirm={handleOpenConfirm}
+                orderData={listToForm}
+                totalPrice={totalPrice}
+            />
+            <ConfirmationModal
+                isOpen={isOpenConfirm}
+                handleClose={handleCloseConfirm}
+                orderData={listToForm}
+                totalPrice={totalPrice}
+            />
         </div>
     );
 }

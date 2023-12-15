@@ -5,8 +5,11 @@ import { useOrder } from '../../../services/order';
 import axios from 'axios';
 import { useState } from 'react';
 import { customerOrder } from '../../../services/order';
+import { DEFAULT_ROUTE } from '../../../constants/routes';
+import { useNavigate } from 'react-router-dom';
 
 function AddOrder({ isOpen, setIsAddressModal, handleClose, orderData, totalPrice }) {
+    const nagivate = useNavigate();
     const [isOpenConfirm, setIsOpenConfirm] = useState(false);
     const [newOrderData, setNewOrderData] = useState({});
 
@@ -40,6 +43,7 @@ function AddOrder({ isOpen, setIsAddressModal, handleClose, orderData, totalPric
     const handleConfirm = async () => {
         await customerOrder(newOrderData);
         setIsOpenConfirm(false);
+        nagivate(DEFAULT_ROUTE);
     };
 
     const CustomCloseButton = (

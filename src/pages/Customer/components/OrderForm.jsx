@@ -4,6 +4,7 @@ import { Cities, Townships } from '../../../datas/CitiesAndTownship';
 import { useOrder } from '../../../services/order';
 import axios from 'axios';
 import { useState } from 'react';
+import { getSessionStorage } from '../../../utils/index.js';
 import { customerOrder } from '../../../services/order';
 import { DEFAULT_ROUTE } from '../../../constants/routes';
 import { useNavigate } from 'react-router-dom';
@@ -18,6 +19,8 @@ function AddOrder({ isOpen, setIsAddressModal, handleClose, orderData, totalPric
         setIsAddressModal(true);
     };
 
+    let customer = getSessionStorage('customer');
+
     const {
         register,
         handleSubmit,
@@ -27,6 +30,7 @@ function AddOrder({ isOpen, setIsAddressModal, handleClose, orderData, totalPric
 
     const onSubmit = (data) => {
         handleClose();
+        console.log(data);
         setIsOpenConfirm(true);
         const newData = {
             ...data,
@@ -35,7 +39,7 @@ function AddOrder({ isOpen, setIsAddressModal, handleClose, orderData, totalPric
             status: 'pending',
             products: JSON.stringify(orderData),
             totalPrice: totalPrice,
-            customer_id: 1,
+            customer_id: customer.id,
             sub_total: 20
         };
         setNewOrderData(newData);
@@ -96,11 +100,18 @@ function AddOrder({ isOpen, setIsAddressModal, handleClose, orderData, totalPric
                                         type="text"
                                         placeholder="Name*"
                                         required
-                                        {...register('name', { required: true })}
+                                        {...register('customer_name', { required: true })}
                                     />
                                 </Col>
                                 <Col>
-                                    <Form.Control size="md" type="email" placeholder="Email*" />
+                                    <Form.Control
+                                        size="md"
+                                        id="email"
+                                        name="email"
+                                        type="email"
+                                        placeholder="Email*"
+                                        {...register('customer_email', { required: true })}
+                                    />
                                 </Col>
                             </Row>
                         </div>

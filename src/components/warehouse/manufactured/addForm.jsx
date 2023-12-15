@@ -22,12 +22,12 @@ export default function AddForm({ setShow }) {
     useEffect(() => {
         getProducts();
     }, []);
-    console.log(products);
 
     const onSubmit = async (data) => {
         const res = await axios.post('http://localhost:8000/api/post-product', { ...data, raw_material_id: rawId });
         const datas = res.data;
         console.log(datas);
+        console.log(data);
         setShow(false);
     };
 
@@ -35,7 +35,6 @@ export default function AddForm({ setShow }) {
     if (currentProduct.length > 0) {
         currentProduct.map((p) => p.raw.map((r) => (rawId = r.id)));
     }
-    console.log(rawId);
 
     const handleChange = (e) => {
         console.log(e.target.value);

@@ -10,7 +10,6 @@ export default function ApproveDeliveryModal({ initialData }) {
 
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
-    console.log(initialData);
 
     const handleClick = async () => {
         const res = await axios.post(`http://localhost:8000/api/change-deli-status`, {
@@ -19,13 +18,13 @@ export default function ApproveDeliveryModal({ initialData }) {
             status: 'approved'
         });
         setShow(false);
-
-        if (res.statusText === 'OK') {
+        console.log(res);
+        const datas = res.data;
+        // console.log(datas);
+        if (datas) {
+            console.log(reload);
             setReload(reload + 1);
         }
-
-        const datas = res.data;
-        console.log(datas);
     };
 
     return (

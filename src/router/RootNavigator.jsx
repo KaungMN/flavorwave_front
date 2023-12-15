@@ -30,13 +30,13 @@ import {
     CUSTOMER_LOGIN_ROUTE,
     CUSTOMER_SIGN_UP_ROUTE,
     CUSTOMER_ORDER_ROUTE,
-    CUSTOMER_HISTORY_ROUTE,
+    CUSTOMER_ORDER_HISTORY_ROUTE,
     WAREHOUSE_ROUTE,
     SALES_ROUTE,
     CUSTOMER_ABOUTUS_ROUTE
 } from '../constants/routes.js';
 import Truck from '../pages/Logistic/Truck.jsx';
-// import AdminLogin from '../pages/Admin/AdminLogin.jsx';
+import AdminLogin from '../pages/Admin/AdminLogin.jsx';
 import AboutUs from '../pages/AboutUs.jsx';
 
 function RootNavigator() {
@@ -47,7 +47,7 @@ function RootNavigator() {
             <Route path={MANUFACTURED_ROUTE} element={<Manufactured />} />
             <Route path={RAW_ROUTE} element={<Raw />} />
             <Route path={ADMIN_ROUTE} element={<Admin />} />
-            {/* <Route path={ADMIN_LOGIN_ROUTE} element={<AdminLogin />} /> */}
+            <Route path={ADMIN_LOGIN_ROUTE} element={<AdminLogin />} />
             <Route path={PRODUCT_ROUTE} element={<Product />} />
             <Route path={STAFF_ROUTE} element={<Staff />} />
             <Route path={BUDGET_ROUTE} element={<Budget />} />
@@ -59,7 +59,8 @@ function RootNavigator() {
             <Route path={CUSTOMER_SIGN_UP_ROUTE} element={<CustomerSignUp />} />
             <Route path={CUSTOMER_ABOUTUS_ROUTE} element={<AboutUs />} />
             <Route path={CUSTOMER_ORDER_ROUTE} element={<CustomerProductPage />} />
-            <Route path={CUSTOMER_HISTORY_ROUTE} element={<CustomerOrderHistory />} />
+            <Route path={CUSTOMER_ORDER_HISTORY_ROUTE} element={<CustomerOrderHistory />} />
+            {/* <Route path={CUSTOMER_HISTORY_ROUTE} element={<CustomerOrderHistory />} /> */}
             <Route path={WAREHOUSE_ROUTE} element={<Warehouse />} />
             <Route path={SALES_ROUTE} element={<Sales />} />
             <Route path="*" element={<NoMatch />} />

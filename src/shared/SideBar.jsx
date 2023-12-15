@@ -5,6 +5,7 @@ import { useState } from 'react';
 import { menuList, getMenuList } from '../constants';
 import LogoutButton from './LogoutButton';
 import LoginButtonAdmin from './LoginButtonAdmin';
+import { getSessionStorage } from '../utils/index.js';
 
 const Sidebar = () => {
     const [expanded, setExpanded] = useState(false);
@@ -13,11 +14,8 @@ const Sidebar = () => {
         setExpanded(!expanded);
     };
 
-    sessionStorage.setItem('staffId', '3');
-    let staffId = JSON.parse(sessionStorage.getItem('staffId'));
-    sessionStorage.setItem('dept', 'Admin');
-    let dept = sessionStorage.getItem('dept');
-
+    let staffId = getSessionStorage('staffId');
+    console.log(staffId);
     return (
         <div className="sidebar">
             <Navbar expand="lg" className="custom-navbar" style={{ marginRight: '25px' }} expanded={expanded}>
@@ -37,28 +35,26 @@ const Sidebar = () => {
                             </Link>
                         </Navbar.Brand>
                         <Accordion>
-                            {getMenuList().map((item, index) =>
-                                item.label.includes(dept) || dept === 'Admin' ? (
-                                    <Accordion.Item key={index} eventKey={index}>
-                                        <Accordion.Header>
-                                            <Link to={item.route} className="fs-5">
-                                                {item.label}
-                                            </Link>
-                                        </Accordion.Header>
-                                        <Accordion.Body className="fs-6">
-                                            <ul className="ps-2">
-                                                {item.subMenu
-                                                    ? item.subMenu.map((subMenu, index) => (
-                                                          <li key={index}>
-                                                              <Link to={subMenu.route}>{subMenu.label}</Link>
-                                                          </li>
-                                                      ))
-                                                    : null}
-                                            </ul>
-                                        </Accordion.Body>
-                                    </Accordion.Item>
-                                ) : null
-                            )}
+                            {getMenuList().map((item, index) => (
+                                <Accordion.Item key={index} eventKey={index}>
+                                    <Accordion.Header>
+                                        <Link to={item.route} className="fs-5">
+                                            {item.label}
+                                        </Link>
+                                    </Accordion.Header>
+                                    <Accordion.Body className="fs-6">
+                                        <ul className="ps-2">
+                                            {item.subMenu
+                                                ? item.subMenu.map((subMenu, index) => (
+                                                      <li key={index}>
+                                                          <Link to={subMenu.route}>{subMenu.label}</Link>
+                                                      </li>
+                                                  ))
+                                                : null}
+                                        </ul>
+                                    </Accordion.Body>
+                                </Accordion.Item>
+                            ))}
                         </Accordion>
                     </Nav>
                 </Navbar.Collapse>

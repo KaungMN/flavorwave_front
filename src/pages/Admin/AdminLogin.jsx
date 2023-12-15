@@ -4,11 +4,16 @@ import { useForm } from 'react-hook-form';
 import { login } from '../../services/adminLogin';
 import { useState, useEffect } from 'react';
 import { getSessionStorage } from '../../utils';
-import { STAFF_ROUTE } from '../../constants/routes';
+import { STAFF_ROUTE } from '../../constants/routes.js';
+import { MANUFACTURED_ROUTE, RAW_ROUTE, ADMIN_ROUTE, LOGISTIC_ROUTE, SALES_ROUTE } from '../../constants/routes.js';
 
-function AdminLogin() {
+export default function AdminLogin() {
     const history = useNavigate();
     const [showError, setShowError] = useState();
+
+    const refresh = () => window.location.reload(true);
+
+    let staffId = getSessionStorage('staffId');
     const {
         register,
         handleSubmit,
@@ -18,7 +23,34 @@ function AdminLogin() {
 
     const onSubmit = async (data) => {
         await login(data);
-        window.location.reload();
+        console.log(staffId);
+        if (staffId === 1) {
+            history(ADMIN_ROUTE);
+            setTimeout(() => {
+                refresh();
+            }, 2000);
+        } else if (staffId === 2) {
+            history(SALES_ROUTE);
+            setTimeout(() => {
+                refresh();
+            }, 2000);
+        } else if (staffId === 3) {
+            history(LOGISTIC_ROUTE);
+            setTimeout(() => {
+                refresh();
+            }, 2000);
+        } else if (staffId === 4) {
+            history(MANUFACTURED_ROUTE);
+            setTimeout(() => {
+                refresh();
+            }, 2000);
+        } else if (staffId === 5) {
+            history(RAW_ROUTE);
+            setTimeout(() => {
+                refresh();
+            }, 2000);
+        }
+        // window.location.reload();
     };
 
     useEffect(() => {
@@ -70,5 +102,3 @@ function AdminLogin() {
         </div>
     );
 }
-
-export default AdminLogin;

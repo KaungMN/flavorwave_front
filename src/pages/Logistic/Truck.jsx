@@ -1,8 +1,7 @@
-import React, { useEffect, useState, useContext } from 'react';
+import React, { useEffect, useState } from 'react';
 import TableComponent from '../../components/logistic/truck-table/Table';
 import Spinner from 'react-bootstrap/Spinner';
 import axios from 'axios';
-import { ReloadingContext } from '../../actions/ReloadContext';
 
 // const dummyData = [
 //     { id: 1, truck_number: 'fda', truck_name: 'TOYOTA', capacity: 500, staff_id: 3 },
@@ -12,7 +11,6 @@ import { ReloadingContext } from '../../actions/ReloadContext';
 
 function Truck() {
     const [trucks, setTrucks] = useState(null);
-    const { reload } = useContext(ReloadingContext);
 
     const getTrucks = async () => {
         const res = await axios.get('http://localhost:8000/api/get-trucks');
@@ -23,7 +21,7 @@ function Truck() {
 
     useEffect(() => {
         getTrucks();
-    }, [reload]);
+    }, []);
 
     return (
         <>

@@ -33,6 +33,7 @@ export default function TableRow({ item, id }) {
     if (deliveryData) {
         deliveryData.map((p) => p.preorder_id !== item.id);
     }
+    console.log(deliveryData);
 
     return (
         <tr key={id}>
@@ -58,19 +59,18 @@ export default function TableRow({ item, id }) {
             </td>
             <td>{item.quantity}</td>
             <td>{item.remark}</td>
-            {deliveryData &&
+            {/* {deliveryData &&
                 deliveryData.map((p) =>
-                    p.preorder_id !== item.id ? (
-                        staffId >= 2 ? (
-                            <td>
-                                <OrderConfirmModal preorderId={item.id} />
-                                <OrderRejectModal />
-                            </td>
-                        ) : null
-                    ) : (
+                    p.preorder_id !== item.id ? ( */}
+                        {/* // staffId >= 2 ? ( */}
+                        <td>
+                            <AddTruckModal initialData={item} />
+                        </td>
+                    {/* ) : (
+                        // ) : null
                         <td>Truck Assigned</td>
                     )
-                )}
+                )} */}
         </tr>
     );
 }

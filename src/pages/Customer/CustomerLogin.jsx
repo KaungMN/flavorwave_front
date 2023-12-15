@@ -5,7 +5,7 @@ import { login } from '../../services/login';
 import { useState, useEffect } from 'react';
 import { CUSTOMER_ORDER_ROUTE, CUSTOMER_SIGN_UP_ROUTE, DEFAULT_ROUTE } from '../../constants/routes';
 import { getSessionStorage } from '../../utils';
-import Bg from '../../images/bg.jpg';
+// import Bg from '../../images/bg.jpg';
 
 function CustomerLogin() {
     const [showError, setShowError] = useState();

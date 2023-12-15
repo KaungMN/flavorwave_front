@@ -28,7 +28,7 @@ export const menuList = [
             { route: STAFF_ROUTE, label: 'Staff' },
             { route: PRODUCT_ROUTE, label: 'Product' },
             { route: BUDGET_ROUTE, label: 'Budget' },
-            { route: ADMIN_LOGIN_ROUTE, label: 'Admin Login' }
+            // { route: ADMIN_LOGIN_ROUTE, label: 'Admin Login' }
         ]
     },
     {

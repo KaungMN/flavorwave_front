@@ -3,6 +3,7 @@ import Paginator from './Pagination';
 import { useState, useEffect } from 'react';
 import { Form, Row, Col, Container } from 'react-bootstrap';
 import AddStaff from '../Add';
+import axios from "axios"
 
 function TableComponent({ data }) {
     let [filterData, setFilterData] = useState();

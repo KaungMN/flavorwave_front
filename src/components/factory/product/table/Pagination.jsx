@@ -15,7 +15,7 @@ export default function Paginator({ heading, data, handleDelete }) {
 
     // let paginationData = checkResultProduct.length > 0 ? checkResultProduct : [];
 
-    const paginationData = useMemo(() => (data.length > 0 ? data : []), [data]);
+    const paginationData = useMemo(() => (data?.length > 0 ? data : []), [data]);
 
     useEffect(() => {
         let pageNum = paginationData.length / state.limit;

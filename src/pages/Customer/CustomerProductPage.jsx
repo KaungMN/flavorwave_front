@@ -18,6 +18,7 @@ function CustomerProductPage() {
         const fetchData = async () => {
             const data = await getProducts();
             setItems(data);
+            console.log(data);
         };
 
         fetchData();
@@ -112,7 +113,7 @@ function CustomerProductPage() {
         <div>
             <h1>Products</h1>
             <Row>
-                {items && 
+                {items &&
                     items.map((item) => (
                         <Col key={item.id} xs={12} md={6} lg={4} className="p-3">
                             <Card className="h-100">
@@ -122,7 +123,7 @@ function CustomerProductPage() {
                                         height: '30vh',
                                         overflow: 'hidden'
                                     }}
-                                    src={item.image_url}
+                                    src={'http://localhost:8000' + item.photo}
                                     alt="product image"
                                 />
                                 <Card.Body>

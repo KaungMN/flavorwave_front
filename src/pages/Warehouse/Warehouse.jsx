@@ -1,6 +1,6 @@
 import TableComponent from '../../components/warehouse/warehouses/table/Table';
 import { useState, useEffect } from 'react';
-import { Button, Row, Col, Container, Form, InputGroup } from 'react-bootstrap';
+import { Row, Container } from 'react-bootstrap';
 import Spinner from 'react-bootstrap/Spinner';
 import axios from 'axios';
 

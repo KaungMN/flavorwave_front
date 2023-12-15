@@ -26,3 +26,17 @@ a:hover {
 .carousel:hover {
     cursor: pointer;
 }
+
+.home-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.header-content {
+    flex: 1;
+}
+
+.header-button {
+    margin-left: 10px;
+}

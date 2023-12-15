@@ -7,6 +7,7 @@ import coursel_1 from '../images/coursel (1).png';
 import coursel_2 from '../images/coursel (2).png';
 import coursel_3 from '../images/coursel (3).png';
 import { getSessionStorage } from '../utils';
+import Logout from './Customer/components/Logout';
 
 function Home() {
     const isAuthToken = getSessionStorage('authToken');
@@ -19,11 +20,7 @@ function Home() {
                 </Link>
             );
         } else {
-            return (
-                <Link to={DEFAULT_ROUTE}>
-                    <Button className="header-button">Logout</Button>
-                </Link>
-            );
+            return <Logout />;
         }
     };
     const nagivate = useNavigate();

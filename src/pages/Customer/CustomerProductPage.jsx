@@ -165,7 +165,6 @@ function CustomerProductPage() {
                 listToForm={listToForm}
                 onNewOrder={handleNewOrderData}
             />
-            <Logout />
         </div>
     );
 }

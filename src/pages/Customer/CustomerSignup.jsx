@@ -1,13 +1,15 @@
-import { Button, Col, Form, Row } from 'react-bootstrap';
+import { Button, Col, Form, Modal, ModalBody, ModalHeader, Row } from 'react-bootstrap';
 import { Cities, Townships } from '../../datas/CitiesAndTownship';
 import { useForm } from 'react-hook-form';
 import { signup } from '../../services/signup';
-import { CUSTOMER_ORDER_ROUTE } from '../../constants/routes';
+import { CUSTOMER_LOGIN_ROUTE, CUSTOMER_ORDER_ROUTE } from '../../constants/routes';
 import { useNavigate } from 'react-router-dom';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { getSessionStorage } from '../../utils';
 
 function CustomerSignup() {
+    // const [successful, setSuccessful] = useState(false);
+    // const handleSuccess = () => setSuccessful(true);
     const nagivate = useNavigate();
     const {
         register,
@@ -18,14 +20,16 @@ function CustomerSignup() {
 
     const onSubmit = (data) => {
         console.log(data);
+        // handleSuccess();
+        alert('Singup Successful. Please login again');
         signup(data);
-        nagivate(CUSTOMER_ORDER_ROUTE);
+        nagivate(CUSTOMER_LOGIN_ROUTE);
     };
 
     useEffect(() => {
         const isAuthToken = getSessionStorage('authToken');
         if (!isAuthToken) return;
-        nagivate(CUSTOMER_ORDER_ROUTE);
+        nagivate(CUSTOMER_LOGIN_ROUTE);
     }, []);
 
     console.log(watch('example'));
@@ -158,6 +162,13 @@ function CustomerSignup() {
                     </div>
                     <Button type="submit"> Submit </Button>
                 </Form>
+                {/* <Modal show={handleSuccess}>
+                    <ModalHeader>Successful!</ModalHeader>
+                    <ModalBody>
+                        Signup is successful. Please Login Again!
+                        <Button onClick={() => }>Close</Button>
+                    </ModalBody>
+                </Modal> */}
             </div>
         </>
     );

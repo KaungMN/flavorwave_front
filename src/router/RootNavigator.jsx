@@ -8,7 +8,7 @@ import Warehouse from '../pages/Warehouse/Warehouse.jsx';
 import Admin from '../pages/admin/admin';
 import Budget from '../pages/Admin/budget';
 import Product from '../pages/Admin/product';
-import Staff from '../pages/admin/staff';
+import Staff from '../pages/Admin/staff';
 import CustomerLogin from '../pages/Customer/CustomerLogin.jsx';
 import CustomerSignUp from '../pages/Customer/CustomerSignup.jsx';
 import CustomerOrderHistory from '../pages/Customer/CustomerOrderHistory.jsx';

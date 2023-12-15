@@ -1,5 +1,5 @@
-import Edit from '../EditStaff';
-import Delete from '../Delete';
+// import Edit from '../EditStaff';
+// import Delete from '../Delete';
 import { useEffect, useState } from 'react';
 
 const list = {
@@ -30,12 +30,10 @@ export default function TableRow({ item, id, handleDelete }) {
     const getRole = (roleId) => {
         switch (roleId) {
             case 1:
-                return 'admin';
-            case 2:
                 return 'manager';
-            case 3:
+            case 2:
                 return 'senior staff';
-            case 4:
+            case 3:
                 return 'junior staff';
         }
     };
@@ -65,14 +63,12 @@ export default function TableRow({ item, id, handleDelete }) {
             <td key={item.department_id}>{getDepartment(item.department_id)}</td>
             <td key={item.salary}>{item.salary}</td>
             <td key={item.entry_date}>{item.entry_date}</td>
-            <td></td>
-            <td></td>
-            {staffId >= 2 ? (
+            {/* {staffId >= 2 ? (
                 <td>
                     <Edit initialData={item} />
                     <Delete handleDelete={handleDelete} id={item.orderItem} />
                 </td>
-            ) : null}
+            ) : null} */}
         </tr>
     );
 }

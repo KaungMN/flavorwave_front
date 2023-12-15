@@ -5,7 +5,7 @@ import logo from '../../images/Logo (1).png';
 
 function InfoCard({ data }) {
     // let staffId = JSON.parse(sessionStorage.getItem("staffId"));
-
+let deliveryDate = data.delivery_date.slice(0, 10);
     return (
         <Card style={{ width: '450px', height: '220px', margin: '30px auto' }}>
             <Row>
@@ -18,7 +18,7 @@ function InfoCard({ data }) {
                         <Card.Text className="d-block  text-start px-4">
                             <div>Preorder Id: {data.preorder_id}</div>
                             <div>Truck Info: {data.truck.truck_number + data.truck.truck_name}</div>
-                            <div>Delivery Date: {data.delivery_date}</div>
+                            <div>Delivery Date: {deliveryDate}</div>
                         </Card.Text>
                         <ApproveDeliveryModal initialData={data} />
                         <CancelDeliveryModal />

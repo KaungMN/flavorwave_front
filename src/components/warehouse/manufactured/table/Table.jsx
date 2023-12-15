@@ -3,7 +3,7 @@ import Paginator from './Pagination';
 import { useState } from 'react';
 import { Form, Row, Col, Container } from 'react-bootstrap';
 import AddProduct from '../Add';
-const heading = ['Product', 'Raw Material', 'Price', 'Total Quantity', 'Release Date'];
+const heading = ['Product Name', 'Price','Initial Quantity', 'Remain Quantity', 'Release Date', 'Warehouse Name', 'Location'];
 
 function TableComponent({ data }) {
     let [filterData, setFilterData] = useState();

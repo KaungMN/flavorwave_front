@@ -35,26 +35,32 @@ const Sidebar = () => {
                             </Link>
                         </Navbar.Brand>
                         <Accordion>
-                            {getMenuList().map((item, index) => (
-                                <Accordion.Item key={index} eventKey={index}>
-                                    <Accordion.Header>
-                                        <Link to={item.route} className="fs-5">
-                                            {item.label}
-                                        </Link>
-                                    </Accordion.Header>
-                                    <Accordion.Body className="fs-6">
-                                        <ul className="ps-2">
-                                            {item.subMenu
-                                                ? item.subMenu.map((subMenu, index) => (
-                                                      <li key={index}>
-                                                          <Link to={subMenu.route}>{subMenu.label}</Link>
-                                                      </li>
-                                                  ))
-                                                : null}
-                                        </ul>
-                                    </Accordion.Body>
-                                </Accordion.Item>
-                            ))}
+                            {getMenuList().map((item, index) =>
+                                item.subMenu ? (
+                                    <Accordion.Item key={index} eventKey={index}>
+                                        <Accordion.Header>
+                                            <Link to={item.route} className="fs-5">
+                                                {item.label}
+                                            </Link>
+                                        </Accordion.Header>
+                                        <Accordion.Body className="fs-6">
+                                            <ul className="ps-2">
+                                                {item.subMenu
+                                                    ? item.subMenu.map((subMenu, index) => (
+                                                          <li key={index}>
+                                                              <Link to={subMenu.route}>{subMenu.label}</Link>
+                                                          </li>
+                                                      ))
+                                                    : null}
+                                            </ul>
+                                        </Accordion.Body>
+                                    </Accordion.Item>
+                                ) : (
+                                    <Link to={item.route} className="py-5 fs-5">
+                                        {item.label}
+                                    </Link>
+                                )
+                            )}
                         </Accordion>
                     </Nav>
                 </Navbar.Collapse>

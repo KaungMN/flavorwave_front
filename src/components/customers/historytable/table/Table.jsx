@@ -12,7 +12,8 @@ const heading = [
     'Each Price',
     'Sub Total',
     'Total amount',
-    'Remark'
+    'Remark',
+    'Delivery Status'
 ];
 
 function TableComponent({ data }) {

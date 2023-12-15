@@ -44,6 +44,7 @@ export default function EditForm({ setShow }) {
                                     <option disabled selected value={''}>
                                         choose
                                     </option>
+                                    <option value={1}>admin</option>
                                     <option value={2}>sale</option>
                                     <option value={5}>factory</option>
                                     <option value={4}>warehouse</option>

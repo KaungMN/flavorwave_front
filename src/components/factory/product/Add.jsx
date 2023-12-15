@@ -12,7 +12,7 @@ export default function AddProduct({ initialData }) {
 
     return (
         <>
-            <Button className="me-2 float-right mt-3" variant="outline-success" onClick={handleShow}>
+            <Button className="me-2 float-end mt-3" variant="outline-success" onClick={handleShow}>
                 Add Product
             </Button>
 

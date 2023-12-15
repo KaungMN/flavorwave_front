@@ -1,8 +1,80 @@
-@import url('https://fonts.googleapis.com/css2?family=Afacad&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Afacad:wght@400;500;600;700&display=swap');
 #root {
-  font-family: "Afacad", sans-serif;
-  max-width: 1280px;
-  padding: 2rem;
-  padding-top: 0;
-  text-align: center;
+    font-family: 'Afacad', sans-serif;
+    max-width: 1280px;
+    padding: 2rem;
+    padding-top: 0;
+    padding-bottom: 0;
+    text-align: center;
 }
+
+.login-header {
+    font-size: 60px;
+    font-family: Georgia;
+    font-style: italic;
+    font-weight: 700;
+    position: relative;
+
+    background: linear-gradient(178deg, #f7e8cb 0%, #fce494 38%, #bd8e5c 76%, #c1ad57 100%); /* W3C */
+
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.login-header:after {
+    background: none;
+    content: attr(data-text);
+    left: 0;
+    position: absolute;
+    text-shadow: 0px -1px #e2d28a, 0px 1px 1px #fce494;
+    top: 0;
+    z-index: -1;
+}
+
+.login-header:before {
+    background: url(https://i.stack.imgur.com/8Jeyb.png);
+    content: attr(data-text);
+    left: 0;
+    opacity: 0.35;
+    position: absolute;
+    top: 0;
+    z-index: 1;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.login-button {
+    font-size: 60px;
+    font-family: Georgia;
+    font-style: italic;
+    font-weight: 700;
+    position: relative;
+
+    background: linear-gradient(178deg, #9f885c 0%, #c6ac57 38%, #bd8e5c 76%, #c1ad57 100%); /* W3C */
+
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.login-button:after {
+    background: none;
+    content: attr(data-text);
+    left: 0;
+    position: absolute;
+    text-shadow: 0px -1px #6f632b, 0px 1px 1px #fce494;
+    top: 0;
+    z-index: -1;
+}
+
+.login-button:before {
+    background: url(https://i.stack.imgur.com/8Jeyb.png);
+    content: attr(data-text);
+    left: 0;
+    opacity: 0.35;
+    position: absolute;
+    top: 0;
+    z-index: 1;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+

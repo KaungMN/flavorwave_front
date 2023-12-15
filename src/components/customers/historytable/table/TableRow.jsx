@@ -7,26 +7,27 @@ const list = {
 };
 
 export default function TableRow({ item, id }) {
-    const [cusData, setCusData] = useState();
+    // const [cusData, setCusData] = useState();
     let staffId = JSON.parse(sessionStorage.getItem('staffId'));
 
-    useEffect(() => {
-        const fetchInfo = async () => {
-            // const res = await fetch(`http://localhost:8000/api/get-customer/${item.customer_id}`);
-            // const data = await res.json();
-            const res = await axios.get(`http://localhost:8000/api/get-customer/${item.customer_id}`);
-            const data = res.data;
-            console.log(data);
-            setCusData(data);
-        };
-        fetchInfo();
-    }, []);
+    // useEffect(() => {
+    //     const fetchInfo = async () => {
+    //         const res = await fetch(`http://localhost:8000/api/get-customer/${item.customer_id}`);
+    //         const data = await res.json();
+    //         const res = await axios.get(`http://localhost:8000/api/get-customer/${item.customer_id}`);
+    //         const data = res.data;
+    //         console.log(data);
+    //         setCusData(data);
+    //     };
+    //     fetchInfo();
+    // }, []);
 
+    console.log(item.deleted_at);
     return (
         <tr key={id}>
             <td>{id + 1}</td>
             <td key={item.id}>{item.id}</td>
-            <td key={item.customer_id}>{cusData?.name}</td>
+            <td key={item.customer_name}>{item.customer_name}</td>
             <td key={item.address}>
                 {item.city + item.township} <br /> {item.address}
             </td>
@@ -61,6 +62,7 @@ export default function TableRow({ item, id }) {
 
             <td>{item.sub_total}</td>
             <td>{item.remark}</td>
+            {item.deleted_at ? <td>Delivered</td> : <td>Pending</td>}
         </tr>
     );
 }

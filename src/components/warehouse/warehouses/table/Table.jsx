@@ -2,6 +2,7 @@ import { func } from 'prop-types';
 import Paginator from './Pagination';
 import { useState } from 'react';
 import { Form, Row, Col, Container } from 'react-bootstrap';
+import AddWarehouse from "../Add";
 
 const heading = ['Name', 'Address', 'Phone'];
 
@@ -39,6 +40,9 @@ function TableComponent({ data }) {
                                 filterQuantity(e.target.value);
                             }}
                         />
+                    </Col>
+                    <Col>
+                        <AddWarehouse />
                     </Col>
                 </Row>
             </div>

@@ -31,6 +31,7 @@ export const menuList = [
             // { route: ADMIN_LOGIN_ROUTE, label: 'Admin Login' }
         ]
     },
+    { route: SALES_ROUTE, label: 'Sales' },
     {
         route: LOGISTIC_ROUTE,
         label: 'Logistic',
@@ -48,8 +49,7 @@ export const menuList = [
         ]
     },
     { route: RAW_ROUTE, label: 'Raw' },
-    { route: MANUFACTURED_ROUTE, label: 'Manufactured', subMenu: [{ route: WAREHOUSE_ROUTE, label: 'Warehouse' }] },
-    { route: SALES_ROUTE, label: 'Sales' }
+    { route: MANUFACTURED_ROUTE, label: 'Manufactured', subMenu: [{ route: WAREHOUSE_ROUTE, label: 'Warehouse' }] }
 ];
 
 const customerList = [
@@ -71,10 +71,11 @@ const staffList = [
         subMenu: [
             { route: STAFF_ROUTE, label: 'Staff' },
             { route: PRODUCT_ROUTE, label: 'Product' },
-            { route: BUDGET_ROUTE, label: 'Budget' },
-            { route: ADMIN_LOGIN_ROUTE, label: 'Admin Login' }
+            { route: BUDGET_ROUTE, label: 'Budget' }
+            // { route: ADMIN_LOGIN_ROUTE, label: 'Admin Login' }
         ]
     },
+    { route: SALES_ROUTE, label: 'Sales' },
     {
         route: LOGISTIC_ROUTE,
         label: 'Logistic',
@@ -83,9 +84,8 @@ const staffList = [
             { route: LOGISTIC_TRUCK_ROUTE, label: 'Truck' }
         ]
     },
-    { route: RAW_ROUTE, label: 'Raw' },
     { route: MANUFACTURED_ROUTE, label: 'Manufactured', subMenu: [{ route: WAREHOUSE_ROUTE, label: 'Warehouse' }] },
-    { route: SALES_ROUTE, label: 'Sales' }
+    { route: RAW_ROUTE, label: 'Raw' }
 ];
 
 const saleList = [{ route: SALES_ROUTE, label: 'Sales' }];

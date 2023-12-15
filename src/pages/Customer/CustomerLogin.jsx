@@ -5,7 +5,7 @@ import { login } from '../../services/login';
 import { useState, useEffect } from 'react';
 import { CUSTOMER_ORDER_ROUTE, CUSTOMER_SIGN_UP_ROUTE, DEFAULT_ROUTE } from '../../constants/routes';
 import { getSessionStorage } from '../../utils';
-// import Bg from '../../images/bg.jpg';
+import Bg from '../../images/bg.jpg';
 
 function CustomerLogin() {
     const [showError, setShowError] = useState();
@@ -33,57 +33,73 @@ function CustomerLogin() {
     console.log(watch('example'));
     return (
         <div
-            className="contact-form-section"
             style={{
-                textAlign: 'center',
-                alignItems: 'center',
-                margin: '50px auto',
-                maxWidth: '500px'
+                backgroundImage: `url(${Bg})`,
+                width: '100%',
+                position: 'relative',
+                backgroundSize: 'cover',
+                height: '530px'
             }}
         >
-            <h2 style={{ textAlign: 'center' }}>Log-in</h2>
-            <Form onSubmit={handleSubmit(onSubmit)}>
-                <div className="mb-4">
-                    <Row>
-                        <Col>
-                            <Form.Control
-                                //   disabled
-                                //   readOnly
-                                size="md"
-                                type="email"
-                                placeholder="Email*"
-                                required
-                                {...register('email', { required: true })}
-                            />
-                        </Col>
-                        <Col>
-                            <Form.Control
-                                size="md"
-                                type="password"
-                                placeholder="Password*"
-                                required
-                                {...register('password', { required: true })}
-                            />
-                        </Col>
-                    </Row>
-                    <Button style={{ display: 'block', margin: '20px auto' }} type="submit">
-                        {' '}
-                        Submit{' '}
-                    </Button>
-                </div>
-            </Form>
-            <p className="mt-3 text-center">
-                Don't have an account? <Link to={CUSTOMER_SIGN_UP_ROUTE}>Signup</Link>
-            </p>
-            {showError && (
-                <Modal show={showError} onHide={() => setShowError(false)}>
-                    <ModalHeader>Error!</ModalHeader>
-                    <Modal.Body>
-                        <p>Invalid credentials. Please try again.</p>
-                        <Button onClick={() => setShowError(false)}>Close</Button>
-                    </Modal.Body>
-                </Modal>
-            )}
+            <div
+                className="contact-form-section"
+                style={{
+                    textAlign: 'center',
+                    maxWidth: '500px',
+                    position: 'absolute',
+                    top: '35%',
+                    left: '35%'
+                }}
+            >
+                <h2 className="login-header">Log In</h2>
+                <Form onSubmit={handleSubmit(onSubmit)}>
+                    <div className="mb-4">
+                        <Row>
+                            <Col>
+                                <Form.Control
+                                    //   disabled
+                                    //   readOnly
+                                    size="md"
+                                    type="email"
+                                    placeholder="Email*"
+                                    required
+                                    {...register('email', { required: true })}
+                                />
+                            </Col>
+                            <Col>
+                                <Form.Control
+                                    size="md"
+                                    type="password"
+                                    placeholder="Password*"
+                                    required
+                                    {...register('password', { required: true })}
+                                />
+                            </Col>
+                        </Row>
+                        <Button
+                            variant="light"
+                            className="login-button"
+                            style={{ fontSize: '18px', color: 'white', display: 'block', margin: '20px auto' }}
+                            type="submit"
+                        >
+                            {' '}
+                            Submit{' '}
+                        </Button>
+                    </div>
+                </Form>
+                <p className="mt-3 text-center">
+                    Don't have an account? <Link to={CUSTOMER_SIGN_UP_ROUTE}>Signup</Link>
+                </p>
+                {showError && (
+                    <Modal show={showError} onHide={() => setShowError(false)}>
+                        <ModalHeader>Error!</ModalHeader>
+                        <Modal.Body>
+                            <p>Invalid credentials. Please try again.</p>
+                            <Button onClick={() => setShowError(false)}>Close</Button>
+                        </Modal.Body>
+                    </Modal>
+                )}
+            </div>
         </div>
     );
 }

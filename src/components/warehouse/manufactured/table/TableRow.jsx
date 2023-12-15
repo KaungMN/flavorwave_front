@@ -4,32 +4,33 @@ import axios from 'axios';
 
 export default function TableRow({ item, id }) {
     let staffId = JSON.parse(sessionStorage.getItem('staffId'));
-    const [products, setProducts] = useState([]);
-    const [currentProduct, setCurrentProduct] = useState([]);
+    // const [products, setProducts] = useState([]);
+    // const [currentProduct, setCurrentProduct] = useState([]);
 
-    async function getProducts() {
-        const res = await axios.get('http://localhost:8000/api/get-products');
-        const datas = res.data;
-        setProducts(datas);
-        let result = products?.filter((i) => {
-            return i.id === parseInt(item.product_id);
-        });
-        setCurrentProduct(result);
-    }
+    // async function getProducts() {
+    //     const res = await axios.get('http://localhost:8000/api/get-products');
+    //     const datas = res.data;
+    //     setProducts(datas);
+    //     let result = products?.filter((i) => {
+    //         return i.id === parseInt(item.product_id);
+    //     });
+    //     setCurrentProduct(result);
+    // }
 
-    useEffect(() => {
-        getProducts();
-    }, []);
-    console.log(currentProduct);
+    // useEffect(() => {
+    //     getProducts();
+    // }, []);
+    // console.log(currentProduct);
+    console.log(item);
 
     return (
         <tr key={id}>
             <td>{id + 1}</td>
-            {currentProduct.map((p) => (
+            {/* {currentProduct.map((p) => (
                 <td>{p.name}</td>
-            ))}
-
-            <td>
+            ))} */}
+            <td>{item.product_name}</td>
+            {/* <td>
                 <ol>
                     {currentProduct.map((p) =>
                         p.raw.map((r) => (
@@ -42,10 +43,13 @@ export default function TableRow({ item, id }) {
                         ))
                     )}
                 </ol>
-            </td>
+            </td> */}
             <td>{item.product_price}</td>
+            <td>{item.initial_quantity}</td>
             <td>{item.total_quantity}</td>
             <td>{item.release_date}</td>
+            <td>{item.warehouse_name}</td>
+            <td>{item.location}</td>
             {staffId >= 2 ? (
                 <td>
                     <Edit initialData={item} />

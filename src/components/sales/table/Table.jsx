@@ -39,7 +39,7 @@ function TableComponent({ data }) {
                 <>
                     <div className="mb-4">
                         <Row>
-                            <Col xs={4}>
+                            <Col xs={6}>
                                 <Form.Label>Order Id: </Form.Label>
                                 <Form.Control
                                     size="md"
@@ -49,7 +49,7 @@ function TableComponent({ data }) {
                                     }}
                                 />
                             </Col>
-                            <Col xs={4}>
+                            <Col xs={6}>
                                 <Form.Label>Status: </Form.Label>
                                 <Form.Select
                                     id="product"

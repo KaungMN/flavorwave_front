@@ -151,7 +151,7 @@ function Staff() {
     const [data, setData] = useState(null);
 
        async function getStaffs() {
-           const res = await axios.get('http://localhost:8000/api/get-staffs');
+           const res = await axios.get('http://localhost:8000/api/staffs');
            const datas = res.data;
            console.log(datas);
            setData(datas);

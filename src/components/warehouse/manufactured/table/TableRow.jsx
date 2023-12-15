@@ -20,6 +20,7 @@ export default function TableRow({ item, id }) {
     useEffect(() => {
         getProducts();
     }, []);
+    console.log(currentProduct);
 
     return (
         <tr key={id}>
@@ -29,17 +30,18 @@ export default function TableRow({ item, id }) {
             ))}
 
             <td>
-              <ol>
-                {currentProduct.map((p) =>
-                    p.raw.map((r) => (
-                        <>
-                            <li key={r.name1}>{r.name1}</li>
-                            <li key={r.name2}>{r.name2}</li>
-                            <li key={r.name3}>{r.name3}</li>
-                            <li key={r.name4}>{r.name4}</li>
-                        </>
-                    ))
-                )}</ol>
+                <ol>
+                    {currentProduct.map((p) =>
+                        p.raw.map((r) => (
+                            <>
+                                <li key={r.name1}>{r.name1}</li>
+                                <li key={r.name2}>{r.name2}</li>
+                                <li key={r.name3}>{r.name3}</li>
+                                <li key={r.name4}>{r.name4}</li>
+                            </>
+                        ))
+                    )}
+                </ol>
             </td>
             <td>{item.product_price}</td>
             <td>{item.total_quantity}</td>

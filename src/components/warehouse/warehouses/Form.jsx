@@ -9,7 +9,7 @@ export default function EditForm({ data, setShow }) {
         formState: { errors }
     } = useForm();
 
-    const onSubmit = (data) => console.log(data);
+    const onSubmit = (data) => {console.log(data); setShow(false);};
 
     return (
         <div className="contact-form-section" style={{ textAlign: 'left', maxWidth: '500px' }}>
@@ -59,7 +59,7 @@ export default function EditForm({ data, setShow }) {
                         </Col>
                     </Row>
                     <div className="mx-auto my-3 d-flex justify-content-center">
-                        <Button className="me-2 mx-3" variant="outline-success" onClick={() => setShow(false)}>
+                        <Button type="submit" className="me-2 mx-3" variant="outline-success" >
                             Yes
                         </Button>
                         <Button className="me-2" variant="outline-secondary" onClick={() => setShow(false)}>

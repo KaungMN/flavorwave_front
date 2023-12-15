@@ -8,7 +8,6 @@ const heading = ['Product Name', 'Raw Material', 'Price', 'Description'];
 
 function TableComponent({ order }) {
     let [filterData, setFilterData] = useState();
-    console.log(order);
     const handleDelete = async (id) => {
         try {
             console.log(id);

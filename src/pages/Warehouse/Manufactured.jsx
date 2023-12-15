@@ -25,7 +25,6 @@ function manufactured() {
         const res = await axios.get('http://localhost:8000/api/check-stock');
         const data = res.data;
         setData(data);
-        console.log(data);
     };
 
     useEffect(() => {

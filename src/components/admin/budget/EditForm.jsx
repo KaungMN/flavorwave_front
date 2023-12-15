@@ -10,23 +10,22 @@ export default function EditForm({ data, setShow }) {
         formState: { errors }
     } = useForm();
 
-    const onSubmit = async(data) =>{
+    const onSubmit = async (data) => {
         const transformedData = {
             department_id: data.department_id,
             target_year: data.target_year,
             total_budget: data.total_budget,
             report_budget: JSON.stringify({
-                
                 planned_budget: data.planned_budget,
                 spent_budget: data.spent_budget
             })
         };
-        const res = await axios.post('http://localhost:8000/api/store-budgets',transformedData)
+        const res = await axios.post('http://localhost:8000/api/store-budgets', transformedData);
         const datas = await res.data;
+        setShow(false);
 
         console.log(datas);
-
-    }
+    };
 
     return (
         <div className="contact-form-section" style={{ textAlign: 'left', maxWidth: '500px' }}>
@@ -103,9 +102,14 @@ export default function EditForm({ data, setShow }) {
                             </Form.Group>
                         </Col>
                     </Row>
-                    <Button type="submit" className="mt-4 d-block mx-auto" variant="success">
-                        Submit
-                    </Button>
+                    <div className="mx-auto my-3 d-flex justify-content-center">
+                        <Button type="submit" className="me-2 mx-3" variant="success">
+                            Submit
+                        </Button>
+                        <Button className="me-2" variant="outline-secondary" onClick={() => setShow(false)}>
+                            Cancel
+                        </Button>
+                    </div>
                 </div>
             </Form>
         </div>

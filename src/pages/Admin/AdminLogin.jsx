@@ -18,7 +18,7 @@ function AdminLogin() {
 
     const onSubmit = async (data) => {
         await login(data);
-       window.location.reload();
+        window.location.reload();
     };
 
     useEffect(() => {
@@ -57,9 +57,7 @@ function AdminLogin() {
                 </div>
                 <Button type="submit"> Submit </Button>
             </Form>
-            <p className="mt-3 text-center">
-                Don't have an account? <Link to="/customer/signup">Signup</Link>
-            </p>
+
             {showError && (
                 <Modal show={showError} onHide={() => setShowError(false)}>
                     <ModalHeader>Error!</ModalHeader>

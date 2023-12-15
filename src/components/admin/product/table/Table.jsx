@@ -45,7 +45,7 @@ function TableComponent({ order }) {
                     </Col>
                 </Row>
             </div>
-            <Paginator heading={heading} data={filterData} handleDelete={handleDelete} />
+            <Paginator heading={heading} data={filterData ? filterData : order} handleDelete={handleDelete} />
         </Container>
     );
 }

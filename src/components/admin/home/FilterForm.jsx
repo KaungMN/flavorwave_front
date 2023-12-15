@@ -14,6 +14,7 @@ export default function FilterForm() {
   const[totalCount,setTotalCount] = useState(null);
   const[damageCount,setDamageCount] = useState(null);
   const [priceChanges,setPriceChanges] = useState(null);
+  const [product,setProduct] = useState(null);
 
   const {
     register,
@@ -22,17 +23,13 @@ export default function FilterForm() {
     formState: { errors },
   } = useForm();
 
-  // const productTotalCount = async(productName,targetYear)=>{
-  //   const product = products?.find(p=>{
-  //     return p.name == productName
-  //   });
-  //   const res = await axios.post('http://localhost:8000/api/get-total-count',{
-  //     product_id:product?.id,
-  //     targetYear
-  //   });
-  //   const datas = res.data;
-  //   setTotalCount(datas)
-  // }
+  const productTotalCount = async(productName,targetYear)=>{
+    
+    const res = await axios.post(`http://localhost:8000/api/get-total-count/${productName}/${targetYear}`);
+    const datas = res.data;
+    console.log(datas)
+    setTotalCount(datas)
+  }
 
   // const productDamageCount = async(productId)=>{
   //   const res = await axios.post('https://localhost:8000/api/get-damage-return-count',{
@@ -42,34 +39,46 @@ export default function FilterForm() {
   //   setDamageCount(datas)
   // }
 
-  // const productPriceChanges = async(productId,year) => {
-  //   const res = await axios.post('https://localhost:8000/api/get-product-prices-change',{
-  //     year:year,
-  //     product_id:productId
-  //   });
-  //   const datas = res.data;
-  //   setPriceChanges(datas)
-  // }
+  const productPriceChanges = async(productName) => {
+    const res = await axios.post(`https://localhost:8000/api/get-product-prices-change/${productName}`);
+    const datas = res.data;
+    console.log(datas);
+    setPriceChanges(datas)
+  }
 
-  const onSubmit = (data) => { console.log(data)}
-  //   sellCounts.filter((p)=>{
-  //     // if(){
-  //       console.log(p.product_name)
-  //     console.log(data)
-  //     //   setSelectedSellCount(p);
-  //     // }
-  //   })
-  //   console.log(selectedSellCount)
+  const getProduct = async(id) => {
+    const res = await axios.get('https://localhost:8000/api/get-product/'+id);
+    const datas = res.data;
+    setProduct(datas)
+    console.log(datas)
+  }
 
-    
-  // };
+  const onSubmit = async(data) => {
+    await productTotalCount(data.productName,data.year);
+    // await productPriceChanges(data.productName);
+    sellCounts.filter(async(p)=>{
+      
+      if(p.target_year == data.year && p.product_name == data.productName[0]){
+        
+      setSelectedSellCount(p.sell_count);
+      console.log(selectedSellCount)
+      
+      // await productDamageCount(product_id)
+      // await productPriceChanges(product?.id,data.year)
+      // console.log(totalCount);
+      // console.log(priceChanges)
+      }
+    })
 
-  // const getProducts = async() => {
-  //   const res = await axios.get('http://localhost:8000/api/product');
-  //   const products = res.data;
-  //   console.log(products)
-  //   setProducts(products)
-  // }
+  };
+
+ 
+  const getProducts = async() => {
+    const res = await axios.get('http://localhost:8000/api/product');
+    const products = res.data;
+    console.log(products)
+    setProducts(products)
+  }
 
   // useEffect(()=>{
   //   getProducts()
@@ -98,9 +107,9 @@ console.log(sellCounts);
                 <option disabled selected defaultValue={""}>
                   Choose Product
                 </option>
-                {products?.map((item , key) => (
-                  <option key={key} value={item.product_name}>
-                    {item.product_name}
+                {products?.map((t) => (
+                  <option key={t.id} value={t.id}>
+                    {t.name}
                   </option>
                 ))}
               </Form.Select>

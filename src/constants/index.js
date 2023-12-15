@@ -41,10 +41,8 @@ export const menuList = [
     },
     {
         route: DEFAULT_ROUTE,
-        label: 'Customer',
+        label: 'Menubar',
         subMenu: [
-            { route: CUSTOMER_LOGIN_ROUTE, label: 'Login' },
-            { route: CUSTOMER_SIGN_UP_ROUTE, label: 'SignUp' },
             { route: CUSTOMER_ORDER_ROUTE, label: 'Order' },
             { route: CUSTOMER_ABOUTUS_ROUTE, label: 'About Us' }
         ]

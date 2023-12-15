@@ -35,7 +35,8 @@ function AddOrder({ isOpen, setIsAddressModal, handleClose, orderData, totalPric
             status: 'pending',
             products: JSON.stringify(orderData),
             totalPrice: totalPrice,
-            customer_id: 1
+            customer_id: 1,
+            sub_total: 20
         };
         setNewOrderData(newData);
     };

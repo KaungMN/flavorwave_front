@@ -56,11 +56,7 @@ export default function TableRow({ item, id, handleDelete }) {
         }
     }
 
-    useEffect(() => {
-        getRole();
-        getDepartment();
-    }, []);
-
+   
     return (
         <tr key={id}>
                         <td>{id + 1}</td>

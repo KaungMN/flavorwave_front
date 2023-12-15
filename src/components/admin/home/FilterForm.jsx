@@ -23,59 +23,55 @@ export default function FilterForm({ heading }) {
   } = useForm();
 
   const productTotalCount = async(productName,targetYear)=>{
-    const product = products?.find(p=>{
-      return p.name == productName
-    });
-    const res = await axios.get(`http://localhost:8000/api/get-total-count?product_id=${product?.id}&targetYear=${targetYear}`);
+    
+    const res = await axios.post(`http://localhost:8000/api/get-total-count/${productName}/${targetYear}`);
     const datas = res.data;
+    console.log(datas)
     setTotalCount(datas)
   }
 
   const productDamageCount = async(productId)=>{
-    const res = await axios.get('https://localhost:8000/api/get-damage-return-count',{
+    const res = await axios.post('https://localhost:8000/api/get-damage-return-count',{
       id:productId
     });
     const datas = res.data;
     setDamageCount(datas)
   }
 
-  const productPriceChanges = async(productId,year) => {
-    const res = await axios.get('https://localhost:8000/api/get-product-prices-change',{
-      year:year,
-      product_id:productId
-    });
+  const productPriceChanges = async(productName) => {
+    const res = await axios.post(`https://localhost:8000/api/get-product-prices-change/${productName}`);
     const datas = res.data;
+    console.log(datas);
     setPriceChanges(datas)
   }
 
-  const getProduct = async(name) => {
-    const res = await axios.get('https://localhost:8000/api/get-product/'+name);
+  const getProduct = async(id) => {
+    const res = await axios.get('https://localhost:8000/api/get-product/'+id);
     const datas = res.data;
     setProduct(datas)
     console.log(datas)
   }
 
-  const onSubmit = (data) => {
-    getProduct(data.productName);
+  const onSubmit = async(data) => {
+    await productTotalCount(data.productName,data.year);
+    // await productPriceChanges(data.productName);
     sellCounts.filter(async(p)=>{
       
-      if(p.target_year == data.year && p.product_name == data.productName){
+      if(p.target_year == data.year && p.product_name == data.productName[0]){
         
       setSelectedSellCount(p.sell_count);
       console.log(selectedSellCount)
-      await productTotalCount(data.productName,data.year)
+      
       // await productDamageCount(product_id)
-      await productPriceChanges(product?.id,data.year)
-      console.log(totalCount);
-      console.log(priceChanges)
+      // await productPriceChanges(product?.id,data.year)
+      // console.log(totalCount);
+      // console.log(priceChanges)
       }
     })
 
-    
-
-    
   };
 
+ 
   const getProducts = async() => {
     const res = await axios.get('http://localhost:8000/api/product');
     const products = res.data;
@@ -109,7 +105,7 @@ export default function FilterForm({ heading }) {
                   Choose Product
                 </option>
                 {products?.map((t) => (
-                  <option key={t.id} value={t.name}>
+                  <option key={t.id} value={t.id}>
                     {t.name}
                   </option>
                 ))}

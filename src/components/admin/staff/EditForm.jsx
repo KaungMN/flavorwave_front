@@ -1,15 +1,48 @@
 import { Form, Row, Col, Button } from "react-bootstrap";
 import { useForm } from "react-hook-form";
+import axios from "axios"
+import { useEffect, useState } from "react";
+
+
 
 export default function EditForm({ heading, data, setShow }) {
+
+    const [staff,setStaff] = useState(null);
+
+
   const {
     register,
     handleSubmit,
     watch,
     formState: { errors },
-  } = useForm();
+  } = useForm({
+    defaultValues: {
+        name: data.name,
+        email: data.email,
+        phone: data.phone,
+        role_id: data.role_id,
+        department_id: data.department_id,
+        salary: data.salary,
+        entry_date: data.entry_date
+    }
+  });
 
-  const onSubmit = (data) => console.log(data);
+ 
+
+//   const getStaff = async(id) => {
+//     const res = await axios.get('http://localhost:8000/api/show-staff/'+id);
+//     const datas = res.data;
+//     setStaff(datas)
+//     console.log(staff);
+//   }
+
+  const onSubmit = async(value) => {
+    const res = await axios.put(`http://localhost:8000/api/update-staff/${data?.id}`,value)
+    const datas = res.data;
+    console.log(datas);
+
+  }
+
 
   return (
       <div className="contact-form-section" style={{ textAlign: 'left', maxWidth: '500px' }}>

@@ -1,11 +1,12 @@
 import React from 'react';
-import BlogFront from '../images/Banner Image.jpg';
-import { Carousel, Container, Image, Nav, Navbar } from 'react-bootstrap';
-import { useNavigate } from 'react-router-dom';
-import { CUSTOMER_ORDER_ROUTE } from '../constants/routes';
+import BlogFront from '../images/Banner Image1.jpg';
+import { Button, Carousel, Container, Image, Nav, Navbar } from 'react-bootstrap';
+import { Link, useNavigate } from 'react-router-dom';
+import { CUSTOMER_ORDER_ROUTE, CUSTOMER_SIGN_UP_ROUTE, DEFAULT_ROUTE } from '../constants/routes';
 import coursel_1 from '../images/coursel (1).png';
 import coursel_2 from '../images/coursel (2).png';
 import coursel_3 from '../images/coursel (3).png';
+import { getSessionStorage } from '../utils';
 
 function Home() {
     const isAuthToken = getSessionStorage('authToken');
@@ -19,7 +20,7 @@ function Home() {
             );
         } else {
             return (
-                <Link to={CUSTOMER_LOGIN_ROUTE}>
+                <Link to={DEFAULT_ROUTE}>
                     <Button className="header-button">Logout</Button>
                 </Link>
             );

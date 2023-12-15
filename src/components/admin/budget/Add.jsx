@@ -22,7 +22,7 @@ export default function AddStaff() {
                     <h5 style={{ fontWeight: 600 }} className="mb-3 text-center">
                         Add Budget
                     </h5>
-                    <AddForm />
+                    <AddForm setShow={setShow} />
                 </Modal.Body>
             </Modal>
         </>

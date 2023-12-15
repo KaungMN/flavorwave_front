@@ -22,7 +22,7 @@ export default function AddProduct({ initialData }) {
                     <h5 style={{ fontWeight: 600 }} className="mb-3 text-center">
                         Add Product
                     </h5>
-                    <AddForm data={data} />
+                    <AddForm data={data} setShow={setShow} />
                 </Modal.Body>
             </Modal>
         </>

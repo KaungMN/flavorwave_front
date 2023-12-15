@@ -38,6 +38,7 @@ export default function EditForm({ initialData, setShow }) {
         });
         const datas = res.data;
         console.log(datas);
+        setShow(false);
         if (res.statusText === 'OK') {
             setReload(reload + 1);
         }
@@ -82,7 +83,7 @@ export default function EditForm({ initialData, setShow }) {
                         </Col>
                     </Row>
                     <div className="mx-auto my-3 d-flex justify-content-center">
-                        <Button type="submit" className="me-2 mx-3" variant="success" onClick={() => setShow(false)}>
+                        <Button type="submit" className="me-2 mx-3" variant="success">
                             Submit
                         </Button>
                         <Button className="me-2" variant="outline-secondary" onClick={() => setShow(false)}>

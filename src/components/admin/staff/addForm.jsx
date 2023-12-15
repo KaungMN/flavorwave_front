@@ -2,7 +2,7 @@ import { Form, Row, Col, Button } from 'react-bootstrap';
 import { useForm } from 'react-hook-form';
 import axios from 'axios';
 
-export default function AddForm({ heading, data, setShow }) {
+export default function AddForm({ heading, setShow }) {
     const {
         register,
         handleSubmit,
@@ -15,7 +15,8 @@ export default function AddForm({ heading, data, setShow }) {
 
         const res = await axios.post('http://localhost:8000/api/store-staffs', data);
         const datas = res.data;
-        console.log(datas);setShow(false);
+        console.log(datas);
+        setShow(false);
     };
 
     return (
@@ -51,7 +52,6 @@ export default function AddForm({ heading, data, setShow }) {
                                 <Form.Control
                                     id="password"
                                     name="password"
-                                    defaultValue={data.Permit}
                                     size="md"
                                     type="password"
                                     required
@@ -128,7 +128,7 @@ export default function AddForm({ heading, data, setShow }) {
                         </Col>
                     </Row>
                     <div className="mx-auto my-3 d-flex justify-content-center">
-                        <Button type="submit" className="me-2 mx-3" variant="success" >
+                        <Button type="submit" className="me-2 mx-3" variant="success">
                             Submit
                         </Button>
                         <Button className="me-2" variant="outline-secondary" onClick={() => setShow(false)}>

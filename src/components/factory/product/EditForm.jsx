@@ -92,7 +92,7 @@ export default function EditForm({ data, setShow }) {
                         </Col>
                     </Row>
                     <div className="mx-auto my-3 d-flex justify-content-center">
-                        <Button className="me-2 mx-3" variant="outline-success">
+                        <Button type="submit" className="me-2 mx-3" variant="outline-success">
                             Yes
                         </Button>
                         <Button className="me-2" variant="outline-secondary" onClick={() => setShow(false)}>

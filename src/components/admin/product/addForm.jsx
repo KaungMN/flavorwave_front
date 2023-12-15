@@ -3,7 +3,7 @@ import { useForm } from 'react-hook-form';
 import { useState } from 'react';
 import axios from 'axios';
 
-export default function AddForm({ heading, data, setShow }) {
+export default function AddForm({ heading, setShow }) {
     const [selectedItems, setSelectedItems] = useState([]);
     const {
         register,
@@ -20,28 +20,28 @@ export default function AddForm({ heading, data, setShow }) {
         setShow(false);
     };
 
-    const handleCheckboxChange = (event, item) => {
-        const selectedIndex = selectedItems.indexOf(item);
-        let newSelected = [];
+    // const handleCheckboxChange = (event, item) => {
+    //     const selectedIndex = selectedItems.indexOf(item);
+    //     let newSelected = [];
 
-        if (selectedIndex === -1) {
-            newSelected = newSelected.concat(selectedItems, item);
-        } else if (selectedIndex === 0) {
-            newSelected = newSelected.concat(selectedItems.slice(1));
-        } else if (selectedIndex === selectedItems.length - 1) {
-            newSelected = newSelected.concat(selectedItems.slice(0, -1));
-        } else if (selectedIndex > 0) {
-            newSelected = newSelected.concat(
-                selectedItems.slice(0, selectedIndex),
-                selectedItems.slice(selectedIndex + 1)
-            );
-        }
-        setSelectedItems(newSelected);
-    };
+    //     if (selectedIndex === -1) {
+    //         newSelected = newSelected.concat(selectedItems, item);
+    //     } else if (selectedIndex === 0) {
+    //         newSelected = newSelected.concat(selectedItems.slice(1));
+    //     } else if (selectedIndex === selectedItems.length - 1) {
+    //         newSelected = newSelected.concat(selectedItems.slice(0, -1));
+    //     } else if (selectedIndex > 0) {
+    //         newSelected = newSelected.concat(
+    //             selectedItems.slice(0, selectedIndex),
+    //             selectedItems.slice(selectedIndex + 1)
+    //         );
+    //     }
+    //     setSelectedItems(newSelected);
+    // };
 
-    const isSelected = (item) => selectedItems.indexOf(item) !== -1;
+    // const isSelected = (item) => selectedItems.indexOf(item) !== -1;
 
-    console.log(selectedItems);
+    // console.log(selectedItems);
     return (
         <div className="contact-form-section" style={{ textAlign: 'left', maxWidth: '500px' }}>
             <Form onSubmit={handleSubmit(onSubmit)}>
@@ -53,7 +53,7 @@ export default function AddForm({ heading, data, setShow }) {
                                 <Form.Control
                                     id="name"
                                     name="name"
-                                    defaultValue={data.orderItem}
+                                    // defaultValue={data.orderItem}
                                     size="md"
                                     type="text"
                                     required
@@ -93,7 +93,7 @@ export default function AddForm({ heading, data, setShow }) {
                                     as="textarea"
                                     id="description"
                                     name="description"
-                                    defaultValue={data.orderQuantity}
+                                    // defaultValue={data.orderQuantity}
                                     size="md"
                                     type="number"
                                     rows={4}

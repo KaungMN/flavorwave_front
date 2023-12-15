@@ -1,6 +1,6 @@
 // import { func } from "prop-types";
 import Paginator from './Pagination';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Form, Row, Col, Container } from 'react-bootstrap';
 import AddStaff from '../Add';
 
@@ -27,6 +27,17 @@ function TableComponent({data}) {
         });
         setFilterData(result.length > 0 ? result : order);
     }
+
+    async function getStaffs(){
+        const res = await axios.get('http://localhost:8000/api/get-staffs');
+        const datas = res.data;
+        console.log(datas);
+        setData(datas)
+    }
+
+    useEffect(()=>{
+        getStaffs()
+    },[data?.length])
     return (
         <Container>
             <div className="mb-4">
@@ -48,7 +59,9 @@ function TableComponent({data}) {
                     </Col>
                 </Row>
             </div>
-            <Paginator data={filterData} handleDelete={handleDelete} />
+            {
+                data && <Paginator data={data} handleDelete={handleDelete} />
+            }
         </Container>
     );
 }

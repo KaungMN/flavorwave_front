@@ -3,6 +3,7 @@ import Paginator from './Pagination';
 import { useState, useEffect } from 'react';
 import { Form, Row, Col, Container } from 'react-bootstrap';
 import AddStaff from '../Add';
+import axios from "axios"
 
 function TableComponent({ data }) {
     let [filterData, setFilterData] = useState();
@@ -46,7 +47,7 @@ function TableComponent({ data }) {
                     </Col>
                 </Row>
             </div>
-            <Paginator data={data} handleDelete={handleDelete} />
+            <Paginator data={filterData ? filterData : data} handleDelete={handleDelete} />
         </Container>
     );
 }

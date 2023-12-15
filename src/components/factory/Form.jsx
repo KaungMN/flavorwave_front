@@ -1,5 +1,6 @@
 import { Form, Row, Col, Button, InputGroup } from 'react-bootstrap';
 import { useForm } from 'react-hook-form';
+import axios from "axios"
 
 export default function EditForm({ heading, data, setShow }) {
     const {
@@ -14,6 +15,9 @@ export default function EditForm({ heading, data, setShow }) {
     // })
 
     const onSubmit = (data) => console.log(data);
+    const [suppliers,setSuppliers] = useState(null);
+
+    
 
     return (
         <div className="contact-form-section" style={{ textAlign: 'left', maxWidth: '500px' }}>
@@ -37,9 +41,9 @@ export default function EditForm({ heading, data, setShow }) {
                                 <option disabled selected value={''}>
                                     Supplier Name
                                 </option>
-                                <option>Keyholder</option>
-                                <option>Distributor</option>
-                                <option>Wholesale</option>
+                                {
+
+                                }
                             </Form.Select>
                         </Col>
                     </Row>

@@ -44,17 +44,26 @@ function Budget() {
         getBudgets();
     }, []);
 
-    return (
-        <Container>
-            {data ? (
-                <TableComponent data={data} />
-            ) : (
-                <Spinner animation="border" role="status">
-                    <span className="visually-hidden">Loading...</span>
-                </Spinner>
-            )}
-        </Container>
-    );
+  const [budgets,setBudgets] = useState(null);
+
+    useEffect(() => {
+        const fetchInfo = async () => {
+            const res = await fetch(`http://localhost:8000/api/get-budgets`);
+            const datas = await res.json();
+            console.log(datas);
+            setBudgets(datas)
+        };
+        fetchInfo();
+    }, []);
+
+  return (
+    <Container>
+      {budgets ? <TableComponent data={budgets} />
+        : <Spinner animation="border" role="status">
+          <span className="visually-hidden">Loading...</span>
+        </Spinner>}
+    </Container>
+  );
 }
 
 export default Budget;

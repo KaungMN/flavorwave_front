@@ -8,12 +8,32 @@ import coursel_2 from '../images/coursel (2).png';
 import coursel_3 from '../images/coursel (3).png';
 
 function Home() {
+    const isAuthToken = getSessionStorage('authToken');
+
+    const loginLogoutButton = () => {
+        if (!isAuthToken) {
+            return (
+                <Link to={CUSTOMER_LOGIN_ROUTE}>
+                    <Button className="header-button">Login</Button>
+                </Link>
+            );
+        } else {
+            return (
+                <Link to={CUSTOMER_LOGIN_ROUTE}>
+                    <Button className="header-button">Logout</Button>
+                </Link>
+            );
+        }
+    };
     const nagivate = useNavigate();
     return (
         <>
-            <header>
-                <h1>Welcome to Flavor Wave</h1>
-                <p className="fs-5">Your Trusted Partner in Wholesale Solutions</p>
+            <header className="home-header">
+                <div className="header-content">
+                    <h1>Welcome to Flavor Wave</h1>
+                    <p class="fs-5">Your Trusted Partner in Wholesale Solutions</p>
+                </div>
+                <div>{loginLogoutButton()}</div>
             </header>
             <img src={BlogFront} className="img-fluid mt-3 d-block " alt="blog front" />
             <div className="ms-5 px-5">
@@ -123,7 +143,10 @@ function Home() {
 
                     <h2>Get Started</h2>
                     <ul>
-                        <li>Register for a wholesale account to unlock exclusive benefits.</li>
+                        <li>
+                            <a href={CUSTOMER_SIGN_UP_ROUTE}>Register</a> for a wholesale account to unlock exclusive
+                            benefits.
+                        </li>
                         <li>Explore our current promotions and discounts to maximize your savings.</li>
                     </ul>
                 </section>

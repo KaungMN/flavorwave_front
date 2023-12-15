@@ -1,9 +1,13 @@
-// import Edit from '../EditStaff';
-// import Delete from '../Delete';
+import Edit from '../EditStaff';
+import Delete from '../Delete';
+import axios from "axios"
 import Table from 'react-bootstrap/Table';
+import { Button } from 'react-bootstrap';
+import { useState } from 'react';
 import TableRow from './TableRow';
 
 const heading = ['Name', 'Email', 'Phone', 'Role', 'Department', 'salary', 'Entry Date'];
+
 
 export default function TableSingleRow({ order, handleDelete }) {
     let staffId = JSON.parse(sessionStorage.getItem('staffId'));
@@ -20,7 +24,7 @@ export default function TableSingleRow({ order, handleDelete }) {
             </thead>
             <tbody>
                 {order.map((item, id) => (
-                    <TableRow item={item} key={id} id={id} />
+                  <TableRow key={id} item={item} id={id} handleDelete={handleDelete}/>  
                 ))}
             </tbody>
         </Table>

@@ -18,16 +18,17 @@ function manufactured() {
         //   console.error('Error fetching data:', error);
         // }
     };
+    
+    const fetchInfo = async () => {
+        // const res = await fetch(`http://localhost:8000/api/get-products`);
+        // const data = await res.json();
+        const res = await axios.get('http://localhost:8000/api/check-stock');
+        const data = res.data;
+        setData(data);
+        console.log(data);
+    };
 
     useEffect(() => {
-        const fetchInfo = async () => {
-            // const res = await fetch(`http://localhost:8000/api/get-products`);
-            // const data = await res.json();
-            const res = await axios.get('http://localhost:8000/api/check-stock');
-            const data = res.data;
-            setData(data);
-            console.log(data);
-        };
         fetchInfo();
     }, []);
 

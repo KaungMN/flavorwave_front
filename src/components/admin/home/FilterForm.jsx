@@ -2,13 +2,14 @@ import { Form, Row, Col, Button } from "react-bootstrap";
 import { useForm } from "react-hook-form";
 import axios from "axios"
 import { useEffect, useState } from "react";
-import {sellCounts} from "../../../data/productsSellCount"
-
-const year = ["2019", "2020", "2021", "2022","2023"];
+import {sellCounts } from './productsSellCount';
 
 
-export default function FilterForm({ heading }) {
-  const [products,setProducts] = useState(null);
+const year = ["2020", "2021", "2022","2023"];
+
+
+export default function FilterForm() {
+  const [products,setProducts] = useState(sellCounts);
   const[selectedSellCount,setSelectedSellCount] = useState(null);
   const[totalCount,setTotalCount] = useState(null);
   const[damageCount,setDamageCount] = useState(null);
@@ -30,13 +31,13 @@ export default function FilterForm({ heading }) {
     setTotalCount(datas)
   }
 
-  const productDamageCount = async(productId)=>{
-    const res = await axios.post('https://localhost:8000/api/get-damage-return-count',{
-      id:productId
-    });
-    const datas = res.data;
-    setDamageCount(datas)
-  }
+  // const productDamageCount = async(productId)=>{
+  //   const res = await axios.post('https://localhost:8000/api/get-damage-return-count',{
+  //     id:productId
+  //   });
+  //   const datas = res.data;
+  //   setDamageCount(datas)
+  // }
 
   const productPriceChanges = async(productName) => {
     const res = await axios.post(`https://localhost:8000/api/get-product-prices-change/${productName}`);
@@ -79,10 +80,12 @@ export default function FilterForm({ heading }) {
     setProducts(products)
   }
 
-  useEffect(()=>{
-    getProducts()
-  },[])
+  // useEffect(()=>{
+  //   getProducts()
+  // },[])
 
+// Printing the updated sellCounts array
+console.log(sellCounts);
   return (
     <div
       className="contact-form-section"
@@ -101,7 +104,7 @@ export default function FilterForm({ heading }) {
                 // defaultValue="Choose product"
                 {...register("productName", { required: true })}
               >
-                <option disabled selected value={""}>
+                <option disabled selected defaultValue={""}>
                   Choose Product
                 </option>
                 {products?.map((t) => (
@@ -121,7 +124,7 @@ export default function FilterForm({ heading }) {
                 // defaultValue="Choose year"
                 {...register("year", { required: true })}
               >
-                <option disabled selected value={""}>
+                <option disabled selected defaultValue={""}>
                   Choose Year
                 </option>
                 {year.map((t) => (

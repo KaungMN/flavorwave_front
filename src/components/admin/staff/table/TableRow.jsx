@@ -6,12 +6,12 @@ const list = {
     listStyle: 'none',
     paddingLeft: '0'
 };
-    let staffId = JSON.parse(sessionStorage.getItem('staffId'));
+let staffId = JSON.parse(sessionStorage.getItem('staffId'));
 
 export default function TableRow({ item, id, handleDelete }) {
-    const [role,setRole] = useState(null);
-    const [department,setDepartment] = useState(null);
-    console.log(item.role_id);
+    // const [role, setRole] = useState(null);
+    // const [department, setDepartment] = useState(null);
+    // console.log(item.role_id);
 
     // const getRole = async() => {
     //     const res = await axios.get('http://localhost::8000/api/get-role/'+item.role_id);
@@ -28,53 +28,51 @@ export default function TableRow({ item, id, handleDelete }) {
     // }
 
     const getRole = (roleId) => {
-        switch(roleId){
-            case 1: 
-                return "admin";
+        switch (roleId) {
+            case 1:
+                return 'admin';
             case 2:
-                return "manager";
+                return 'manager';
             case 3:
-                return "senior staff";
+                return 'senior staff';
             case 4:
-                return "junior staff"
+                return 'junior staff';
         }
-    }
+    };
 
     const getDepartment = (departmentId) => {
-        switch(departmentId){
-            case 1: 
-                return "admin";
+        switch (departmentId) {
+            case 1:
+                return 'admin';
             case 2:
-                return "sales";
+                return 'sales';
             case 3:
-                return "logistics";
+                return 'logistics';
             case 4:
-                return "warehouse";
+                return 'warehouse';
             case 5:
-                return "factory"
-
+                return 'factory';
         }
-    }
+    };
 
-   
     return (
         <tr key={id}>
-                        <td>{id + 1}</td>
-                        <td key={item.name}>{item.name}</td>
-                        <td key={item.email}>{item.email}</td>
-                        <td key={item.phone}>{item.phone}</td>
-                        <td key={item.role_id}>{getRole(item.role_id)}</td>
-                        <td key={item.department_id}>{getDepartment(item.department_id)}</td>
-                        <td key={item.salary}>{item.salary}</td>
-                        <td key={item.entry_date}>{item.entry_date}</td>
-                        <td></td>
-                        <td></td>
-                        {staffId >= 2 ? (
-                            <td>
-                                <Edit initialData={item} />
-                                <Delete handleDelete={handleDelete} id={item.orderItem} />
-                            </td>
-                        ) : null}
-                    </tr>
+            <td>{id + 1}</td>
+            <td key={item.name}>{item.name}</td>
+            <td key={item.email}>{item.email}</td>
+            <td key={item.phone}>{item.phone}</td>
+            <td key={item.role_id}>{getRole(item.role_id)}</td>
+            <td key={item.department_id}>{getDepartment(item.department_id)}</td>
+            <td key={item.salary}>{item.salary}</td>
+            <td key={item.entry_date}>{item.entry_date}</td>
+            <td></td>
+            <td></td>
+            {staffId >= 2 ? (
+                <td>
+                    <Edit initialData={item} />
+                    <Delete handleDelete={handleDelete} id={item.orderItem} />
+                </td>
+            ) : null}
+        </tr>
     );
 }

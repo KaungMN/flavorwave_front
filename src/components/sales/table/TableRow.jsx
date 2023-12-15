@@ -1,6 +1,7 @@
 import OrderConfirmModal from '../ConfirmModal';
 import OrderRejectModal from '../RejectModal';
 import { useEffect, useState } from 'react';
+import axios from 'axios';
 
 const list = {
     listStyle: 'none',
@@ -13,8 +14,10 @@ export default function TableRow({ item, id }) {
 
     useEffect(() => {
         const fetchInfo = async () => {
-            const res = await fetch(`http://localhost:8000/api/get-customer/${item.customer_id}`);
-            const data = await res.json();
+            // const res = await fetch(`http://localhost:8000/api/get-customer/${item.customer_id}`);
+            // const data = await res.json();
+            const res = await axios.get(`http://localhost:8000/api/get-customer/${item.customer_id}`);
+            const data = res.data;
             console.log(data);
             setCusData(data);
         };

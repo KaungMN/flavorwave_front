@@ -1,28 +1,15 @@
-// import { axios } from './api';
+import { getSessionStorage, setSessionStorage } from '../utils';
+import { axios } from './api';
 
 const login = async (data) => {
-    try {
-        const response = await axios.post('/api/client-login', data);
-        // const authToken = response.data.token;
-        // console.log(response);
-        // console.log('Authentication Token:', authToken);
-        const { customer, token } = response.data;
+    const response = await axios.post('client-login', data);
 
-        // Store the token in your preferred state management (e.g., React context, Redux, etc.)
-        // For simplicity, storing in local storage here
-        sessionStorage.setItem('authToken', token);
+    const { customer, token } = response.data;
 
-        // Do something with the customer data if needed
-        console.log('Logged in as:', customer);
-        console.log(token);
+    setSessionStorage('authToken', token);
+    setSessionStorage('customer', customer);
 
-        // Store authToken in state, local storage, or a cookie for later use
-        return response; // Optionally return the entire response if needed
-    } catch (error) {
-        // Handle error or log it
-        console.error('Login failed:', error);
-        throw error;
-    }
+    return customer;
 };
 
 export { login };

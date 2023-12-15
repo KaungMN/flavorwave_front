@@ -1,26 +1,27 @@
 import React, { useState, useEffect } from 'react';
 import { Row, Col, Card, Button, Container } from 'react-bootstrap';
-// import { items } from '../../components/customers/Products.jsx';
+import { items } from '../../components/customers/Products.jsx';
 import AddOrder from './components/OrderForm.jsx';
 import CartModal from './components/CartModal.jsx';
 import { getProducts } from '../../services/loadProduct.js';
 import Spinner from 'react-bootstrap/Spinner';
+import { getSessionStorage } from '../../utils/index.js';
+import { CUSTOMER_LOGIN_ROUTE } from '../../constants/routes.js';
+import { useNavigate } from 'react-router-dom';
+import Logout from './components/Logout.jsx';
 
 function CustomerProductPage() {
+    const history = useNavigate();
     const [items, setItems] = useState(null);
-    // useEffect(()=>{
-    //     const fetchData = async () => {
-    //         try {
-    //             const data = await getProducts();
-    //             console.log('Loaded data:', data);
-    //             setItems(data)
-    //         } catch (error) {
-    //             console.error('Error fetching products:', error);
-    //         }
-    //     };
 
-    //     fetchData();
-    // },[])
+    useEffect(() => {
+        const fetchData = async () => {
+            const data = await getProducts();
+            setItems(data);
+        };
+
+        fetchData();
+    }, []);
 
     const [cartList, setCartList] = useState([]);
     const [showCart, setShowCart] = useState(false);
@@ -32,6 +33,11 @@ function CustomerProductPage() {
     const toggleModal = () => setIsOpenCartModal((prev) => !prev);
 
     const addToCart = (product) => {
+        const isAuthToken = getSessionStorage('authToken');
+        if (!isAuthToken) {
+            history(CUSTOMER_LOGIN_ROUTE);
+            return;
+        }
         toggleModal();
         // Check if the item is already in the cartList
         const existingItem = cartList.find((item) => item.id === product.id);
@@ -106,7 +112,7 @@ function CustomerProductPage() {
         <div>
             <h1>Products</h1>
             <Row>
-                {items &&
+                {items && 
                     items.map((item) => (
                         <Col key={item.id} xs={12} md={6} lg={4} className="p-3">
                             <Card className="h-100">
@@ -116,7 +122,7 @@ function CustomerProductPage() {
                                         height: '30vh',
                                         overflow: 'hidden'
                                     }}
-                                    src={'http://127.0.0.1:8000' + item.photo}
+                                    src={item.image_url}
                                     alt="product image"
                                 />
                                 <Card.Body>
@@ -150,6 +156,7 @@ function CustomerProductPage() {
             />
             <AddOrder
                 isOpen={isOpenAddress}
+                setIsAddressModal={setIsAddressModal}
                 handleClose={handleCloseAddress}
                 openToConfirm={handleOpenConfirm}
                 orderData={listToForm}
@@ -157,6 +164,7 @@ function CustomerProductPage() {
                 listToForm={listToForm}
                 onNewOrder={handleNewOrderData}
             />
+            <Logout />
         </div>
     );
 }

@@ -4,18 +4,8 @@ import { Form, Row, Col, Button, Container } from 'react-bootstrap';
 
 const heading = ['Order Id', 'Customer Name', 'Address', 'Order Item', 'Qty', 'Total Qty', 'Remark'];
 
-function TableComponent() {
-    let [data, setData] = useState();
-    let [filterData, setFilterData] = useState(data);
-
-    useEffect(() => {
-        const fetchInfo = async () => {
-            const res = await fetch(`http://localhost:8000/api/getpreorders`);
-            const data = await res.json();
-            setData(data);
-        };
-        fetchInfo();
-    }, []);
+function TableComponent({data}) {
+    let [filterData, setFilterData] = useState();
 
     function filterQuantity(quantity) {
         let result = data.filter((item) => {

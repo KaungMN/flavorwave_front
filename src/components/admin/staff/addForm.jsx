@@ -15,7 +15,7 @@ export default function AddForm({ heading, data, setShow }) {
 
         const res = await axios.post('http://localhost:8000/api/store-staffs', data);
         const datas = res.data;
-        console.log(datas);
+        console.log(datas);setShow(false);
     };
 
     return (
@@ -128,7 +128,7 @@ export default function AddForm({ heading, data, setShow }) {
                         </Col>
                     </Row>
                     <div className="mx-auto my-3 d-flex justify-content-center">
-                        <Button type="submit" className="me-2 mx-3" variant="success">
+                        <Button type="submit" className="me-2 mx-3" variant="success" >
                             Submit
                         </Button>
                         <Button className="me-2" variant="outline-secondary" onClick={() => setShow(false)}>

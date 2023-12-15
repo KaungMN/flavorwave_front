@@ -2,11 +2,10 @@
 import Paginator from './Pagination';
 import { useState } from 'react';
 import { Form, Row, Col, Container } from 'react-bootstrap';
-// import AddStaff from "../Add";
+import AddTruck from './Add';
 
 function TableComponent({ data }) {
-    let [filterData, setFilterData] = useState(data);
-    const [trucks, setTrucks] = useState(null);
+    let [filterData, setFilterData] = useState();
 
     const handleDelete = async (id) => {
         try {
@@ -20,34 +19,34 @@ function TableComponent({ data }) {
         }
     };
 
-  function filterQuantity(name) {
-    console.log(name);
-    let result = dummyData.filter((item) => {
-      return item.truck_number.toLowerCase().includes(name.toLowerCase());
-    });
-    setFilterData(result.length > 0 ? result : order);
-  }
-  
-  return (
-    <Container>
-      <div className="mb-4">
-        <Row>
-          <Col xs={4}>
-            <Form.Label>Search Truck Number: </Form.Label>
-            <Form.Control
-              size="md"
-              type="text"
-              onChange={(e) => {
-                filterQuantity(e.target.value);
-              }}
-            />
-          </Col>
-          {/* <Col>
-            <AddStaff initialData={filterData} />
-          </Col> */}
+    function filterQuantity(name) {
+        console.log(name);
+        let result = data.filter((item) => {
+            return item.truck_number.toLowerCase().includes(name.toLowerCase());
+        });
+        setFilterData(result.length > 0 ? result : order);
+    }
+
+    return (
+        <Container>
+            <div className="mb-4">
+                <Row>
+                    <Col xs={4}>
+                        <Form.Label>Search Truck Number: </Form.Label>
+                        <Form.Control
+                            size="md"
+                            type="text"
+                            onChange={(e) => {
+                                filterQuantity(e.target.value);
+                            }}
+                        />
+                    </Col>
+                    <Col>
+                        <AddTruck />
+                    </Col>
                 </Row>
             </div>
-            <Paginator data={trucks} handleDelete={handleDelete} />
+            <Paginator data={data} handleDelete={handleDelete} />
         </Container>
     );
 }

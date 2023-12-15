@@ -6,8 +6,7 @@ import AddStaff from '../Add';
 import axios from "axios"
 
 function TableComponent({ data }) {
-    let [filterData, setFilterData] = useState(data);
-    const [budgets, setBudgets] = useState(null);
+    let [filterData, setFilterData] = useState();
 
     const handleDelete = async (id) => {
         try {
@@ -29,15 +28,6 @@ function TableComponent({ data }) {
         setFilterData(result.length > 0 ? result : data);
     }
 
-    async function getBudgets() {
-        const res = await axios.get('http://localhost:8000/api/get-budgets');
-        const datas = res.data;
-        setBudgets(datas);
-    }
-
-    useEffect(() => {
-        getBudgets();
-    }, []);
     return (
         <Container>
             <div className="mb-4">
@@ -57,7 +47,7 @@ function TableComponent({ data }) {
                     </Col>
                 </Row>
             </div>
-            <Paginator data={budgets} handleDelete={handleDelete} />
+            <Paginator data={filterData ? filterData : data} handleDelete={handleDelete} />
         </Container>
     );
 }

@@ -1,14 +1,15 @@
+import { clearSessionStorage } from '../utils';
 import { axios } from './api';
 
+const clearKeyList = ['authToken', 'customer'];
+
 const logout = async () => {
-    try {
-        const res = await axios.post('/api/client-logout');
-        return res;
-    } catch (error) {
-        // Handle error or log it
-        console.error('Error during logout:', error);
-        throw error;
-    }
+    const res = await axios.post('client-logout');
+    clearKeyList.forEach((key) => {
+        clearSessionStorage(key);
+    });
+
+    return res;
 };
 
 export { logout };

@@ -2,7 +2,7 @@ import { Form, Row, Col, Button } from 'react-bootstrap';
 import { useForm } from 'react-hook-form';
 import { axios } from '../../../services/api';
 
-export default function EditForm() {
+export default function EditForm({ data, setShow }) {
     const {
         register,
         handleSubmit,
@@ -53,7 +53,6 @@ export default function EditForm() {
                                 </Form.Select>
                             </Form.Group>
                             <Form.Group>
-
                                 <Form.Label>Planned Budget</Form.Label>
                                 <Form.Control
                                     id="plannedBudget"

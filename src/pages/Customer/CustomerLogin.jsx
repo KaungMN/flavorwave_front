@@ -2,8 +2,9 @@ import { Button, Col, Form, Modal, ModalHeader, Row } from 'react-bootstrap';
 import { Link, useNavigate } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
 import { login } from '../../services/login';
-import { useState } from 'react';
-import { CUSTOMER_ORDER_ROUTE, CUSTOMER_SIGN_UP_ROUTE } from '../../constants/routes';
+import { useState, useEffect } from 'react';
+import { CUSTOMER_ORDER_ROUTE, CUSTOMER_SIGN_UP_ROUTE, DEFAULT_ROUTE } from '../../constants/routes';
+import { getSessionStorage } from '../../utils';
 
 function CustomerLogin() {
     const [showError, setShowError] = useState();
@@ -17,18 +18,16 @@ function CustomerLogin() {
     } = useForm();
 
     const onSubmit = async (data) => {
-        try {
-            console.log(data);
-            await login(data);
-            setLoginSuccessful(true);
-            if (isLoginSuccessful) {
-                history(CUSTOMER_ORDER_ROUTE);
-            }
-        } catch (error) {
-            console.error('Login failed:', error);
-            setShowError(true);
-        }
+        const res = await login(data);
+        if (!res) return;
+        window.location.reload();
     };
+
+    useEffect(() => {
+        const isAuthToken = getSessionStorage('authToken');
+        if (!isAuthToken) return;
+        history(DEFAULT_ROUTE);
+    }, []);
 
     console.log(watch('example'));
     return (

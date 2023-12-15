@@ -1,12 +1,14 @@
 import { Form, Row, Col, Button } from 'react-bootstrap';
 import { useForm } from 'react-hook-form';
 import axios from 'axios';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useContext } from 'react';
+import { ReloadingContext } from '../../actions/ReloadContext';
 
-const truck = ['Suzuki', 'Mercedes', 'Toyota', 'Honda'];
+// const truck = ['Suzuki', 'Mercedes', 'Toyota', 'Honda'];
 
 export default function EditForm({ initialData, setShow }) {
     const [truckData, setTruckData] = useState();
+    const { reload, setReload } = useContext(ReloadingContext);
     const {
         register,
         handleSubmit,
@@ -14,13 +16,16 @@ export default function EditForm({ initialData, setShow }) {
         formState: { errors }
     } = useForm();
 
+    const fetchInfo = async () => {
+        // const res = await fetch(`http://localhost:8000/api/get-trucks`);
+        // const data = await res.json();
+        const res = await axios.get(`http://localhost:8000/api/get-trucks`);
+        const data = res.data;
+        console.log(data);
+        setTruckData(data);
+    };
+
     useEffect(() => {
-        const fetchInfo = async () => {
-            const res = await fetch(`http://localhost:8000/api/get-trucks`);
-            const data = await res.json();
-            console.log(data);
-            setTruckData(data);
-        };
         fetchInfo();
     }, []);
 
@@ -31,9 +36,11 @@ export default function EditForm({ initialData, setShow }) {
             delivery_date: '2023-12-13',
             status: 'pending'
         });
-
         const datas = res.data;
         console.log(datas);
+        if (res.statusText === 'OK') {
+            setReload(reload + 1);
+        }
     };
 
     return (
@@ -44,7 +51,7 @@ export default function EditForm({ initialData, setShow }) {
                         <Col>
                             <Form.Label>Order Quantity: </Form.Label>
                             <Form.Control
-                                defaultValue={initialData.totalQuantity}
+                                defaultValue={initialData.quantity}
                                 id="salesPermit"
                                 name="salesPermit"
                                 disabled
@@ -65,11 +72,12 @@ export default function EditForm({ initialData, setShow }) {
                                 <option disabled selected value={''}>
                                     Choose Truck
                                 </option>
-                                {truckData && truckData.map((t) => (
-                                    <option key={t} value={t.id}>
-                                        {t.truck_number + ' ' + t.truck_name}
-                                    </option>
-                                ))}
+                                {truckData &&
+                                    truckData.map((t) => (
+                                        <option key={t} value={t.id}>
+                                            {t.truck_number + ' ' + t.truck_name}
+                                        </option>
+                                    ))}
                             </Form.Select>
                         </Col>
                     </Row>

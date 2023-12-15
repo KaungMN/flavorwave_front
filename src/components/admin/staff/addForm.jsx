@@ -119,7 +119,7 @@ export default function AddForm({ heading, setShow }) {
                                 <option disabled selected value={''}>
                                     Choose Department
                                 </option>
-                                {['sales', 'logistic', 'factory', 'warehouse'].map((t, id) => (
+                                {['Admin', 'Sales', 'Logistic', 'Factory', 'Warehouse'].map((t, id) => (
                                     <option key={t} value={id + 1}>
                                         {t}
                                     </option>

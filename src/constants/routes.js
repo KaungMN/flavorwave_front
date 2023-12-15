@@ -12,6 +12,7 @@ export const DELIVERY_ROUTE = '/delivery';
 export const CUSTOMER_LOGIN_ROUTE = '/customer/login';
 export const CUSTOMER_SIGN_UP_ROUTE = '/customer/sign-up';
 export const CUSTOMER_ORDER_ROUTE = '/customer/order';
+export const CUSTOMER_ORDER_HISTORY_ROUTE = '/customer/order-history';
 export const CUSTOMER_ABOUTUS_ROUTE = '/customer/about-us';
 export const CUSTOMER_HISTORY_ROUTE = '/customer/history';
 export const WAREHOUSE_ROUTE = '/warehouse';

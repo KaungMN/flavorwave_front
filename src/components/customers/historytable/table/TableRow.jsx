@@ -1,5 +1,3 @@
-import OrderConfirmModal from '../ConfirmModal';
-import OrderRejectModal from '../RejectModal';
 import { useEffect, useState } from 'react';
 import axios from 'axios';
 
@@ -63,14 +61,6 @@ export default function TableRow({ item, id }) {
 
             <td>{item.sub_total}</td>
             <td>{item.remark}</td>
-            {item.status !== 'approved' ? (
-                <td>
-                    <OrderConfirmModal preorderId={item.id} />
-                    <OrderRejectModal />
-                </td>
-            ) : (
-                <td>Order Confirmed</td>
-            )}
         </tr>
     );
 }

@@ -4,7 +4,7 @@ import { Form, Row, Col, Button, Container } from 'react-bootstrap';
 
 const heading = ['Order Id', 'Customer Name', 'Address', 'Order Item', 'Qty', 'Total Qty', 'Remark'];
 
-function TableComponent({data}) {
+function TableComponent({ data }) {
     let [filterData, setFilterData] = useState();
 
     function filterQuantity(quantity) {
@@ -17,8 +17,9 @@ function TableComponent({data}) {
 
     function filterAddress(address) {
         let result = data.filter((item) => {
-            let totalAddress = item.city + item.township + item.address;
-            return totalAddress.toLowerCase().includes(address);
+            console.log(item);
+            console.log(item.city.toLowerCase().includes(address.toLowerCase()));
+            return item.city.toLowerCase().includes(address.toLowerCase());
         });
         console.log(result);
         setFilterData(result.length > 0 ? result : data);

@@ -1,9 +1,11 @@
 import React from 'react';
 import BlogFront from '../images/Banner Image1.jpg';
-import { Button, Carousel, Container, Nav, Navbar } from 'react-bootstrap';
-import ExampleCarouselImage from './ExampleCarouselImage';
+import { Button, Carousel, Container, Image, Nav, Navbar } from 'react-bootstrap';
 import { Link, useNavigate } from 'react-router-dom';
-import { CUSTOMER_LOGIN_ROUTE, CUSTOMER_ORDER_ROUTE, CUSTOMER_SIGN_UP_ROUTE } from '../constants/routes';
+import { CUSTOMER_LOGIN_ROUTE, CUSTOMER_ORDER_ROUTE, CUSTOMER_SIGN_UP_ROUTE, DEFAULT_ROUTE } from '../constants/routes';
+import coursel_1 from '../images/coursel (1).png';
+import coursel_2 from '../images/coursel (2).png';
+import coursel_3 from '../images/coursel (3).png';
 import { getSessionStorage } from '../utils';
 
 function Home() {
@@ -18,7 +20,7 @@ function Home() {
             );
         } else {
             return (
-                <Link to={CUSTOMER_LOGIN_ROUTE}>
+                <Link to={DEFAULT_ROUTE}>
                     <Button className="header-button">Logout</Button>
                 </Link>
             );
@@ -30,7 +32,7 @@ function Home() {
             <header className="home-header">
                 <div className="header-content">
                     <h1>Welcome to Flavor Wave</h1>
-                    <p class="fs-5">Your Trusted Partner in Wholesale Solutions</p>
+                    <p className="fs-5">Your Trusted Partner in Wholesale Solutions</p>
                 </div>
                 <div>{loginLogoutButton()}</div>
             </header>
@@ -59,26 +61,47 @@ function Home() {
                         </li>
                     </ol>
                     <div>
-                        <Carousel onClick={() => nagivate(CUSTOMER_ORDER_ROUTE)}>
-                            <Carousel.Item className="carousel" style={{ height: '300px' }}>
-                                <ExampleCarouselImage text="First slide" />
+                        <Carousel>
+                            <Carousel.Item
+                                className="carousel"
+                                style={{ objectFit: 'cover', height: '50vh', overflow: 'hidden' }}
+                            >
+                                <Image
+                                    src={coursel_1}
+                                    text="First slide"
+                                    onClick={() => nagivate(CUSTOMER_ORDER_ROUTE)}
+                                />
                                 <Carousel.Caption>
-                                    <h3>First slide label</h3>
-                                    <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
+                                    <h3>Burmese Bliss</h3>
+                                    <p>Experience the blissful taste of Burma with this exquisite tea.</p>
                                 </Carousel.Caption>
                             </Carousel.Item>
-                            <Carousel.Item className="carousel" style={{ height: '300px' }}>
-                                <ExampleCarouselImage text="Second slide" />
+                            <Carousel.Item
+                                className="carousel"
+                                style={{ objectFit: 'cover', height: '50vh', overflow: 'hidden' }}
+                            >
+                                <Image
+                                    src={coursel_2}
+                                    text="Second slide"
+                                    onClick={() => nagivate(CUSTOMER_ORDER_ROUTE)}
+                                />
                                 <Carousel.Caption>
-                                    <h3>Second slide label</h3>
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                                    <h3>Golden Sunshine Tea</h3>
+                                    <p>Brighten your day with the warmth of golden sunshine in every sip.</p>
                                 </Carousel.Caption>
                             </Carousel.Item>
-                            <Carousel.Item className="carousel" style={{ height: '300px' }}>
-                                <ExampleCarouselImage text="Third slide" />
+                            <Carousel.Item
+                                className="carousel"
+                                style={{ objectFit: 'cover', height: '50vh', overflow: 'hidden' }}
+                            >
+                                <Image
+                                    src={coursel_3}
+                                    text="Third slide"
+                                    onClick={() => nagivate(CUSTOMER_ORDER_ROUTE)}
+                                />
                                 <Carousel.Caption>
-                                    <h3>Third slide label</h3>
-                                    <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p>
+                                    <h3>Mango Tango Delight</h3>
+                                    <p>Dance into delight with the tropical flavors of mango tango.</p>
                                 </Carousel.Caption>
                             </Carousel.Item>
                         </Carousel>

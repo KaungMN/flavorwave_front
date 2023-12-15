@@ -5,6 +5,7 @@ import { login } from '../../services/login';
 import { useState, useEffect } from 'react';
 import { CUSTOMER_ORDER_ROUTE, CUSTOMER_SIGN_UP_ROUTE, DEFAULT_ROUTE } from '../../constants/routes';
 import { getSessionStorage } from '../../utils';
+import Bg from '../../images/bg.jpg';
 
 function CustomerLogin() {
     const [showError, setShowError] = useState();
@@ -31,8 +32,16 @@ function CustomerLogin() {
 
     console.log(watch('example'));
     return (
-        <div className="contact-form-section" style={{ textAlign: 'left', margin: '50px auto', maxWidth: '500px' }}>
-            <h2>Log-in</h2>
+        <div
+            className="contact-form-section"
+            style={{
+                textAlign: 'center',
+                alignItems: 'center',
+                margin: '50px auto',
+                maxWidth: '500px'
+            }}
+        >
+            <h2 style={{ textAlign: 'center' }}>Log-in</h2>
             <Form onSubmit={handleSubmit(onSubmit)}>
                 <div className="mb-4">
                     <Row>
@@ -57,8 +66,11 @@ function CustomerLogin() {
                             />
                         </Col>
                     </Row>
+                    <Button style={{ display: 'block', margin: '20px auto' }} type="submit">
+                        {' '}
+                        Submit{' '}
+                    </Button>
                 </div>
-                <Button type="submit"> Submit </Button>
             </Form>
             <p className="mt-3 text-center">
                 Don't have an account? <Link to={CUSTOMER_SIGN_UP_ROUTE}>Signup</Link>

@@ -7,6 +7,7 @@ import { ReloadingContext } from '../../actions/ReloadContext';
 function Delivery() {
     const [data, setData] = useState();
     const { reload } = useContext(ReloadingContext);
+    console.log(ReloadingContext);
 
     const fetchInfo = async () => {
         // const res = await fetch(`http://localhost:8000/api/get-delivery`);

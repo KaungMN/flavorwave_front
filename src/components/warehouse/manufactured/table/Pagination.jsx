@@ -47,8 +47,6 @@ export default function Paginator({ heading, data, handleDelete }) {
         }));
     };
 
-    console.log(state.data);
-
     return (
         <div className="shop-paginator-section">
             <TableSingleRow heading={heading} order={state.data} handleDelete={handleDelete} />

@@ -1,6 +1,6 @@
 import TableComponent from '../components/sales/table/Table.jsx';
 import Spinner from 'react-bootstrap/Spinner';
-import { useState, useEffect, useContext } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import axios from 'axios';
 import { ReloadingContext } from '../actions/ReloadContext';
 

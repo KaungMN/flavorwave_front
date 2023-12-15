@@ -5,8 +5,6 @@ import TableRow from './TableRow';
 
 export default function TableSingleRow({ heading, order, handleDelete }) {
     let staffId = JSON.parse(sessionStorage.getItem('staffId'));
-    console.log(order);
-
     return (
         <Table striped bordered hover>
             <thead>
@@ -19,7 +17,7 @@ export default function TableSingleRow({ heading, order, handleDelete }) {
             </thead>
             <tbody>
                 {order.map((item, id) => (
-                    <TableRow item={item} key={id} id={id}/>
+                    <TableRow item={item} key={id} id={id} />
                 ))}
             </tbody>
         </Table>

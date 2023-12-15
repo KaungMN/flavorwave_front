@@ -10,6 +10,8 @@ function product() {
     async function getProducts() {
         const res = await axios.get('http://localhost:8000/api/get-products');
         const datas = res.data;
+        console.log(res);
+        console.log(datas);
         setData(datas);
     }
 

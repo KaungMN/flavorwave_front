@@ -2,7 +2,7 @@ import React from 'react';
 import BlogFront from '../images/Banner Image1.jpg';
 import { Button, Carousel, Container, Image, Nav, Navbar } from 'react-bootstrap';
 import { Link, useNavigate } from 'react-router-dom';
-import { CUSTOMER_ORDER_ROUTE, CUSTOMER_SIGN_UP_ROUTE, DEFAULT_ROUTE } from '../constants/routes';
+import { CUSTOMER_LOGIN_ROUTE, CUSTOMER_ORDER_ROUTE, CUSTOMER_SIGN_UP_ROUTE, DEFAULT_ROUTE } from '../constants/routes';
 import coursel_1 from '../images/coursel (1).png';
 import coursel_2 from '../images/coursel (2).png';
 import coursel_3 from '../images/coursel (3).png';
@@ -32,7 +32,7 @@ function Home() {
             <header className="home-header">
                 <div className="header-content">
                     <h1>Welcome to Flavor Wave</h1>
-                    <p class="fs-5">Your Trusted Partner in Wholesale Solutions</p>
+                    <p className="fs-5">Your Trusted Partner in Wholesale Solutions</p>
                 </div>
                 <div>{loginLogoutButton()}</div>
             </header>

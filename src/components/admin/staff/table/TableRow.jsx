@@ -30,10 +30,12 @@ export default function TableRow({ item, id, handleDelete }) {
     const getRole = (roleId) => {
         switch (roleId) {
             case 1:
-                return 'manager';
+                return 'admin';
             case 2:
-                return 'senior staff';
+                return 'manager';
             case 3:
+                return 'senior staff';
+            case 4:
                 return 'junior staff';
         }
     };

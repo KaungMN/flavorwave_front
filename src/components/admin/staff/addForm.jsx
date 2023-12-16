@@ -68,7 +68,7 @@ export default function AddForm({ heading, setShow }) {
                                 <option disabled selected value={''}>
                                     Choose Role
                                 </option>
-                                {['manager', 'senior', 'junior'].map((t, id) => (
+                                {['admin', 'manager', 'senior', 'junior'].map((t, id) => (
                                     <option key={t} value={id + 1}>
                                         {t}
                                     </option>
